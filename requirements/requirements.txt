@@ -1,0 +1,18 @@
+# Google Cloud SDK
+# SEE https://github.com/dbt-labs/dbt/blob/develop/plugins/bigquery/setup.py#L48-L56
+google-cloud-bigquery>=1.25.0,<3
+google-cloud-storage==1.38.0
+
+# REST API
+pytz==2021.1
+fastapi==0.65.2
+uvicorn[standard]==0.13.4
+python-dotenv==0.17.0
+python-json-logger==2.0.1
+
+# dbt
+dbt-bigquery==0.19.1
+
+# Utils
+python_jsonschema_objects==0.3.14
+bigquery-schema-generator==1.4

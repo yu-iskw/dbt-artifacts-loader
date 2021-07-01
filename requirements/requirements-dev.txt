@@ -1,0 +1,16 @@
+# The file manages extra python modules to develop dbt-helper.
+
+# Include python modules for dbt-helper.
+-r requirements.txt
+
+# Add extra modules to develop dbt-helper.
+pytest>=4.6.11
+pylint>=1.9.5
+yapf>=0.29.0
+pyyaml>=5.3
+safety>=1.9.0
+pdoc3>=0.9.2
+mock>=4.0.0
+
+# dbt
+dbt-init>=0.2.7

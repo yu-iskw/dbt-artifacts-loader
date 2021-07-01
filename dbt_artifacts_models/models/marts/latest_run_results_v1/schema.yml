@@ -1,0 +1,25 @@
+---
+version: 2
+
+models:
+  - name: latest_run_results_v1
+    description: |
+      The latest test results from the 'run_results_v1' table
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - invocation_id
+            - unique_id
+
+    columns:
+      - name: unique_id
+        description: "unique test ID"
+        tests:
+          - not_null
+          - unique
+      - name: rpc_method
+        description: "RPC method"
+        tests:
+          - accepted_values:
+              values: [ 'test']
