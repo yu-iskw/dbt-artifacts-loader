@@ -2,8 +2,8 @@ resource "google_bigquery_table" "run_results_v1" {
   project = var.project_id
 
   dataset_id    = google_bigquery_dataset.dbt_artifacts.dataset_id
-  table_id      = "run_results_v1"
-  friendly_name = "run_results_v1"
+  table_id      = "dbt_run_results_v1"
+  friendly_name = "dbt_run_results_v1"
   description   = <<EOT
 The table contains `run_results.json`.
 EOT
@@ -19,8 +19,8 @@ resource "google_bigquery_table" "sources_v1" {
   project = var.project_id
 
   dataset_id    = google_bigquery_dataset.dbt_artifacts.dataset_id
-  table_id      = "sources_v1"
-  friendly_name = "sources_v1"
+  table_id      = "dbt_sources_v1"
+  friendly_name = "dbt_sources_v1"
   description   = <<EOT
 The table contains `sources.json`.
 EOT
@@ -37,8 +37,8 @@ EOT
 //  project = var.project_id
 //
 //  dataset_id    = google_bigquery_dataset.dbt_artifacts.dataset_id
-//  table_id      = "manifest_v1"
-//  friendly_name = "manifest_v1"
+//  table_id      = "dbt_manifest_v1"
+//  friendly_name = "dbt_manifest_v1"
 //  description   = <<EOT
 //The table contains `manifest.json`.
 //EOT
