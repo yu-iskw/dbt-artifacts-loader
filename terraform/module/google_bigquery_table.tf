@@ -32,19 +32,20 @@ EOT
   labels = var.labels
 }
 
-resource "google_bigquery_table" "manifest_v1" {
-  project = var.project_id
-
-  dataset_id    = google_bigquery_dataset.dbt_artifacts.dataset_id
-  table_id      = "manifest_v1"
-  friendly_name = "manifest_v1"
-  description   = <<EOT
-The table contains `manifest.json`.
-EOT
-
-  schema = file("${path.module}/table_schemas/v1/manifest.json")
-
-  deletion_protection = var.delete_on_destroy
-
-  labels = var.labels
-}
+// The schema is not valid yet.
+//resource "google_bigquery_table" "manifest_v1" {
+//  project = var.project_id
+//
+//  dataset_id    = google_bigquery_dataset.dbt_artifacts.dataset_id
+//  table_id      = "manifest_v1"
+//  friendly_name = "manifest_v1"
+//  description   = <<EOT
+//The table contains `manifest.json`.
+//EOT
+//
+//  schema = file("${path.module}/table_schemas/v1/manifest.json")
+//
+//  deletion_protection = var.delete_on_destroy
+//
+//  labels = var.labels
+//}
