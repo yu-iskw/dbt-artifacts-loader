@@ -1,7 +1,7 @@
 resource "google_pubsub_subscription" "dbt_artifacts_notification_to_bigquery" {
   project = var.project_id
 
-  name  = "${var.topic}-to-bigquery"
+  name  = "${var.pubsub_topic}-to-bigquery"
   topic = google_pubsub_topic.dbt_artifacts_notification.id
 
   push_config {
