@@ -54,10 +54,16 @@ variable "lifecycle_rule" {
   }
 }
 
+variable "bucket_readers" {
+  description = "The list of members who can access the bucket for dbt artifacts"
+  type        = list(string)
+  default     = []
+}
+
 #
 # Pub/Sub
 #
-variable "topic" {
+variable "pubsub_topic" {
   description = "Cloud Pub/Sub topic name for GCS notification"
   type        = string
   default     = "dbt-artifacts-gcs-notification"
