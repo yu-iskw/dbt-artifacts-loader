@@ -54,6 +54,12 @@ variable "lifecycle_rule" {
   }
 }
 
+variable "bucket_writers" {
+  description = "The list of members who can writer to the bucket for dbt artifacts"
+  type        = list(string)
+  default     = []
+}
+
 variable "bucket_readers" {
   description = "The list of members who can access the bucket for dbt artifacts"
   type        = list(string)
