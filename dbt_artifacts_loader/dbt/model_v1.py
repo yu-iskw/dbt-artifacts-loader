@@ -18,67 +18,11 @@
 import os
 import json
 from dataclasses import dataclass
-from enum import Enum
 
 import python_jsonschema_objects as pjs
 
+from dbt_artifacts_loader.dbt.utils import ArtifactsTypes
 from dbt_artifacts_loader.utils import get_module_root
-
-
-class ArtifactsTypesV1(Enum):
-    CATALOG = "Catalog"
-    MANIFEST = "Manifest"
-    RUN_RESULTS = "RunResults"
-    SOURCES = "Sources"
-
-    @classmethod
-    def get_artifact_type_by_id(cls, schema_id: str):
-        """Get one of the enumeration values by the schema ID
-
-        Args:
-            schema_id (str): The schema ID
-
-        Returns:
-            one of ArtifactsTypeV1 values
-        """
-        if schema_id == "https://schemas.getdbt.com/dbt/catalog/v1.json":
-            return ArtifactsTypesV1.CATALOG
-        elif schema_id == "https://schemas.getdbt.com/dbt/manifest/v1.json":
-            return ArtifactsTypesV1.MANIFEST
-        elif schema_id == "https://schemas.getdbt.com/dbt/run-results/v1.json":
-            return ArtifactsTypesV1.RUN_RESULTS
-        elif schema_id == "https://schemas.getdbt.com/dbt/sources/v1.json":
-            return ArtifactsTypesV1.SOURCES
-        else:
-            return None
-
-
-class DestinationTablesV1(Enum):
-    CATALOG = "catalog_v1"
-    MANIFEST = "manifest_v1"
-    RUN_RESULTS = "run_results_v1"
-    SOURCES = "sources_v1"
-
-    @classmethod
-    def get_destination_table(cls, artifact_type: ArtifactsTypesV1):
-        """Get the destination table
-
-        Args:
-            artifact_type:
-
-        Returns:
-            (str) the destination BigQuery table ID
-        """
-        if artifact_type == ArtifactsTypesV1.CATALOG:
-            return DestinationTablesV1.CATALOG
-        elif artifact_type == ArtifactsTypesV1.MANIFEST:
-            return DestinationTablesV1.MANIFEST
-        elif artifact_type == ArtifactsTypesV1.RUN_RESULTS:
-            return DestinationTablesV1.RUN_RESULTS
-        elif artifact_type == ArtifactsTypesV1.SOURCES:
-            return DestinationTablesV1.SOURCES
-        else:
-            raise ValueError("No such a artifact type: {}".format(artifact_type))
 
 
 @dataclass
@@ -97,7 +41,7 @@ class CatalogV1:
         builder = pjs.ObjectBuilder(schema)
         ns = builder.build_classes()
         # pylint: disable=E1120
-        return ns.getattr(ArtifactsTypesV1.CATALOG.value)
+        return ns.getattr(ArtifactsTypes.CATALOG_V1.value)
 
 
 @dataclass
@@ -116,7 +60,7 @@ class ManifestV1:
         builder = pjs.ObjectBuilder(schema)
         ns = builder.build_classes()
         # pylint: disable=E1120
-        return ns.getattr(ArtifactsTypesV1.MANIFEST.value)
+        return ns.getattr(ArtifactsTypes.MANIFEST_V1.value)
 
 
 @dataclass
@@ -153,4 +97,4 @@ class SourcesV1:
         builder = pjs.ObjectBuilder(schema)
         ns = builder.build_classes()
         # pylint: disable=E1120
-        return ns.getattr(ArtifactsTypesV1.SOURCES.value)
+        return ns.getattr(ArtifactsTypes.SOURCES_V1.value)

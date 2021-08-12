@@ -3,6 +3,11 @@
     "fields": [
       {
         "mode": "NULLABLE",
+        "name": "data",
+        "type": "BOOLEAN"
+      },
+      {
+        "mode": "NULLABLE",
         "name": "log_format",
         "type": "STRING"
       },
@@ -18,7 +23,22 @@
       },
       {
         "mode": "NULLABLE",
+        "name": "schema",
+        "type": "BOOLEAN"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "store_failures",
+        "type": "BOOLEAN"
+      },
+      {
+        "mode": "NULLABLE",
         "name": "use_cache",
+        "type": "BOOLEAN"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "use_experimental_parser",
         "type": "BOOLEAN"
       },
       {
@@ -76,36 +96,14 @@
   {
     "fields": [
       {
-        "fields": [
-          {
-            "mode": "NULLABLE",
-            "name": "_message",
-            "type": "STRING"
-          },
-          {
-            "mode": "NULLABLE",
-            "name": "bytes_processed",
-            "type": "INTEGER"
-          },
-          {
-            "mode": "NULLABLE",
-            "name": "code",
-            "type": "STRING"
-          },
-          {
-            "mode": "NULLABLE",
-            "name": "rows_affected",
-            "type": "INTEGER"
-          }
-        ],
-        "mode": "NULLABLE",
-        "name": "adapter_response",
-        "type": "RECORD"
-      },
-      {
         "mode": "NULLABLE",
         "name": "execution_time",
         "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "failures",
+        "type": "INTEGER"
       },
       {
         "mode": "NULLABLE",
