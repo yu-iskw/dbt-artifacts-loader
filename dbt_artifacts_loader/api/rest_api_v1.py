@@ -31,7 +31,7 @@ from google.cloud import bigquery
 from dbt_artifacts_loader.utils import download_gcs_object_as_text
 from dbt_artifacts_loader.api import config
 from dbt_artifacts_loader.dbt.utils import get_dbt_schema_version
-from dbt_artifacts_loader.dbt.model_v1 import ArtifactsTypesV1, DestinationTablesV1
+from dbt_artifacts_loader.dbt.utils import ArtifactsTypes, DestinationTables
 
 app = FastAPI()
 
@@ -118,14 +118,19 @@ def insert_artifact_v1(request_body: RequestBody, settings: config.APISettings =
         raise HTTPException(status_code=500, detail=detail) from e
 
     # Check if the JSON file is one of dbt artifacts types.
-    schema_id = get_dbt_schema_version(artifact_json=artifact_json)
-    artifact_type = ArtifactsTypesV1.get_artifact_type_by_id(schema_id=schema_id)
+    dbt_schema_version = get_dbt_schema_version(artifact_json=artifact_json)
+    artifact_type = ArtifactsTypes.get_artifact_type_by_id(dbt_schema_version=dbt_schema_version)
     # TODO support catalog.json and manifest.json
-    if artifact_type is None or artifact_type in [ArtifactsTypesV1.CATALOG, ArtifactsTypesV1.MANIFEST]:
+    available_artifact_types = [
+        ArtifactsTypes.RUN_RESULTS_V1, ArtifactsTypes.SOURCES_V1,
+        ArtifactsTypes.RUN_RESULTS_V2,
+    ]
+    if artifact_type not in available_artifact_types:
         return {"message": "gs://{}/{} is not a dbt artifact or is not supported".format(bucket, name)}
 
     # Insert a dbt artifact JSON
-    destination_table_id = DestinationTablesV1.get_destination_table(artifact_type=artifact_type)
+    destination_table_id = DestinationTables.get_destination_table(artifact_type=artifact_type)
+
     full_destination_table_id = "{}.{}.{}".format(
         destination_project, destination_dataset, destination_table_id.value)
     statuses = []
