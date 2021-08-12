@@ -11,7 +11,7 @@ python-dotenv==0.17.0
 python-json-logger==2.0.1
 
 # dbt
-dbt-bigquery==0.19.1
+dbt-bigquery==0.20.1
 
 # Utils
 python_jsonschema_objects==0.3.14

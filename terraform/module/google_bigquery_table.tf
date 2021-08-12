@@ -1,3 +1,6 @@
+#
+# V1
+#
 resource "google_bigquery_table" "run_results_v1" {
   project = var.project_id
 
@@ -51,3 +54,24 @@ EOT
 //
 //  labels = var.labels
 //}
+
+#
+# V2
+#
+resource "google_bigquery_table" "run_results_v2" {
+  project = var.project_id
+
+  dataset_id    = google_bigquery_dataset.dbt_artifacts.dataset_id
+  # NOTE The table ID must be the same as the python implementation.
+  table_id      = "run_results_v2"
+  friendly_name = "run_results_v2"
+  description   = <<EOT
+The table contains `run_results.json`.
+EOT
+
+  schema = file("${path.module}/table_schemas/v2/run_results.json")
+
+  deletion_protection = (! var.delete_on_destroy)
+
+  labels = var.labels
+}
