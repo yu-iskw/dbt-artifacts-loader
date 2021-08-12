@@ -38,12 +38,22 @@
       },
       {
         "mode": "NULLABLE",
+        "name": "store_failures",
+        "type": "BOOLEAN"
+      },
+      {
+        "mode": "NULLABLE",
         "name": "target",
         "type": "STRING"
       },
       {
         "mode": "NULLABLE",
         "name": "use_cache",
+        "type": "BOOLEAN"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "use_experimental_parser",
         "type": "BOOLEAN"
       },
       {
