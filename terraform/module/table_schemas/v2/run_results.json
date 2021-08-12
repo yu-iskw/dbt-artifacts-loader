@@ -13,6 +13,11 @@
       },
       {
         "mode": "NULLABLE",
+        "name": "profile",
+        "type": "STRING"
+      },
+      {
+        "mode": "NULLABLE",
         "name": "profiles_dir",
         "type": "STRING"
       },
@@ -28,8 +33,18 @@
       },
       {
         "mode": "NULLABLE",
+        "name": "selector_name",
+        "type": "STRING"
+      },
+      {
+        "mode": "NULLABLE",
         "name": "store_failures",
         "type": "BOOLEAN"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "target",
+        "type": "STRING"
       },
       {
         "mode": "NULLABLE",
@@ -40,6 +55,11 @@
         "mode": "NULLABLE",
         "name": "use_experimental_parser",
         "type": "BOOLEAN"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "vars",
+        "type": "STRING"
       },
       {
         "mode": "NULLABLE",
@@ -96,14 +116,36 @@
   {
     "fields": [
       {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "_message",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "bytes_processed",
+            "type": "INTEGER"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "code",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "rows_affected",
+            "type": "INTEGER"
+          }
+        ],
         "mode": "NULLABLE",
-        "name": "execution_time",
-        "type": "FLOAT"
+        "name": "adapter_response",
+        "type": "RECORD"
       },
       {
         "mode": "NULLABLE",
-        "name": "failures",
-        "type": "INTEGER"
+        "name": "execution_time",
+        "type": "FLOAT"
       },
       {
         "mode": "NULLABLE",
