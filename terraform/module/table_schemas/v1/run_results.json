@@ -3,7 +3,17 @@
     "fields": [
       {
         "mode": "NULLABLE",
+        "name": "data",
+        "type": "BOOLEAN"
+      },
+      {
+        "mode": "NULLABLE",
         "name": "log_format",
+        "type": "STRING"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "profile",
         "type": "STRING"
       },
       {
@@ -18,8 +28,28 @@
       },
       {
         "mode": "NULLABLE",
+        "name": "schema",
+        "type": "BOOLEAN"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "selector_name",
+        "type": "STRING"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "target",
+        "type": "STRING"
+      },
+      {
+        "mode": "NULLABLE",
         "name": "use_cache",
         "type": "BOOLEAN"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "vars",
+        "type": "STRING"
       },
       {
         "mode": "NULLABLE",
