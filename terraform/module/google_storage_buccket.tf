@@ -1,6 +1,6 @@
 locals {
   bucket_location = (var.bucket_location != null ? var.bucket_location : var.region)
-  bucket_name = (var.bucket != null ? var.bucket : "${var.project_id}-dbt-artifacts")
+  bucket_name     = (var.bucket != null ? var.bucket : "${var.project_id}-dbt-artifacts")
 }
 
 resource "google_storage_bucket" "dbt_artifacts" {
