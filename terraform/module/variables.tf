@@ -26,6 +26,12 @@ variable "labels" {
 #
 # GCS
 #
+variable "bucket_location" {
+  description = "The location of the GCS bucket. If it is null, it is set to var.region."
+  type        = string
+  default     = null
+}
+
 variable "bucket" {
   description = "GCS bucket name"
   type        = string
@@ -78,6 +84,12 @@ variable "pubsub_topic" {
 #
 # BigQuery
 #
+variable "bigquery_location" {
+  description = "The location of the BigQuery dataset. If it is null, it is set to var.region."
+  type        = string
+  default     = null
+}
+
 variable "bigquery_dataset_id" {
   description = "The dataset ID to store dbt artifacts"
   type        = string
