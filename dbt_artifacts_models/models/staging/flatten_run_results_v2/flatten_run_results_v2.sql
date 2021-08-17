@@ -8,7 +8,7 @@
     materialized="view",
     database=project,
     schema=dataset,
-    alias="flatten_run_results_v1",
+    alias="flatten_run_results_v2",
     persist_docs={"relation": true, "columns": true},
     labels={
       "modeled_by": "dbt",
@@ -27,7 +27,7 @@ WITH flatten_results AS (
     result.execution_time AS execution_time,
     result.message AS message,
     result.timing AS timing,
-  FROM {{ source(var('dataset'), 'run_results_v1') }}
+  FROM {{ source(var('dataset'), 'run_results_v2') }}
         , UNNEST(results) AS result
 )
 , flatten_timing AS (
