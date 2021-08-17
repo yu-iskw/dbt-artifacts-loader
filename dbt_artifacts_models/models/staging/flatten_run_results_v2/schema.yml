@@ -1,0 +1,23 @@
+---
+version: 2
+
+models:
+  - name: flatten_run_results_v2
+    description: |
+      Flatten the 'run_results_v2' table
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - invocation_id
+            - unique_id
+
+    columns:
+      - name: invocation_id
+        description: "invocation ID"
+        tests:
+          - not_null
+      - name: unique_id
+        description: "unique test ID"
+        tests:
+          - not_null

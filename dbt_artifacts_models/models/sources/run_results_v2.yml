@@ -1,0 +1,9 @@
+---
+version: 2
+
+sources:
+  - name: "{{ var('dataset') }}"
+    database: "{{ var('project') }}"
+    tables:
+      - name: run_results_v2
+        identifier: run_results_v2
