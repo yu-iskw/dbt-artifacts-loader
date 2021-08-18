@@ -23,7 +23,7 @@ WITH latest_failed_freshness AS (
     *
   FROM {{ ref("expanded_sources_v1") }}
   WHERE
-    status NOT IN ("runtime error", "error")
+    status IN ("runtime error", "error")
 )
 
 SELECT
