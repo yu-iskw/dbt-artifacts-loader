@@ -18,5 +18,6 @@ clean-targets:
     - "dbt_modules"
 
 vars:
-    project: "YOUR-PROJECT-ID"
-    dataset: "dbt_artifacts"
+    dbt_artifacts_loader:
+        project: "YOUR-PROJECT-ID"
+        dataset: "dbt_artifacts"

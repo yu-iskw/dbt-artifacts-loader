@@ -2,8 +2,8 @@
 version: 2
 
 sources:
-  - name: "{{ var('dataset') }}"
-    database: "{{ var('project') }}"
+  - name: "{{ var('dbt_artifacts_loader')['dataset'] }}"
+    database: "{{ var('dbt_artifacts_loader')['project'] }}"
     tables:
       - name: sources_v1
         identifier: sources_v1

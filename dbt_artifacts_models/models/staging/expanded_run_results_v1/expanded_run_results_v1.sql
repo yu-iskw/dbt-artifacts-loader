@@ -1,5 +1,5 @@
-{% set project = var('project') %}
-{% set dataset = var('dataset') %}
+{% set project = var('dbt_artifacts_loader')['project'] %}
+{% set dataset = var('dbt_artifacts_loader')['dataset'] %}
 
 {{
   config(
@@ -27,7 +27,7 @@ WITH expanded_results AS (
     result.execution_time AS execution_time,
     result.message AS message,
     result.timing AS timing,
-  FROM {{ source(var('dataset'), 'run_results_v1') }}
+  FROM {{ source(var('dbt_artifacts_loader')['dataset'], 'run_results_v1') }}
         , UNNEST(results) AS result
 )
 , expanded_timing AS (
@@ -39,7 +39,14 @@ WITH expanded_results AS (
   FROM expanded_results AS fr
        , UNNEST(timing) AS expanded_timing
 )
+, remove_duplicates AS (
+  SELECT
+    ROW_NUMBER() OVER (PARTITION BY invocation_id, unique_id, timing_name ORDER BY generated_at DESC) AS rank,
+    *
+  FROM expanded_timing
+)
 
 SELECT
-  *
-FROM expanded_timing
+  * EXCEPT(rank)
+FROM remove_duplicates
+WHERE rank = 1
