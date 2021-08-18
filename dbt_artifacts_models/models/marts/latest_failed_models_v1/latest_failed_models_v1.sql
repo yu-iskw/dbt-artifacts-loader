@@ -8,7 +8,7 @@
     materialized="view",
     database=project,
     schema=dataset,
-    alias="latest_failed_source_freshness_v1",
+    alias="latest_failed_models_v1",
     persist_docs={"relation": true, "columns": true},
     labels={
       "modeled_by": "dbt",
@@ -17,19 +17,21 @@
   )
 }}
 
-WITH ranked_freshness AS (
+WITH ranked_tests AS (
   SELECT
-    ROW_NUMBER() OVER (PARTITION BY unique_id ORDER BY generated_at DESC) AS rank,
+    ROW_NUMBER() OVER (PARTITION BY unique_id ORDER BY completed_at DESC) AS rank,
     *
-  FROM {{ ref("expanded_sources_v1") }}
-)
-, latest_failed_freshness AS (
-  SELECT * EXCEPT (rank)
-  FROM ranked_freshness
+  FROM {{ ref("expanded_run_results_v1") }}
   WHERE
-    rank = 1
-    AND status IN ("runtime error", "error")
+    timing_name = "execute"
+    AND rpc_method IN ("run")
+)
+, latest_failed_tests AS (
+  SELECT * EXCEPT (rank)
+  FROM ranked_tests
+  WHERE
+      rank = 1 AND LOWER(status) = "fail"
 )
 
 SELECT *
-FROM latest_failed_freshness
+FROM latest_failed_tests
