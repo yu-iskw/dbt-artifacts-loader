@@ -8,7 +8,7 @@
     materialized="view",
     database=project,
     schema=dataset,
-    alias="latest_failed_results_v1",
+    alias="expanded_sources_v1",
     persist_docs={"relation": true, "columns": true},
     labels={
       "modeled_by": "dbt",
@@ -17,9 +17,15 @@
   )
 }}
 
-SELECT *
-FROM {{ ref("expanded_run_results_v1") }}
-WHERE
-timing_name = "execute"
-AND rpc_method IN ("test")
-AND LOWER(status) = "fail"
+WITH expanded_sources AS (
+  SELECT
+    elapsed_time,
+    metadata.*,
+    result.*,
+  FROM {{ source(var('dataset'), 'sources_v1') }}
+        , UNNEST(results) AS result
+)
+
+SELECT
+  *
+FROM expanded_sources

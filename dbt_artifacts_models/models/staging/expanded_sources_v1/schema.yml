@@ -2,9 +2,9 @@
 version: 2
 
 models:
-  - name: expanded_run_results_v2
+  - name: expanded_sources_v1
     description: |
-      This is an expanded `run_results_v2`.
+      This is an expanded `sources_v1`.
 
     tests:
       - dbt_utils.unique_combination_of_columns:
