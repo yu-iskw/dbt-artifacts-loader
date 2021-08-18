@@ -4,7 +4,7 @@ WITH stats AS (
     , generated_at
     , status
     , SUM(IF(status = "fail", 1, 0)) AS total_failed_tests
-  FROM {{ ref('flatten_run_results_v1') }}
+  FROM {{ ref('expanded_run_results_v1') }}
   WHERE
     rpc_method = "test"
     AND unique_id LIKE "%{{ model_id_pattern }}%"

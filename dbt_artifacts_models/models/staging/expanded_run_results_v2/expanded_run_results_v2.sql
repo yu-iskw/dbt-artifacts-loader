@@ -8,7 +8,7 @@
     materialized="view",
     database=project,
     schema=dataset,
-    alias="flatten_run_results_v1",
+    alias="expanded_run_results_v2",
     persist_docs={"relation": true, "columns": true},
     labels={
       "modeled_by": "dbt",
@@ -17,7 +17,7 @@
   )
 }}
 
-WITH flatten_results AS (
+WITH expanded_results AS (
   SELECT
     args.*,
     metadata.*,
@@ -27,19 +27,19 @@ WITH flatten_results AS (
     result.execution_time AS execution_time,
     result.message AS message,
     result.timing AS timing,
-  FROM {{ source(var('dataset'), 'run_results_v1') }}
+  FROM {{ source(var('dataset'), 'run_results_v2') }}
         , UNNEST(results) AS result
 )
-, flatten_timing AS (
+, expanded_timing AS (
   SELECT
     fr.* EXCEPT (timing),
-    flatten_timing.name AS timing_name,
-    flatten_timing.completed_at AS completed_at,
-    flatten_timing.started_at AS started_at,
-  FROM flatten_results AS fr
-       , UNNEST(timing) AS flatten_timing
+    expanded_timing.name AS timing_name,
+    expanded_timing.completed_at AS completed_at,
+    expanded_timing.started_at AS started_at,
+  FROM expanded_results AS fr
+       , UNNEST(timing) AS expanded_timing
 )
 
 SELECT
   *
-FROM flatten_timing
+FROM expanded_timing

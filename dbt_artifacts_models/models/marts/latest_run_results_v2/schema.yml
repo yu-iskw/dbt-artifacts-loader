@@ -2,9 +2,9 @@
 version: 2
 
 models:
-  - name: latest_run_results_v1
+  - name: latest_run_results_v2
     description: |
-      The records means the latest run results on the 'run_results_v1' table.
+      The records means the latest run results on the 'run_results_v2' table.
 
     tests:
       - dbt_utils.unique_combination_of_columns:

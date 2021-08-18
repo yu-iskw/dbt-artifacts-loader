@@ -2,7 +2,7 @@ SELECT
   status
   , completed_at
   , unique_id
-FROM {{ ref('flatten_run_results_v1') }}
+FROM {{ ref('expanded_run_results_v1') }}
 WHERE
   rpc_method = "test"
   AND status = "fail"

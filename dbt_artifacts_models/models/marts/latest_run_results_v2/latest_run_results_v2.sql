@@ -8,7 +8,7 @@
     materialized="view",
     database=project,
     schema=dataset,
-    alias="latest_run_results_v1",
+    alias="latest_run_results_v2",
     persist_docs={"relation": true, "columns": true},
     labels={
       "modeled_by": "dbt",
@@ -19,12 +19,18 @@
 
 WITH latest_run_results_v1 AS (
   SELECT
-    ROW_NUMBER() OVER (PARTITION BY unique_id ORDER BY completed_at DESC) AS rank,
-    *
-  FROM {{ ref("expanded_run_results_v1") }}
+    ROW_NUMBER() OVER (PARTITION BY unique_id ORDER BY completed_at DESC) AS rank
+    , invocation_id
+    , dbt_version
+    , rpc_method
+    , unique_id
+    , status
+    , timing_name
+    , completed_at
+    , started_at
+  FROM {{ ref("expanded_run_results_v2") }}
 )
 
-SELECT
-  * EXCEPT (rank)
+SELECT *
 FROM latest_run_results_v1
 WHERE rank = 1

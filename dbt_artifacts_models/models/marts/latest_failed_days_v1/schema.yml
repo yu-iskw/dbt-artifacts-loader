@@ -2,9 +2,9 @@
 version: 2
 
 models:
-  - name: flatten_run_results_v2
+  - name: latest_failed_results_v1
     description: |
-      Flatten the 'run_results_v2' table
+      expanded the 'run_results_v1' table
 
     tests:
       - dbt_utils.unique_combination_of_columns:
