@@ -1,5 +1,5 @@
-{% set project = var('project') %}
-{% set dataset = var('dataset') %}
+{% set project = var('dbt_artifacts_loader')['project'] %}
+{% set dataset = var('dbt_artifacts_loader')['dataset'] %}
 
 {{
   config(

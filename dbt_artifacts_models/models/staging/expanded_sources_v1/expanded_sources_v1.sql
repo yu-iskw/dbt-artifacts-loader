@@ -1,5 +1,5 @@
-{% set project = var('project') %}
-{% set dataset = var('dataset') %}
+{% set project = var('dbt_artifacts_loader')['project'] %}
+{% set dataset = var('dbt_artifacts_loader')['dataset'] %}
 
 {{
   config(
@@ -22,10 +22,17 @@ WITH expanded_sources AS (
     elapsed_time,
     metadata.*,
     result.*,
-  FROM {{ source(var('dataset'), 'sources_v1') }}
+  FROM {{ source(var('dbt_artifacts_loader')['dataset'], 'sources_v1') }}
         , UNNEST(results) AS result
+)
+, remove_duplicates AS (
+  SELECT
+    ROW_NUMBER() OVER (PARTITION BY invocation_id, unique_id ORDER BY generated_at DESC) AS rank,
+    *,
+  FROM expanded_sources
 )
 
 SELECT
-  *
-FROM expanded_sources
+  * EXCEPT(rank)
+FROM remove_duplicates
+WHERE rank = 1
