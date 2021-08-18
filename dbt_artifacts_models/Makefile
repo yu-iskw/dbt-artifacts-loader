@@ -1,4 +1,5 @@
 setup:
+	dbt clean
 	dbt deps
 
 run:
