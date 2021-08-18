@@ -17,7 +17,7 @@
   )
 }}
 
-WITH latest_failed_tests AS (
+WITH ranked_tests AS (
   SELECT
     ROW_NUMBER() OVER (PARTITION BY unique_id ORDER BY completed_at DESC) AS rank,
     *
@@ -25,10 +25,13 @@ WITH latest_failed_tests AS (
   WHERE
     timing_name = "execute"
     AND rpc_method IN ("test")
-    AND LOWER(status) = "fail"
+)
+, latest_failed_tests AS (
+  SELECT * EXCEPT (rank)
+  FROM ranked_tests
+  WHERE
+      rank = 1 AND LOWER(status) = "fail"
 )
 
-SELECT
-  * EXCEPT (rank)
+SELECT *
 FROM latest_failed_tests
-WHERE rank = 1
