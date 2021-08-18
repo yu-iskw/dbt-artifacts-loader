@@ -4,7 +4,7 @@ version: 2
 models:
   - name: expanded_run_results_v1
     description: |
-      The table is created by expanding `run_results_v1`.
+      This is an expanded `run_results_v1`.
 
     tests:
       - dbt_utils.unique_combination_of_columns:

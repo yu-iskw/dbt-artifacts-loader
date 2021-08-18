@@ -2,9 +2,9 @@
 version: 2
 
 models:
-  - name: latest_run_results_v2
+  - name: latest_failed_tests_v1
     description: |
-      The records means the latest run results on the 'run_results_v2' table.
+      The list of the latest failed tests each.
 
     tests:
       - dbt_utils.unique_combination_of_columns:
