@@ -2,9 +2,9 @@
 version: 2
 
 models:
-  - name: flatten_run_results_v1
+  - name: expanded_run_results_v1
     description: |
-      Flatten the 'run_results_v1' table
+      The table is created by expanding `run_results_v1`.
 
     tests:
       - dbt_utils.unique_combination_of_columns:

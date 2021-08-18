@@ -8,7 +8,7 @@
     materialized="view",
     database=project,
     schema=dataset,
-    alias="latest_run_results_v1",
+    alias="latest_failed_results_v1",
     persist_docs={"relation": true, "columns": true},
     labels={
       "modeled_by": "dbt",
@@ -17,14 +17,9 @@
   )
 }}
 
-WITH latest_run_results_v1 AS (
-  SELECT
-    ROW_NUMBER() OVER (PARTITION BY unique_id ORDER BY completed_at DESC) AS rank,
-    *
-  FROM {{ ref("expanded_run_results_v1") }}
-)
-
-SELECT
-  * EXCEPT (rank)
-FROM latest_run_results_v1
-WHERE rank = 1
+SELECT *
+FROM {{ ref("expanded_run_results_v1") }}
+WHERE
+timing_name = "execute"
+AND rpc_method IN ("test")
+AND LOWER(status) = "fail"
