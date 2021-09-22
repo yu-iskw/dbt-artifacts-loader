@@ -65,7 +65,7 @@ class RunResultOutput(BaseModel):
     unique_id: str
 
 
-class Model(BaseModel):
+class RunResults(BaseModel):
     class Config:
         extra = Extra.forbid
 

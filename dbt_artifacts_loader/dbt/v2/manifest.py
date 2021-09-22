@@ -1351,7 +1351,7 @@ class ParsedSourceDefinition(BaseModel):
     created_at: Optional[int] = 1623077341
 
 
-class Model(BaseModel):
+class Manifest(BaseModel):
     class Config:
         extra = Extra.forbid
 
