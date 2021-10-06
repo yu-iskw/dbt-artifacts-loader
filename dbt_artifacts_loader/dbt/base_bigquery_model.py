@@ -58,7 +58,7 @@ def is_none_type(x):
     return False
 
 
-def is_list_type(model_field: ModelField) -> str:
+def is_list_type(model_field: ModelField) -> bool:
     if typing.get_origin(model_field.outer_type_) is list:
         return True
     return False
@@ -130,7 +130,7 @@ def to_bigquery_schema(model_field: ModelField, depth: int) -> bigquery.SchemaFi
     if get_primitive_field_type(outer_type_=model_field.outer_type_) is not None:
         return from_simple_type(model_field=model_field)
     # A subclass of the base model
-    elif BaseBigQueryModel.issubclass(model_field.outer_type_):
+    elif BaseBigQueryModel.is_subclass(model_field.outer_type_):
         fields = model_field.outer_type_.to_bigquery_schema(depth=depth + 1)
         return bigquery.SchemaField(
             name=model_field.name,
@@ -188,7 +188,7 @@ def from_list_type(model_field: ModelField, depth: int) -> bigquery.SchemaField:
         )
     elif type_in_list is ModelField and is_list_type(model_field=type_in_list):
         return to_bigquery_schema(model_field=type_in_list, depth=depth + 1)
-    elif BaseBigQueryModel.issubclass(type_in_list):
+    elif BaseBigQueryModel.is_subclass(type_in_list):
         return bigquery.SchemaField(
             name=model_field.name,
             mode="REPEATED",
@@ -206,7 +206,7 @@ def from_list_type(model_field: ModelField, depth: int) -> bigquery.SchemaField:
         )
     elif is_union_type(model_field=model_field):
         types_in_union = get_nested_types_in_union(union_type=model_field.outer_type_)
-        if all(BaseBigQueryModel.issubclass(x) for x in types_in_union):
+        if all(BaseBigQueryModel.is_subclass(x) for x in types_in_union):
             schema_fields = [
                 bigquery.SchemaField(
                     name=model_field.name,
@@ -283,13 +283,13 @@ def from_dict_type(model_field: ModelField, depth: int):
             mode="REPEATED",
             fields=[
                 bigquery.SchemaField(name="key", field_type="STRING", mode="NULLABLE"),
-                bigquery.SchemaField(name="value", field_type="STRING", mode="NULLABLE"),
+                bigquery.SchemaField(name="value", field_type="STRING", mode="REPEATED"),
             ],
             description=get_description(model_field=model_field),
         )
         return schema_field
     elif (dict_value_type is not None
-          and BaseBigQueryModel.issubclass(dict_value_type)):
+          and BaseBigQueryModel.is_subclass(dict_value_type)):
         fields = dict_value_type.to_bigquery_schema(depth=depth + 1)
         schema_field = bigquery.SchemaField(
             name=model_field.name,
@@ -329,7 +329,7 @@ def from_dict_type(model_field: ModelField, depth: int):
 
 def convert_union_to_schema_field(union_type, name: str, description: str, depth: int) -> bigquery.SchemaField:
     nested_types = get_nested_types_in_union(union_type=union_type)
-    if all([BaseBigQueryModel.issubclass(x) for x in nested_types]):
+    if all([BaseBigQueryModel.is_subclass(x) for x in nested_types]):
         schema_fields = [
             bigquery.SchemaField(
                 name=name,
@@ -368,7 +368,7 @@ def convert_union_to_schema_field(union_type, name: str, description: str, depth
 class BaseBigQueryModel(BaseModel):
 
     @classmethod
-    def issubclass(cls, x: Any) -> bool:
+    def is_subclass(cls, x: Any) -> bool:
         if inspect.isclass(x) and issubclass(x, cls):
             return True
         return False
