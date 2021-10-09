@@ -502,7 +502,9 @@ def adjust_union_value(property_value: Any, union_type, depth: int):
         return {property_value.__class__.get_class_name(): property_value.to_dict(depth=depth + 1)}
     elif all([get_primitive_field_type(x) is not None for x in nested_types]):
         # Forcefully cast to STRING
-        return [str(x) for x in property_value]
+        if is_enum(outer_type_=union_type):
+            property_value = property_value.value
+        return str(property_value)
     # List[Union[List[str], str]]
     elif all([x is List[str] or x is str] for x in nested_types):
         if type(property_value) is str:

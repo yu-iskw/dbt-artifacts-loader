@@ -25,7 +25,23 @@ from typing import Optional, Dict
 from pydantic import Extra
 
 from dbt_artifacts_loader.dbt.base_bigquery_model import BaseBigQueryModel
-from dbt_artifacts_loader.dbt.v2 import manifest
+# v1
+from dbt_artifacts_loader.dbt.v1 import catalog as catalog_v1
+from dbt_artifacts_loader.dbt.v1 import manifest as manifest_v1
+from dbt_artifacts_loader.dbt.v1 import run_results as run_results_v1
+from dbt_artifacts_loader.dbt.v1 import sources as sources_v1
+# v2
+from dbt_artifacts_loader.dbt.v2 import manifest as manifest_v2
+from dbt_artifacts_loader.dbt.v2 import run_results as run_results_v2
+
+from dbt_artifacts_loader.utils import get_project_root
+
+
+def load_artifact_json(version: str, json_file: str) -> dict:
+    path = os.path.abspath(
+        os.path.join(get_project_root(), "tests", "resources", version, "jaffle_shop", json_file))
+    with open(path, "r") as fp:
+        return json.load(fp)
 
 
 class TestMetadata(BaseBigQueryModel):
@@ -42,18 +58,16 @@ class TestMetadata(BaseBigQueryModel):
 class TestBaseBigQueryModel(unittest.TestCase):
 
     def setUp(self):
-        # Load the testing manifest.json
-        path = os.path.abspath(
-            os.path.join(os.path.dirname(__file__), "..", "resources", "v2", "jaffle_shop", "manifest.json"))
-        with open(path, "r") as fp:
-            self.manifest_v2_json = json.load(fp)
-        self.manifest_v2_obj = manifest.Manifest(**self.manifest_v2_json)
+        # v1
+        self.catalog_v1_obj = catalog_v1.Catalog(**(load_artifact_json("v1", "catalog.json")))
+        self.manifest_v1_obj = manifest_v1.Manifest(**(load_artifact_json("v1", "manifest.json")))
+        self.run_results_v1_obj = run_results_v1.RunResults(**(load_artifact_json("v1", "run_results.json")))
+        # v2
+        self.manifest_v2_obj = manifest_v2.Manifest(**(load_artifact_json("v2", "manifest.json")))
+        self.run_results_v2_obj = run_results_v2.RunResults(**(load_artifact_json("v2", "run_results.json")))
 
     def test_to_bigquery_schema(self):
-        value = manifest.Manifest.to_bigquery_schema()
-        with open("/tmp/foo.json", "w") as fp:
-            data = [x.to_api_repr() for x in value]
-            json.dump(data, fp)
+        value = manifest_v2.Manifest.to_bigquery_schema()
         self.assertEqual(len(value), 10)
 
     def test_get_classs_name(self):
@@ -66,13 +80,26 @@ class TestBaseBigQueryModel(unittest.TestCase):
         nodes = self.manifest_v2_obj.__class__.get_field("nodes")
         self.assertEqual(nodes.name, "nodes")
 
+    def test_to_dict_for_artifacts_v1(self):
+        artifact_dict = self.catalog_v1_obj.to_dict(depth=0)
+        self.assertEqual(len(artifact_dict.keys()), 4)
+        artifact_dict = self.manifest_v1_obj.to_dict(depth=0)
+        self.assertEqual(len(artifact_dict.keys()), 10)
+        artifact_dict = self.run_results_v1_obj.to_dict(depth=0)
+        self.assertEqual(len(artifact_dict.keys()), 4)
+
+    def test_to_dict_for_artifacts_v2(self):
+        artifact_dict = self.manifest_v2_obj.to_dict(depth=0)
+        self.assertEqual(len(artifact_dict.keys()), 10)
+        artifact_dict = self.run_results_v2_obj.to_dict(depth=0)
+        self.assertEqual(len(artifact_dict.keys()), 4)
+
     def test_to_dict(self):
-        manifest_obj = manifest.Manifest(**self.manifest_v2_json)
-        manifest_obj_dict = manifest_obj.to_dict(depth=0)
+        manifest_obj_dict = self.manifest_v2_obj.to_dict(depth=0)
         expected = ['metadata', 'nodes', 'sources', 'macros', 'docs', 'exposures',
                     'selectors', 'disabled', 'parent_map', 'child_map']
         self.assertListEqual(list(manifest_obj_dict.keys()), expected)
-        self.assertDictEqual(manifest_obj.metadata.to_dict(depth=0),
+        self.assertDictEqual(self.manifest_v2_obj.metadata.to_dict(depth=0),
                              {
                                  'adapter_type': 'bigquery',
                                  'dbt_schema_version': 'https://schemas.getdbt.com/dbt/manifest/v1.json',
@@ -84,13 +111,3 @@ class TestBaseBigQueryModel(unittest.TestCase):
                                  'send_anonymous_usage_stats': False,
                                  'user_id': None
                              })
-
-        # [x.pop("value", None) for x in value["nodes"]]
-
-        # bigquery_client = bigquery.Client(project="ubie-yu-sandbox")
-        # full_destination_table_id = "{}.{}.{}".format(
-        #     "ubie-yu-sandbox", "test_in_tokyo", "test_table")
-        # statuses = bigquery_client.insert_rows_json(
-        #     table=full_destination_table_id, json_rows=[value], ignore_unknown_values=True)
-        # pprint(statuses)
-        # self.assertDictEqual(manifest_obj.__dict__, {})
