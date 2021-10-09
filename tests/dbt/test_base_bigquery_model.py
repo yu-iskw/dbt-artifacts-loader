@@ -26,13 +26,13 @@ from pydantic import Extra
 
 from dbt_artifacts_loader.dbt.base_bigquery_model import BaseBigQueryModel
 # v1
-from dbt_artifacts_loader.dbt.v1 import catalog as catalog_v1
-from dbt_artifacts_loader.dbt.v1 import manifest as manifest_v1
-from dbt_artifacts_loader.dbt.v1 import run_results as run_results_v1
-from dbt_artifacts_loader.dbt.v1 import sources as sources_v1
+from dbt_artifacts_loader.dbt.v1.catalog import CatalogV1
+from dbt_artifacts_loader.dbt.v1.manifest import ManifestV1
+from dbt_artifacts_loader.dbt.v1.run_results import RunResultsV1
+from dbt_artifacts_loader.dbt.v1.sources import SourcesV1
 # v2
-from dbt_artifacts_loader.dbt.v2 import manifest as manifest_v2
-from dbt_artifacts_loader.dbt.v2 import run_results as run_results_v2
+from dbt_artifacts_loader.dbt.v2.manifest import ManifestV2
+from dbt_artifacts_loader.dbt.v2.run_results import RunResultsV2
 
 from dbt_artifacts_loader.utils import get_project_root
 
@@ -59,19 +59,19 @@ class TestBaseBigQueryModel(unittest.TestCase):
 
     def setUp(self):
         # v1
-        self.catalog_v1_obj = catalog_v1.Catalog(**(load_artifact_json("v1", "catalog.json")))
-        self.manifest_v1_obj = manifest_v1.Manifest(**(load_artifact_json("v1", "manifest.json")))
-        self.run_results_v1_obj = run_results_v1.RunResults(**(load_artifact_json("v1", "run_results.json")))
+        self.catalog_v1_obj = CatalogV1(**(load_artifact_json("v1", "catalog.json")))
+        self.manifest_v1_obj = ManifestV1(**(load_artifact_json("v1", "manifest.json")))
+        self.run_results_v1_obj = RunResultsV1(**(load_artifact_json("v1", "run_results.json")))
         # v2
-        self.manifest_v2_obj = manifest_v2.Manifest(**(load_artifact_json("v2", "manifest.json")))
-        self.run_results_v2_obj = run_results_v2.RunResults(**(load_artifact_json("v2", "run_results.json")))
+        self.manifest_v2_obj = ManifestV2(**(load_artifact_json("v2", "manifest.json")))
+        self.run_results_v2_obj = RunResultsV2(**(load_artifact_json("v2", "run_results.json")))
 
     def test_to_bigquery_schema(self):
-        value = manifest_v2.Manifest.to_bigquery_schema()
+        value = ManifestV1.to_bigquery_schema()
         self.assertEqual(len(value), 10)
 
     def test_get_classs_name(self):
-        self.assertEqual(self.manifest_v2_obj.__class__.get_class_name(), "Manifest")
+        self.assertEqual(self.manifest_v2_obj.__class__.get_class_name(), "ManifestV2")
 
     def test_get_fields(self):
         self.assertEqual(len(self.manifest_v2_obj.__class__.get_fields()), 10)
