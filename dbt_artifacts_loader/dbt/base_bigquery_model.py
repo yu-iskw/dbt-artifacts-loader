@@ -312,7 +312,7 @@ def from_dict_type(model_field: ModelField, depth: int):
             field_type=bigquery.StandardSqlDataTypes.STRING.name,
             # mode=is_required(model_field=model_field),
             mode="NULLABLE",
-            description="[raw JSON string] {}".format(get_description(model_field=model_field)),
+            description=f"[raw JSON string] {get_description(model_field=model_field)}".strip(),
         )
         return schema_field
     # Convert to ARRAY<STRUCT<key STRING, value ARRAY<STRING>>>
