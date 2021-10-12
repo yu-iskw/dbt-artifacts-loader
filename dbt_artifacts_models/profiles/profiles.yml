@@ -10,8 +10,8 @@ dbt-artifacts-loader:
     dev:
       type: bigquery
       method: oauth
-      project: "YOUR-PROJECT-ID"
-      location: "US"
+      project: "ubie-yu-sandbox"
+      location: "asia-northeast1"
       dataset: "dbt_artifacts"
       priority: "{{ env_var('DBT_BIGQUERY_PRIORITY', 'interactive') }}"
       threads: |

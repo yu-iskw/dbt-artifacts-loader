@@ -19,5 +19,5 @@ clean-targets:
 
 vars:
     dbt_artifacts_loader:
-        project: "YOUR-PROJECT-ID"
+        project: "ubie-yu-sandbox"
         dataset: "dbt_artifacts"
