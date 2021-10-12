@@ -8,7 +8,7 @@
     materialized="view",
     database=project,
     schema=dataset,
-    alias="expanded_sources_v1",
+    alias="parsed_data_test_node_v2",
     persist_docs={"relation": true, "columns": true},
     labels={
       "modeled_by": "dbt",
@@ -17,19 +17,20 @@
   )
 }}
 
-WITH expanded_sources AS (
+WITH expanded_artifacts AS (
   SELECT
-    elapsed_time,
-    metadata.*,
-    result.*,
-  FROM {{ source(var('dbt_artifacts_loader')['dataset'], 'sources_v1') }}
-        , UNNEST(results) AS result
+    metadata AS metadata,
+    node.key AS key,
+    node.value.ParsedDataTestNode.*,
+  FROM {{ source(var('dbt_artifacts_loader')['dataset'], 'manifest_v2') }}
+        , UNNEST(nodes) AS node
 )
 , remove_duplicates AS (
   SELECT
-    ROW_NUMBER() OVER (PARTITION BY invocation_id, unique_id ORDER BY generated_at DESC) AS rank,
-    *,
-  FROM expanded_sources
+    ROW_NUMBER() OVER (PARTITION BY metadata.invocation_id, unique_id ORDER BY metadata.generated_at DESC) AS rank,
+    *
+  FROM expanded_artifacts
+  WHERE unique_id IS NOT NULL
 )
 
 SELECT

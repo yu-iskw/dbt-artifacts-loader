@@ -2,23 +2,23 @@
 version: 2
 
 models:
-  - name: expanded_sources_v1
+  - name: parsed_data_test_node_v1
     description: |
-      This is an expanded `sources_v1`.
-      If there are duplicated results, the latest results are taken.
+      This is a table to expand `manifest_v1.node.value.ParsedDataTestNode`.
+      The table exclude duplicates.
 
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - invocation_id
+            - metadata.invocation_id
             - unique_id
 
     columns:
-      - name: invocation_id
+      - name: metadata.invocation_id
         description: "invocation ID"
         tests:
           - not_null
       - name: unique_id
-        description: "unique test ID"
+        description: "unique ID"
         tests:
           - not_null

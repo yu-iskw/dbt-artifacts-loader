@@ -8,7 +8,7 @@
     materialized="view",
     database=project,
     schema=dataset,
-    alias="expanded_run_results_v2",
+    alias="expanded_run_results_v1",
     persist_docs={"relation": true, "columns": true},
     labels={
       "modeled_by": "dbt",
@@ -19,15 +19,15 @@
 
 WITH expanded_results AS (
   SELECT
-    args.*,
-    metadata.*,
+    args,
+    metadata,
     result.adapter_response AS adapter_response,
     result.unique_id AS unique_id,
     result.status AS status,
     result.execution_time AS execution_time,
     result.message AS message,
     result.timing AS timing,
-  FROM {{ source(var('dbt_artifacts_loader')['dataset'], 'run_results_v2') }}
+  FROM {{ source(var('dbt_artifacts_loader')['dataset'], 'run_results_v1') }}
         , UNNEST(results) AS result
 )
 , expanded_timing AS (
@@ -41,7 +41,7 @@ WITH expanded_results AS (
 )
 , remove_duplicates AS (
   SELECT
-    ROW_NUMBER() OVER (PARTITION BY invocation_id, unique_id, timing_name ORDER BY generated_at DESC) AS rank,
+    ROW_NUMBER() OVER (PARTITION BY metadata.invocation_id, unique_id, timing_name ORDER BY metadata.generated_at DESC) AS rank,
     *
   FROM expanded_timing
 )
