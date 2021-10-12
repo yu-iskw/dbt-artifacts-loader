@@ -22,6 +22,7 @@ import json
 from datetime import datetime
 from typing import Optional, Dict
 
+# pylint: disable=E0611
 from pydantic import Extra
 
 from dbt_artifacts_loader.dbt.base_bigquery_model import BaseBigQueryModel
@@ -29,7 +30,6 @@ from dbt_artifacts_loader.dbt.base_bigquery_model import BaseBigQueryModel
 from dbt_artifacts_loader.dbt.v1.catalog import CatalogV1
 from dbt_artifacts_loader.dbt.v1.manifest import ManifestV1
 from dbt_artifacts_loader.dbt.v1.run_results import RunResultsV1
-from dbt_artifacts_loader.dbt.v1.sources import SourcesV1
 # v2
 from dbt_artifacts_loader.dbt.v2.manifest import ManifestV2
 from dbt_artifacts_loader.dbt.v2.run_results import RunResultsV2
@@ -40,7 +40,7 @@ from dbt_artifacts_loader.utils import get_project_root
 def load_artifact_json(version: str, json_file: str) -> dict:
     path = os.path.abspath(
         os.path.join(get_project_root(), "tests", "resources", version, "jaffle_shop", json_file))
-    with open(path, "r") as fp:
+    with open(path, "r", encoding="utf-8") as fp:
         return json.load(fp)
 
 
@@ -94,7 +94,11 @@ class TestBaseBigQueryModel(unittest.TestCase):
         artifact_dict = self.run_results_v2_obj.to_dict(depth=0)
         self.assertEqual(len(artifact_dict.keys()), 4)
 
-    def test_to_dict(self):
+    def test_to_dict_on_run_results_v2(self):
+        manifest_obj_dict = self.run_results_v2_obj.to_dict(depth=0)
+        self.assertEqual(manifest_obj_dict["results"][0]["status"], "success")
+
+    def test_to_dict_on_manifest_v2(self):
         manifest_obj_dict = self.manifest_v2_obj.to_dict(depth=0)
         expected = ['metadata', 'nodes', 'sources', 'macros', 'docs', 'exposures',
                     'selectors', 'disabled', 'parent_map', 'child_map']
@@ -102,11 +106,11 @@ class TestBaseBigQueryModel(unittest.TestCase):
         self.assertDictEqual(self.manifest_v2_obj.metadata.to_dict(depth=0),
                              {
                                  'adapter_type': 'bigquery',
-                                 'dbt_schema_version': 'https://schemas.getdbt.com/dbt/manifest/v1.json',
-                                 'dbt_version': '0.19.1',
+                                 'dbt_schema_version': 'https://schemas.getdbt.com/dbt/manifest/v2.json',
+                                 'dbt_version': '0.20.2',
                                  'env': [],
-                                 'generated_at': '2021-08-12T09:11:53',
-                                 'invocation_id': '196871b6-901c-4992-9c1e-10f8a44b999f',
+                                 'generated_at': '2021-10-12T02:03:51',
+                                 'invocation_id': 'b890f1d0-e95f-4cf0-b98e-64305db9f389',
                                  'project_id': '06e5b98c2db46f8a72cc4f66410e9b3b',
                                  'send_anonymous_usage_stats': False,
                                  'user_id': None

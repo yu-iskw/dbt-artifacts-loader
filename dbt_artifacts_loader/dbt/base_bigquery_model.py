@@ -21,6 +21,7 @@ from typing import Dict, Any, Optional, Union, List
 from datetime import datetime, date
 import inspect
 
+# pylint: disable=E0611
 from pydantic import BaseModel
 from pydantic.fields import ModelField
 
@@ -37,8 +38,10 @@ def is_required(model_field: ModelField) -> str:
 
 
 def has_fields(model_field: ModelField) -> bool:
-    """Check if the model_field has `__fields__` or not"""
-    return hasattr(model_field, "outer_type_") and hasattr(model_field.outer_type_, "__fields__")
+    """Check if `outer_type_` of the model_field has `__fields__` or not"""
+    return (hasattr(model_field, "outer_type_")
+            and hasattr(model_field.outer_type_, "__fields__")
+            and len(model_field.outer_type_.__fields__) > 0)
 
 
 def is_constr(outer_type_) -> bool:
@@ -112,7 +115,7 @@ def get_primitive_field_type(outer_type_) -> Optional[str]:
     elif is_constr(outer_type_=outer_type_):
         # Corresponding to `pydantic.constr`
         return bigquery.StandardSqlDataTypes.STRING.name
-    elif type(outer_type_) is typing.TypeVar:
+    elif type(outer_type_) is typing.TypeVar:  # pylint: disable=C0123
         # This is a workaround for List[List]] or List[List[Any]]
         return bigquery.StandardSqlDataTypes.STRING.name
     elif is_enum(outer_type_=outer_type_):
@@ -156,6 +159,15 @@ def to_bigquery_schema(model_field: ModelField, depth: int) -> bigquery.SchemaFi
         return from_simple_type(model_field=model_field)
     # A subclass of the base model
     elif BaseBigQueryModel.is_subclass(model_field.outer_type_):
+        # Special case like Strategy2 in dbt_artifacts_loader.dbt.v1.manifest.py
+        if has_fields(model_field=model_field) is False:
+            return bigquery.SchemaField(
+                name=model_field.name,
+                description=get_description(model_field=model_field),
+                field_type="STRING",
+                mode="NULLABLE",
+            )
+        # Dig into the sub class
         fields = model_field.outer_type_.to_bigquery_schema(depth=depth + 1)
         return bigquery.SchemaField(
             name=model_field.name,
@@ -257,17 +269,19 @@ def from_list_type(model_field: ModelField, depth: int) -> bigquery.SchemaField:
             description=get_description(model_field=model_field),
             fields=[
                 # NOTE bigQuery doesn't allow us to have nullable array
-                bigquery.SchemaField(name="values",
-                                     mode="NULLABLE",
-                                     field_type="RECORD",
-                                     description="NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
-                                     fields=[
-                                         bigquery.SchemaField(
-                                             name="value",
-                                             mode="REPEATED",
-                                             field_type=get_primitive_field_type(type_in_list.__args__[0]),
-                                         )
-                                     ])
+                bigquery.SchemaField(
+                    name="values",
+                    mode="NULLABLE",
+                    field_type="RECORD",
+                    description="NOTE: The column must be complicated,"
+                                "because BigQuery doesn't allow us to have a nullable array.",
+                    fields=[
+                        bigquery.SchemaField(
+                            name="value",
+                            mode="REPEATED",
+                            field_type=get_primitive_field_type(type_in_list.__args__[0]),
+                        )
+                    ])
             ]
         )
         return schema_field
@@ -366,6 +380,7 @@ def convert_union_type_to_schema_field(union_type, name: str, description: str, 
     """Convert Union[...] to SchemaField"""
     nested_types = get_nested_types_in_union(union_type=union_type)
     # union of children classes of BaseBigQueryModel
+    # pylint: disable=R1729
     if all([BaseBigQueryModel.is_subclass(x) for x in nested_types]):
         schema_field = bigquery.SchemaField(
             name=name,
@@ -381,6 +396,7 @@ def convert_union_type_to_schema_field(union_type, name: str, description: str, 
         )
         return schema_field
     # union of primitive data types
+    # pylint: disable=R1729
     elif all([get_primitive_field_type(x) is not None for x in nested_types]):
         schema_field = bigquery.SchemaField(
             name=name,
@@ -427,6 +443,9 @@ def adjust_property(property_value: Any, model_field: ModelField, depth: int):
         return property_value
     # A subclass of the base model
     elif BaseBigQueryModel.is_subclass(model_field.outer_type_):
+        # Special case like Strategy2 in dbt_artifacts_loader.dbt.v1.manifest.py
+        if has_fields(model_field=model_field) is False:
+            return str(property_value)
         return property_value.to_dict(depth=depth + 1)
     # Union
     elif is_union_type(model_field=model_field):
@@ -453,7 +472,8 @@ def adjust_list_property(property_value: Any, model_field: ModelField, depth: in
     type_in_list = args[0]
     # primitive type
     if get_primitive_field_type(outer_type_=type_in_list) is not None:
-        return {"value": [x for x in property_value]}
+        # return {"value": [x for x in property_value]}
+        return {"value": list(property_value)}
     # a list of lists
     elif type_in_list is ModelField and is_list_type(model_field=type_in_list):
         return [adjust_property(property_value=x, model_field=type_in_list, depth=depth + 1)
@@ -498,18 +518,21 @@ def adjust_dict_property(property_value: Any, model_field: ModelField, depth: in
 def adjust_union_value(property_value: Any, union_type, depth: int):
     """Convert a union property for the BigQuery schema"""
     nested_types = get_nested_types_in_union(union_type=union_type)
+    # pylint: disable=R1729
     if all([BaseBigQueryModel.is_subclass(x) for x in nested_types]):
         return {property_value.__class__.get_class_name(): property_value.to_dict(depth=depth + 1)}
+    # pylint: disable=R1729
     elif all([get_primitive_field_type(x) is not None for x in nested_types]):
         # Forcefully cast to STRING
-        if is_enum(outer_type_=union_type):
+        if is_enum(outer_type_=type(property_value)):
             property_value = property_value.value
         return str(property_value)
     # List[Union[List[str], str]]
     elif all([x is List[str] or x is str] for x in nested_types):
+        # pylint: disable=C0123
         if type(property_value) is str:
             return [property_value]
-        return {"value": [x for x in property_value]}
+        return {"value": list(property_value)}
     else:
         raise ValueError(union_type)
 
@@ -536,6 +559,13 @@ class BaseBigQueryModel(BaseModel):
         return cls.__fields__
 
     @classmethod
+    def has_fields(cls) -> bool:
+        """Check if the class has field(s) or not."""
+        if len(cls.get_fields()) > 0:
+            return True
+        return False
+
+    @classmethod
     def get_field(cls, name: str) -> ModelField:
         """Get a file by the name"""
         fields = cls.get_fields()
@@ -548,7 +578,7 @@ class BaseBigQueryModel(BaseModel):
         """Convert the class to the BigQuery schema"""
         fields = cls.get_fields()
         schema_fields = []
-        for key, model_field in fields.items():
+        for _, model_field in fields.items():
             x = to_bigquery_schema(model_field=model_field, depth=depth + 1)
             schema_fields.append(x)
         return schema_fields

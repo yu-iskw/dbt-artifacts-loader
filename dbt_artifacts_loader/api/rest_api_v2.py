@@ -28,6 +28,7 @@ from pydantic import Field
 
 from google.cloud import bigquery
 
+from dbt_artifacts_loader.dbt.model_factory import get_model_class
 from dbt_artifacts_loader.utils import download_gcs_object_as_text
 from dbt_artifacts_loader.api import config
 from dbt_artifacts_loader.dbt.utils import get_dbt_schema_version
@@ -61,6 +62,20 @@ class Response(BaseModel):
     test_mode: Optional[bool] = Field(description="test mode or not", default=False)
 
 
+def is_available(artifact_type: ArtifactsTypes):
+    """Check if the artifact type is available or not"""
+    available_artifact_types = [
+        # v1
+        ArtifactsTypes.CATALOG_V1, ArtifactsTypes.MANIFEST_V1,
+        ArtifactsTypes.RUN_RESULTS_V1, ArtifactsTypes.SOURCES_V1,
+        # v2
+        ArtifactsTypes.RUN_RESULTS_V2, ArtifactsTypes.MANIFEST_V2,
+    ]
+    if artifact_type in available_artifact_types:
+        return True
+    return False
+
+
 @lru_cache()
 def get_settings() -> config.APISettings:
     """Get API settings"""
@@ -77,8 +92,8 @@ def healthcheck(settings: config.APISettings = Depends(get_settings)):
     return response
 
 
-@app.post("/api/v1/")
-def insert_artifact_v1(request_body: RequestBody, settings: config.APISettings = Depends(get_settings)):
+@app.post("/api/v2/")
+def insert_artifact_v2(request_body: RequestBody, settings: config.APISettings = Depends(get_settings)):
     """Insert a JSON file of dbt artifacts v1.
 
     NOTE:
@@ -118,15 +133,16 @@ def insert_artifact_v1(request_body: RequestBody, settings: config.APISettings =
         raise HTTPException(status_code=500, detail=detail) from e
 
     # Check if the JSON file is one of dbt artifacts types.
-    dbt_schema_version = get_dbt_schema_version(artifact_json=artifact_json)
+    try:
+        dbt_schema_version = get_dbt_schema_version(artifact_json=artifact_json)
+    except ValueError as e:
+        detail = f"{name} is a non-supported JSON file."
+        raise HTTPException(status_code=500, detail=detail) from e
+    print(dbt_schema_version)
     artifact_type = ArtifactsTypes.get_artifact_type_by_id(dbt_schema_version=dbt_schema_version)
-    # TODO support catalog.json and manifest.json
-    available_artifact_types = [
-        ArtifactsTypes.RUN_RESULTS_V1, ArtifactsTypes.SOURCES_V1,
-        ArtifactsTypes.RUN_RESULTS_V2,
-    ]
-    if artifact_type not in available_artifact_types:
-        return {"message": "gs://{}/{} is not a dbt artifact or is not supported".format(bucket, name)}
+    if is_available(artifact_type=artifact_type) is False:
+        detail = "gs://{}/{} is not a dbt artifact or is not supported".format(bucket, name)
+        raise HTTPException(status_code=500, detail=detail)
 
     # Insert a dbt artifact JSON
     destination_table_id = DestinationTables.get_destination_table(artifact_type=artifact_type)
@@ -139,8 +155,11 @@ def insert_artifact_v1(request_body: RequestBody, settings: config.APISettings =
         try:
             bigquery_client = bigquery.Client(project=client_project)
             print(artifact_json)
+            model_class = get_model_class(artifact_type=artifact_type)
+            model = model_class(**artifact_json)
+            formatted_artifact_json = model.to_dict(depth=0)
             statuses = bigquery_client.insert_rows_json(
-                table=full_destination_table_id, json_rows=[artifact_json], ignore_unknown_values=True)
+                table=full_destination_table_id, json_rows=[formatted_artifact_json], ignore_unknown_values=True)
         except Exception as e:
             # TODO fix the logger
             # logger.error({"message": str(e)})

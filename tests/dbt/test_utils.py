@@ -29,19 +29,19 @@ class TestDbtUtils(unittest.TestCase):
     def test_get_dbt_schema_version(self):
         # catalog.json
         path = os.path.join(get_project_root(), "tests", "resources", "v1", "jaffle_shop", "catalog.json")
-        with open(path, "r") as fp:
+        with open(path, "r", encoding="utf-8") as fp:
             artifact_json = json.load(fp)
             dbt_schema_version = get_dbt_schema_version(artifact_json=artifact_json)
             self.assertEqual(dbt_schema_version, "https://schemas.getdbt.com/dbt/catalog/v1.json")
         # manifest.json
         path = os.path.join(get_project_root(), "tests", "resources", "v1", "jaffle_shop", "manifest.json")
-        with open(path, "r") as fp:
+        with open(path, "r", encoding="utf-8") as fp:
             artifact_json = json.load(fp)
             dbt_schema_version = get_dbt_schema_version(artifact_json=artifact_json)
             self.assertEqual(dbt_schema_version, "https://schemas.getdbt.com/dbt/manifest/v1.json")
         # run_results.json
         path = os.path.join(get_project_root(), "tests", "resources", "v1", "jaffle_shop", "run_results.json")
-        with open(path, "r") as fp:
+        with open(path, "r", encoding="utf-8") as fp:
             artifact_json = json.load(fp)
             dbt_schema_version = get_dbt_schema_version(artifact_json=artifact_json)
             self.assertEqual(dbt_schema_version, "https://schemas.getdbt.com/dbt/run-results/v1.json")

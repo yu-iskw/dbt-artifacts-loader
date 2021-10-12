@@ -19,6 +19,7 @@ import os.path
 from enum import Enum
 import datetime
 from datetime import date, datetime
+from typing import Optional
 
 
 def get_project_root():
@@ -73,7 +74,7 @@ class ArtifactsTypes(Enum):
     RUN_RESULTS_V2 = "RunResultsV2"
 
     @classmethod
-    def get_artifact_type_by_id(cls, dbt_schema_version: str):
+    def get_artifact_type_by_id(cls, dbt_schema_version: str) -> Optional["ArtifactsTypes"]:
         """Get one of the enumeration values by the schema ID
 
         Args:
