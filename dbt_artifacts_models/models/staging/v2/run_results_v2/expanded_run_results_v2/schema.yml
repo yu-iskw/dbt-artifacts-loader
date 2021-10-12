@@ -1,0 +1,25 @@
+---
+version: 2
+
+models:
+  - name: expanded_run_results_v2
+    description: |
+      This is an expanded `run_results_v2`.
+      If there are duplicated results, the latest results are taken.
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - metadata.invocation_id
+            - unique_id
+            - timing_name
+
+    columns:
+      - name: metadata.invocation_id
+        description: "invocation ID"
+        tests:
+          - not_null
+      - name: unique_id
+        description: "unique test ID"
+        tests:
+          - not_null

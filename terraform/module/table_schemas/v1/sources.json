@@ -1,112 +1,195 @@
 [
   {
-    "mode": "NULLABLE",
-    "name": "elapsed_time",
-    "type": "FLOAT"
-  },
-  {
-    "fields": [
-      {
-        "mode": "NULLABLE",
-        "name": "dbt_schema_version",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "dbt_version",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "generated_at",
-        "type": "TIMESTAMP"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "invocation_id",
-        "type": "STRING"
-      }
-    ],
-    "mode": "NULLABLE",
     "name": "metadata",
-    "type": "RECORD"
-  },
-  {
+    "type": "RECORD",
+    "mode": "NULLABLE",
+    "description": "",
     "fields": [
       {
+        "name": "dbt_schema_version",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": ""
+      },
+      {
+        "name": "dbt_version",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": ""
+      },
+      {
+        "name": "generated_at",
+        "type": "DATETIME",
+        "mode": "NULLABLE",
+        "description": ""
+      },
+      {
+        "name": "invocation_id",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": ""
+      },
+      {
+        "name": "env",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "description": "",
         "fields": [
           {
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "count",
-                "type": "INTEGER"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "period",
-                "type": "STRING"
-              }
-            ],
-            "mode": "NULLABLE",
-            "name": "error_after",
-            "type": "RECORD"
+            "name": "key",
+            "type": "STRING",
+            "mode": "NULLABLE"
           },
           {
-            "mode": "NULLABLE",
-            "name": "filter",
-            "type": "STRING"
-          },
-          {
-            "fields": [
-              {
-                "mode": "NULLABLE",
-                "name": "count",
-                "type": "INTEGER"
-              },
-              {
-                "mode": "NULLABLE",
-                "name": "period",
-                "type": "STRING"
-              }
-            ],
-            "mode": "NULLABLE",
-            "name": "warn_after",
-            "type": "RECORD"
+            "name": "value",
+            "type": "STRING",
+            "mode": "NULLABLE"
           }
-        ],
-        "mode": "NULLABLE",
-        "name": "criteria",
-        "type": "RECORD"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "max_loaded_at",
-        "type": "TIMESTAMP"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "max_loaded_at_time_ago_in_s",
-        "type": "FLOAT"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "snapshotted_at",
-        "type": "TIMESTAMP"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "status",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "unique_id",
-        "type": "STRING"
+        ]
       }
-    ],
-    "mode": "REPEATED",
+    ]
+  },
+  {
     "name": "results",
-    "type": "RECORD"
+    "type": "RECORD",
+    "mode": "REPEATED",
+    "fields": [
+      {
+        "name": "values",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "description": "",
+        "fields": [
+          {
+            "name": "SourceFreshnessRuntimeError",
+            "type": "RECORD",
+            "mode": "NULLABLE",
+            "fields": [
+              {
+                "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "error",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "status",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": "(one of runtime error)"
+              }
+            ]
+          },
+          {
+            "name": "SourceFreshnessOutput",
+            "type": "RECORD",
+            "mode": "NULLABLE",
+            "fields": [
+              {
+                "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "max_loaded_at",
+                "type": "DATETIME",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "snapshotted_at",
+                "type": "DATETIME",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "max_loaded_at_time_ago_in_s",
+                "type": "FLOAT64",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "status",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": "(one of pass, warn, error, runtime error)"
+              },
+              {
+                "name": "criteria",
+                "type": "RECORD",
+                "mode": "NULLABLE",
+                "description": "",
+                "fields": [
+                  {
+                    "name": "warn_after",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "count",
+                        "type": "INT64",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "period",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": "(one of minute, hour, day)"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "error_after",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "count",
+                        "type": "INT64",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "period",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": "(one of minute, hour, day)"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "filter",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "name": "adapter_response",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": "[raw JSON string]"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "elapsed_time",
+    "type": "FLOAT64",
+    "mode": "NULLABLE",
+    "description": ""
   }
 ]

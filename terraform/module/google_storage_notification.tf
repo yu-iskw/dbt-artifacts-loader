@@ -7,5 +7,5 @@ resource "google_storage_notification" "notification" {
   # custom_attributes = {
   #   new-attribute = "new-attribute-value"
   # }
-  depends_on = [google_pubsub_topic_iam_binding.binding]
+  depends_on = [google_pubsub_topic_iam_member.binding]
 }

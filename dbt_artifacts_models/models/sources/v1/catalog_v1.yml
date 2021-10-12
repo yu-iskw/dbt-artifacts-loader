@@ -1,0 +1,9 @@
+---
+version: 2
+
+sources:
+  - name: "{{ var('dbt_artifacts_loader')['dataset'] }}"
+    database: "{{ var('dbt_artifacts_loader')['project'] }}"
+    tables:
+      - name: catalog_v1
+        identifier: catalog_v1

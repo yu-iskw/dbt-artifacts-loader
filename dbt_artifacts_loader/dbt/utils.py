@@ -15,8 +15,36 @@
 #  limitations under the License.
 #
 #
-
+import os.path
 from enum import Enum
+import datetime
+from datetime import date, datetime
+from typing import Optional
+
+
+def get_project_root():
+    """Get the path to the project root
+
+    Returns:
+        (str) the path to the project root
+    """
+    return os.path.abspath(os.path.join(os.path.basedir(__file__), "..", ".."))
+
+
+def get_module_root():
+    """Get the path to the module root
+
+    Returns:
+        (str) the path to the module root
+    """
+    return os.path.abspath(os.path.join(os.path.basedir(__file__), ".."))
+
+
+def datetime_handler(x):
+    """The handler is used to deal with date and datetime"""
+    if isinstance(x, (datetime.datetime, datetime.date, datetime, date)):
+        return x.isoformat()
+    raise TypeError(f'Type {type(x)} not serializable')
 
 
 def get_dbt_schema_version(artifact_json: dict) -> str:
@@ -46,7 +74,7 @@ class ArtifactsTypes(Enum):
     RUN_RESULTS_V2 = "RunResultsV2"
 
     @classmethod
-    def get_artifact_type_by_id(cls, dbt_schema_version: str):
+    def get_artifact_type_by_id(cls, dbt_schema_version: str) -> Optional["ArtifactsTypes"]:
         """Get one of the enumeration values by the schema ID
 
         Args:
