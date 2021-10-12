@@ -524,6 +524,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -540,6 +546,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               },
               {
                 "name": "compiled_sql",
@@ -829,6 +841,42 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "store_failures",
+                    "type": "BOOL",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "where",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "limit",
+                    "type": "INT64",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "fail_calc",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "warn_if",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "error_if",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -1021,6 +1069,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -1037,6 +1091,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               },
               {
                 "name": "compiled_sql",
@@ -1512,6 +1572,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -1528,6 +1594,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               },
               {
                 "name": "compiled_sql",
@@ -2003,6 +2075,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -2019,6 +2097,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               },
               {
                 "name": "compiled_sql",
@@ -2500,6 +2584,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -2516,6 +2606,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               },
               {
                 "name": "compiled_sql",
@@ -2575,12 +2671,6 @@
                 "description": "",
                 "fields": [
                   {
-                    "name": "namespace",
-                    "type": "STRING",
-                    "mode": "NULLABLE",
-                    "description": ""
-                  },
-                  {
                     "name": "name",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -2591,6 +2681,12 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "namespace",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -2831,6 +2927,42 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "store_failures",
+                    "type": "BOOL",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "where",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "limit",
+                    "type": "INT64",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "fail_calc",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "warn_if",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "error_if",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -3023,6 +3155,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -3039,6 +3177,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               },
               {
                 "name": "compiled_sql",
@@ -3526,6 +3670,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -3542,6 +3692,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               },
               {
                 "name": "compiled_sql",
@@ -4017,6 +4173,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -4033,6 +4195,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               },
               {
                 "name": "compiled_sql",
@@ -4502,6 +4670,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -4518,6 +4692,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               }
             ]
           },
@@ -4763,6 +4943,42 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "store_failures",
+                    "type": "BOOL",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "where",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "limit",
+                    "type": "INT64",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "fail_calc",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "warn_if",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "error_if",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -4955,6 +5171,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -4971,6 +5193,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               }
             ]
           },
@@ -5402,6 +5630,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -5418,6 +5652,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               },
               {
                 "name": "index",
@@ -5855,6 +6095,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -5871,6 +6117,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               }
             ]
           },
@@ -6302,6 +6554,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -6318,6 +6576,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               }
             ]
           },
@@ -6339,12 +6603,6 @@
                 "description": "",
                 "fields": [
                   {
-                    "name": "namespace",
-                    "type": "STRING",
-                    "mode": "NULLABLE",
-                    "description": ""
-                  },
-                  {
                     "name": "name",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -6355,6 +6613,12 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "namespace",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -6589,6 +6853,42 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "store_failures",
+                    "type": "BOOL",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "where",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "limit",
+                    "type": "INT64",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "fail_calc",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "warn_if",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "error_if",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -6781,6 +7081,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -6797,6 +7103,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               },
               {
                 "name": "column_name",
@@ -7240,6 +7552,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -7256,6 +7574,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               }
             ]
           },
@@ -7371,492 +7695,171 @@
                 "description": "",
                 "fields": [
                   {
-                    "name": "TimestampSnapshotConfig",
-                    "type": "RECORD",
+                    "name": "enabled",
+                    "type": "BOOL",
                     "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "materialized",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "persist_docs",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "post_hook",
+                    "type": "RECORD",
+                    "mode": "REPEATED",
+                    "description": "",
                     "fields": [
                       {
-                        "name": "enabled",
+                        "name": "sql",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "transaction",
                         "type": "BOOL",
                         "mode": "NULLABLE",
                         "description": ""
                       },
                       {
-                        "name": "materialized",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "persist_docs",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "post_hook",
-                        "type": "RECORD",
-                        "mode": "REPEATED",
-                        "description": "",
-                        "fields": [
-                          {
-                            "name": "sql",
-                            "type": "STRING",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "transaction",
-                            "type": "BOOL",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "index",
-                            "type": "INT64",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          }
-                        ]
-                      },
-                      {
-                        "name": "pre_hook",
-                        "type": "RECORD",
-                        "mode": "REPEATED",
-                        "description": "",
-                        "fields": [
-                          {
-                            "name": "sql",
-                            "type": "STRING",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "transaction",
-                            "type": "BOOL",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "index",
-                            "type": "INT64",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          }
-                        ]
-                      },
-                      {
-                        "name": "vars",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "quoting",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "column_types",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "alias",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "schema_",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "database",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "tags",
-                        "type": "RECORD",
-                        "mode": "NULLABLE",
-                        "description": "",
-                        "fields": [
-                          {
-                            "name": "value",
-                            "type": "STRING",
-                            "mode": "REPEATED",
-                            "description": ""
-                          }
-                        ]
-                      },
-                      {
-                        "name": "full_refresh",
-                        "type": "BOOL",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "unique_key",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "target_schema",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "target_database",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "strategy",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "(one of timestamp)"
-                      },
-                      {
-                        "name": "updated_at",
-                        "type": "STRING",
+                        "name": "index",
+                        "type": "INT64",
                         "mode": "NULLABLE",
                         "description": ""
                       }
                     ]
                   },
                   {
-                    "name": "CheckSnapshotConfig",
+                    "name": "pre_hook",
                     "type": "RECORD",
-                    "mode": "NULLABLE",
+                    "mode": "REPEATED",
+                    "description": "",
                     "fields": [
                       {
-                        "name": "enabled",
+                        "name": "sql",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "transaction",
                         "type": "BOOL",
                         "mode": "NULLABLE",
                         "description": ""
                       },
                       {
-                        "name": "materialized",
-                        "type": "STRING",
+                        "name": "index",
+                        "type": "INT64",
                         "mode": "NULLABLE",
                         "description": ""
-                      },
-                      {
-                        "name": "persist_docs",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "post_hook",
-                        "type": "RECORD",
-                        "mode": "REPEATED",
-                        "description": "",
-                        "fields": [
-                          {
-                            "name": "sql",
-                            "type": "STRING",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "transaction",
-                            "type": "BOOL",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "index",
-                            "type": "INT64",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          }
-                        ]
-                      },
-                      {
-                        "name": "pre_hook",
-                        "type": "RECORD",
-                        "mode": "REPEATED",
-                        "description": "",
-                        "fields": [
-                          {
-                            "name": "sql",
-                            "type": "STRING",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "transaction",
-                            "type": "BOOL",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "index",
-                            "type": "INT64",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          }
-                        ]
-                      },
-                      {
-                        "name": "vars",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "quoting",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "column_types",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "alias",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "schema_",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "database",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "tags",
-                        "type": "RECORD",
-                        "mode": "NULLABLE",
-                        "description": "",
-                        "fields": [
-                          {
-                            "name": "value",
-                            "type": "STRING",
-                            "mode": "REPEATED",
-                            "description": ""
-                          }
-                        ]
-                      },
-                      {
-                        "name": "full_refresh",
-                        "type": "BOOL",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "unique_key",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "target_schema",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "target_database",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "strategy",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "(one of check)"
-                      },
-                      {
-                        "name": "check_cols",
-                        "type": "RECORD",
-                        "mode": "NULLABLE",
-                        "description": "",
-                        "fields": [
-                          {
-                            "name": "value",
-                            "type": "STRING",
-                            "mode": "REPEATED",
-                            "description": ""
-                          }
-                        ]
                       }
                     ]
                   },
                   {
-                    "name": "GenericSnapshotConfig",
+                    "name": "vars",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "quoting",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "column_types",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "alias",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "schema_",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "database",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "tags",
                     "type": "RECORD",
                     "mode": "NULLABLE",
+                    "description": "",
                     "fields": [
                       {
-                        "name": "enabled",
-                        "type": "BOOL",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "materialized",
+                        "name": "value",
                         "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "persist_docs",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "post_hook",
-                        "type": "RECORD",
                         "mode": "REPEATED",
-                        "description": "",
-                        "fields": [
-                          {
-                            "name": "sql",
-                            "type": "STRING",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "transaction",
-                            "type": "BOOL",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "index",
-                            "type": "INT64",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          }
-                        ]
-                      },
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "full_refresh",
+                    "type": "BOOL",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "unique_key",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "target_schema",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "target_database",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "updated_at",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "check_cols",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
                       {
-                        "name": "pre_hook",
-                        "type": "RECORD",
+                        "name": "value",
+                        "type": "STRING",
                         "mode": "REPEATED",
-                        "description": "",
-                        "fields": [
-                          {
-                            "name": "sql",
-                            "type": "STRING",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "transaction",
-                            "type": "BOOL",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "index",
-                            "type": "INT64",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          }
-                        ]
-                      },
-                      {
-                        "name": "vars",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "quoting",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "column_types",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "alias",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "schema_",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "database",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "tags",
-                        "type": "RECORD",
-                        "mode": "NULLABLE",
-                        "description": "",
-                        "fields": [
-                          {
-                            "name": "value",
-                            "type": "STRING",
-                            "mode": "REPEATED",
-                            "description": ""
-                          }
-                        ]
-                      },
-                      {
-                        "name": "full_refresh",
-                        "type": "BOOL",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "unique_key",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "target_schema",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "target_database",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "strategy",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
                         "description": ""
                       }
                     ]
@@ -8052,6 +8055,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -8068,6 +8077,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               }
             ]
           }
@@ -8466,6 +8481,12 @@
             "type": "STRING",
             "mode": "NULLABLE",
             "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "INT64",
+            "mode": "NULLABLE",
+            "description": ""
           }
         ]
       }
@@ -8628,6 +8649,12 @@
                 "description": ""
               }
             ]
+          },
+          {
+            "name": "created_at",
+            "type": "INT64",
+            "mode": "NULLABLE",
+            "description": ""
           }
         ]
       }
@@ -8806,6 +8833,26 @@
             "description": "(one of low, medium, high)"
           },
           {
+            "name": "meta",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "[raw JSON string]"
+          },
+          {
+            "name": "tags",
+            "type": "RECORD",
+            "mode": "NULLABLE",
+            "description": "",
+            "fields": [
+              {
+                "name": "value",
+                "type": "STRING",
+                "mode": "REPEATED",
+                "description": ""
+              }
+            ]
+          },
+          {
             "name": "url",
             "type": "STRING",
             "mode": "NULLABLE",
@@ -8888,6 +8935,12 @@
                 ]
               }
             ]
+          },
+          {
+            "name": "created_at",
+            "type": "INT64",
+            "mode": "NULLABLE",
+            "description": ""
           }
         ]
       }
@@ -9344,6 +9397,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -9360,6 +9419,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               },
               {
                 "name": "compiled_sql",
@@ -9649,6 +9714,42 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "store_failures",
+                    "type": "BOOL",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "where",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "limit",
+                    "type": "INT64",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "fail_calc",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "warn_if",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "error_if",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -9841,6 +9942,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -9857,6 +9964,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               },
               {
                 "name": "compiled_sql",
@@ -10332,6 +10445,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -10348,6 +10467,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               },
               {
                 "name": "compiled_sql",
@@ -10823,6 +10948,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -10839,6 +10970,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               },
               {
                 "name": "compiled_sql",
@@ -11320,6 +11457,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -11336,6 +11479,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               },
               {
                 "name": "compiled_sql",
@@ -11395,12 +11544,6 @@
                 "description": "",
                 "fields": [
                   {
-                    "name": "namespace",
-                    "type": "STRING",
-                    "mode": "NULLABLE",
-                    "description": ""
-                  },
-                  {
                     "name": "name",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -11411,6 +11554,12 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "namespace",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -11651,6 +11800,42 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "store_failures",
+                    "type": "BOOL",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "where",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "limit",
+                    "type": "INT64",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "fail_calc",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "warn_if",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "error_if",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -11843,6 +12028,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -11859,6 +12050,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               },
               {
                 "name": "compiled_sql",
@@ -12346,6 +12543,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -12362,6 +12565,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               },
               {
                 "name": "compiled_sql",
@@ -12837,6 +13046,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -12853,6 +13068,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               },
               {
                 "name": "compiled_sql",
@@ -13322,6 +13543,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -13338,6 +13565,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               }
             ]
           },
@@ -13583,6 +13816,42 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "store_failures",
+                    "type": "BOOL",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "where",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "limit",
+                    "type": "INT64",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "fail_calc",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "warn_if",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "error_if",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -13775,6 +14044,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -13791,6 +14066,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               }
             ]
           },
@@ -14222,6 +14503,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -14238,6 +14525,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               },
               {
                 "name": "index",
@@ -14675,6 +14968,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -14691,6 +14990,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               }
             ]
           },
@@ -15122,6 +15427,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -15138,6 +15449,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               }
             ]
           },
@@ -15159,12 +15476,6 @@
                 "description": "",
                 "fields": [
                   {
-                    "name": "namespace",
-                    "type": "STRING",
-                    "mode": "NULLABLE",
-                    "description": ""
-                  },
-                  {
                     "name": "name",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -15175,6 +15486,12 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "namespace",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -15409,6 +15726,42 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "store_failures",
+                    "type": "BOOL",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "where",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "limit",
+                    "type": "INT64",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "fail_calc",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "warn_if",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "error_if",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -15601,6 +15954,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -15617,6 +15976,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               },
               {
                 "name": "column_name",
@@ -16060,6 +16425,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -16076,6 +16447,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               }
             ]
           },
@@ -16191,492 +16568,171 @@
                 "description": "",
                 "fields": [
                   {
-                    "name": "TimestampSnapshotConfig",
-                    "type": "RECORD",
+                    "name": "enabled",
+                    "type": "BOOL",
                     "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "materialized",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "persist_docs",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "post_hook",
+                    "type": "RECORD",
+                    "mode": "REPEATED",
+                    "description": "",
                     "fields": [
                       {
-                        "name": "enabled",
+                        "name": "sql",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "transaction",
                         "type": "BOOL",
                         "mode": "NULLABLE",
                         "description": ""
                       },
                       {
-                        "name": "materialized",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "persist_docs",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "post_hook",
-                        "type": "RECORD",
-                        "mode": "REPEATED",
-                        "description": "",
-                        "fields": [
-                          {
-                            "name": "sql",
-                            "type": "STRING",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "transaction",
-                            "type": "BOOL",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "index",
-                            "type": "INT64",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          }
-                        ]
-                      },
-                      {
-                        "name": "pre_hook",
-                        "type": "RECORD",
-                        "mode": "REPEATED",
-                        "description": "",
-                        "fields": [
-                          {
-                            "name": "sql",
-                            "type": "STRING",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "transaction",
-                            "type": "BOOL",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "index",
-                            "type": "INT64",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          }
-                        ]
-                      },
-                      {
-                        "name": "vars",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "quoting",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "column_types",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "alias",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "schema_",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "database",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "tags",
-                        "type": "RECORD",
-                        "mode": "NULLABLE",
-                        "description": "",
-                        "fields": [
-                          {
-                            "name": "value",
-                            "type": "STRING",
-                            "mode": "REPEATED",
-                            "description": ""
-                          }
-                        ]
-                      },
-                      {
-                        "name": "full_refresh",
-                        "type": "BOOL",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "unique_key",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "target_schema",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "target_database",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "strategy",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "(one of timestamp)"
-                      },
-                      {
-                        "name": "updated_at",
-                        "type": "STRING",
+                        "name": "index",
+                        "type": "INT64",
                         "mode": "NULLABLE",
                         "description": ""
                       }
                     ]
                   },
                   {
-                    "name": "CheckSnapshotConfig",
+                    "name": "pre_hook",
                     "type": "RECORD",
-                    "mode": "NULLABLE",
+                    "mode": "REPEATED",
+                    "description": "",
                     "fields": [
                       {
-                        "name": "enabled",
+                        "name": "sql",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "transaction",
                         "type": "BOOL",
                         "mode": "NULLABLE",
                         "description": ""
                       },
                       {
-                        "name": "materialized",
-                        "type": "STRING",
+                        "name": "index",
+                        "type": "INT64",
                         "mode": "NULLABLE",
                         "description": ""
-                      },
-                      {
-                        "name": "persist_docs",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "post_hook",
-                        "type": "RECORD",
-                        "mode": "REPEATED",
-                        "description": "",
-                        "fields": [
-                          {
-                            "name": "sql",
-                            "type": "STRING",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "transaction",
-                            "type": "BOOL",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "index",
-                            "type": "INT64",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          }
-                        ]
-                      },
-                      {
-                        "name": "pre_hook",
-                        "type": "RECORD",
-                        "mode": "REPEATED",
-                        "description": "",
-                        "fields": [
-                          {
-                            "name": "sql",
-                            "type": "STRING",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "transaction",
-                            "type": "BOOL",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "index",
-                            "type": "INT64",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          }
-                        ]
-                      },
-                      {
-                        "name": "vars",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "quoting",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "column_types",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "alias",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "schema_",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "database",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "tags",
-                        "type": "RECORD",
-                        "mode": "NULLABLE",
-                        "description": "",
-                        "fields": [
-                          {
-                            "name": "value",
-                            "type": "STRING",
-                            "mode": "REPEATED",
-                            "description": ""
-                          }
-                        ]
-                      },
-                      {
-                        "name": "full_refresh",
-                        "type": "BOOL",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "unique_key",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "target_schema",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "target_database",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "strategy",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "(one of check)"
-                      },
-                      {
-                        "name": "check_cols",
-                        "type": "RECORD",
-                        "mode": "NULLABLE",
-                        "description": "",
-                        "fields": [
-                          {
-                            "name": "value",
-                            "type": "STRING",
-                            "mode": "REPEATED",
-                            "description": ""
-                          }
-                        ]
                       }
                     ]
                   },
                   {
-                    "name": "GenericSnapshotConfig",
+                    "name": "vars",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "quoting",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "column_types",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "alias",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "schema_",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "database",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "tags",
                     "type": "RECORD",
                     "mode": "NULLABLE",
+                    "description": "",
                     "fields": [
                       {
-                        "name": "enabled",
-                        "type": "BOOL",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "materialized",
+                        "name": "value",
                         "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "persist_docs",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "post_hook",
-                        "type": "RECORD",
                         "mode": "REPEATED",
-                        "description": "",
-                        "fields": [
-                          {
-                            "name": "sql",
-                            "type": "STRING",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "transaction",
-                            "type": "BOOL",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "index",
-                            "type": "INT64",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          }
-                        ]
-                      },
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "full_refresh",
+                    "type": "BOOL",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "unique_key",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "target_schema",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "target_database",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "updated_at",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "check_cols",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
                       {
-                        "name": "pre_hook",
-                        "type": "RECORD",
+                        "name": "value",
+                        "type": "STRING",
                         "mode": "REPEATED",
-                        "description": "",
-                        "fields": [
-                          {
-                            "name": "sql",
-                            "type": "STRING",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "transaction",
-                            "type": "BOOL",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          },
-                          {
-                            "name": "index",
-                            "type": "INT64",
-                            "mode": "NULLABLE",
-                            "description": ""
-                          }
-                        ]
-                      },
-                      {
-                        "name": "vars",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "quoting",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "column_types",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": "[raw JSON string]"
-                      },
-                      {
-                        "name": "alias",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "schema_",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "database",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "tags",
-                        "type": "RECORD",
-                        "mode": "NULLABLE",
-                        "description": "",
-                        "fields": [
-                          {
-                            "name": "value",
-                            "type": "STRING",
-                            "mode": "REPEATED",
-                            "description": ""
-                          }
-                        ]
-                      },
-                      {
-                        "name": "full_refresh",
-                        "type": "BOOL",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "unique_key",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "target_schema",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "target_database",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
-                        "description": ""
-                      },
-                      {
-                        "name": "strategy",
-                        "type": "STRING",
-                        "mode": "NULLABLE",
                         "description": ""
                       }
                     ]
@@ -16872,6 +16928,12 @@
                 "description": ""
               },
               {
+                "name": "compiled_path",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
                 "name": "build_path",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -16888,6 +16950,12 @@
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": "[raw JSON string]"
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
               }
             ]
           },
@@ -17269,6 +17337,12 @@
               {
                 "name": "relation_name",
                 "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "created_at",
+                "type": "INT64",
                 "mode": "NULLABLE",
                 "description": ""
               }

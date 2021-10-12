@@ -1,197 +1,140 @@
 [
   {
-    "fields": [
-      {
-        "mode": "NULLABLE",
-        "name": "data",
-        "type": "BOOLEAN"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "log_format",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "profile",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "profiles_dir",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "rpc_method",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "schema",
-        "type": "BOOLEAN"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "selector_name",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "store_failures",
-        "type": "BOOLEAN"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "target",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "use_cache",
-        "type": "BOOLEAN"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "use_experimental_parser",
-        "type": "BOOLEAN"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "vars",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "version_check",
-        "type": "BOOLEAN"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "which",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "write_json",
-        "type": "BOOLEAN"
-      }
-    ],
-    "mode": "NULLABLE",
-    "name": "args",
-    "type": "RECORD"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "elapsed_time",
-    "type": "FLOAT"
-  },
-  {
-    "fields": [
-      {
-        "mode": "NULLABLE",
-        "name": "dbt_schema_version",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "dbt_version",
-        "type": "STRING"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "generated_at",
-        "type": "TIMESTAMP"
-      },
-      {
-        "mode": "NULLABLE",
-        "name": "invocation_id",
-        "type": "STRING"
-      }
-    ],
-    "mode": "NULLABLE",
     "name": "metadata",
-    "type": "RECORD"
-  },
-  {
+    "type": "RECORD",
+    "mode": "NULLABLE",
+    "description": "",
     "fields": [
       {
-        "fields": [
-          {
-            "mode": "NULLABLE",
-            "name": "_message",
-            "type": "STRING"
-          },
-          {
-            "mode": "NULLABLE",
-            "name": "bytes_processed",
-            "type": "INTEGER"
-          },
-          {
-            "mode": "NULLABLE",
-            "name": "code",
-            "type": "STRING"
-          },
-          {
-            "mode": "NULLABLE",
-            "name": "rows_affected",
-            "type": "INTEGER"
-          }
-        ],
+        "name": "dbt_schema_version",
+        "type": "STRING",
         "mode": "NULLABLE",
-        "name": "adapter_response",
-        "type": "RECORD"
+        "description": ""
       },
       {
+        "name": "dbt_version",
+        "type": "STRING",
         "mode": "NULLABLE",
-        "name": "execution_time",
-        "type": "FLOAT"
+        "description": ""
       },
       {
+        "name": "generated_at",
+        "type": "DATETIME",
         "mode": "NULLABLE",
-        "name": "message",
-        "type": "STRING"
+        "description": ""
       },
       {
+        "name": "invocation_id",
+        "type": "STRING",
         "mode": "NULLABLE",
-        "name": "status",
-        "type": "STRING"
+        "description": ""
       },
       {
-        "mode": "NULLABLE",
-        "name": "thread_id",
-        "type": "STRING"
-      },
-      {
-        "fields": [
-          {
-            "mode": "NULLABLE",
-            "name": "completed_at",
-            "type": "TIMESTAMP"
-          },
-          {
-            "mode": "NULLABLE",
-            "name": "name",
-            "type": "STRING"
-          },
-          {
-            "mode": "NULLABLE",
-            "name": "started_at",
-            "type": "TIMESTAMP"
-          }
-        ],
+        "name": "env",
+        "type": "RECORD",
         "mode": "REPEATED",
-        "name": "timing",
-        "type": "RECORD"
+        "description": "",
+        "fields": [
+          {
+            "name": "key",
+            "type": "STRING",
+            "mode": "NULLABLE"
+          },
+          {
+            "name": "value",
+            "type": "STRING",
+            "mode": "NULLABLE"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "results",
+    "type": "RECORD",
+    "mode": "REPEATED",
+    "description": "",
+    "fields": [
+      {
+        "name": "status",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": ""
       },
       {
+        "name": "timing",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "description": "",
+        "fields": [
+          {
+            "name": "name",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": ""
+          },
+          {
+            "name": "started_at",
+            "type": "DATETIME",
+            "mode": "NULLABLE",
+            "description": ""
+          },
+          {
+            "name": "completed_at",
+            "type": "DATETIME",
+            "mode": "NULLABLE",
+            "description": ""
+          }
+        ]
+      },
+      {
+        "name": "thread_id",
+        "type": "STRING",
         "mode": "NULLABLE",
+        "description": ""
+      },
+      {
+        "name": "execution_time",
+        "type": "FLOAT64",
+        "mode": "NULLABLE",
+        "description": ""
+      },
+      {
+        "name": "adapter_response",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": "[raw JSON string]"
+      },
+      {
+        "name": "message",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": ""
+      },
+      {
+        "name": "failures",
+        "type": "INT64",
+        "mode": "NULLABLE",
+        "description": ""
+      },
+      {
         "name": "unique_id",
-        "type": "STRING"
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": ""
       }
-    ],
-    "mode": "REPEATED",
-    "name": "results",
-    "type": "RECORD"
+    ]
+  },
+  {
+    "name": "elapsed_time",
+    "type": "FLOAT64",
+    "mode": "NULLABLE",
+    "description": ""
+  },
+  {
+    "name": "args",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "[raw JSON string]"
   }
 ]
