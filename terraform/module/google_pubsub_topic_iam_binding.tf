@@ -7,9 +7,3 @@ resource "google_pubsub_topic_iam_member" "binding" {
   role    = "roles/pubsub.publisher"
   member  = "serviceAccount:${data.google_storage_project_service_account.gcs_account.email_address}"
 }
-
-//resource "google_pubsub_topic_iam_member" "deadletter_publisher" {
-//  topic   = google_pubsub_topic.dbt_artifacts_notification.id
-//  role    = "roles/pubsub.publisher"
-//  member  = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-pubsub.iam.gserviceaccount.com"
-//}
