@@ -1,5 +1,5 @@
 DOCKER_IMAGE_BASE = gcr.io/ubie-yu-sandbox/dbt-artifacts-loader
-TAG = "v1.0.0-rc1"
+TAG = "v1.0.0-rc2"
 
 
 .PHONEY: setup
