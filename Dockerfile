@@ -10,4 +10,4 @@ RUN bash ci/setup.sh
 
 COPY . /app
 
-CMD ["uvicorn", "dbt_artifacts_loader.api.rest_api_v1:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["uvicorn", "dbt_artifacts_loader.api.rest_api_v2:app", "--host", "0.0.0.0", "--port", "8080"]

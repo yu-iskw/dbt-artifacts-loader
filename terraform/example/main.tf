@@ -6,7 +6,7 @@ module "dbt_artifacts_loader" {
 
   delete_on_destroy = true
 
-  docker_image = "gcr.io/${var.project_id}/dbt-artifacts-loader:latest"
+  docker_image = "gcr.io/${var.project_id}/dbt-artifacts-loader:v1.0.0-rc1"
 
   labels = {
     app = "dbt-artifacts-loader"

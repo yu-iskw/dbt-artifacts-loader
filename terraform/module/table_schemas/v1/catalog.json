@@ -1,29 +1,394 @@
 [
   {
+    "name": "metadata",
+    "type": "RECORD",
+    "mode": "NULLABLE",
+    "description": "",
     "fields": [
       {
-        "mode": "NULLABLE",
         "name": "dbt_schema_version",
-        "type": "STRING"
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": ""
       },
       {
-        "mode": "NULLABLE",
         "name": "dbt_version",
-        "type": "STRING"
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": ""
       },
       {
-        "mode": "NULLABLE",
         "name": "generated_at",
-        "type": "TIMESTAMP"
+        "type": "DATETIME",
+        "mode": "NULLABLE",
+        "description": ""
       },
       {
-        "mode": "NULLABLE",
         "name": "invocation_id",
-        "type": "STRING"
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": ""
+      },
+      {
+        "name": "env",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "description": "",
+        "fields": [
+          {
+            "name": "key",
+            "type": "STRING",
+            "mode": "NULLABLE"
+          },
+          {
+            "name": "value",
+            "type": "STRING",
+            "mode": "NULLABLE"
+          }
+        ]
       }
-    ],
+    ]
+  },
+  {
+    "name": "nodes",
+    "type": "RECORD",
+    "mode": "REPEATED",
+    "description": "",
+    "fields": [
+      {
+        "name": "key",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      },
+      {
+        "name": "value",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+          {
+            "name": "metadata",
+            "type": "RECORD",
+            "mode": "NULLABLE",
+            "description": "",
+            "fields": [
+              {
+                "name": "type",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "database",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "schema_",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "name",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "comment",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "owner",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              }
+            ]
+          },
+          {
+            "name": "columns",
+            "type": "RECORD",
+            "mode": "REPEATED",
+            "description": "",
+            "fields": [
+              {
+                "name": "key",
+                "type": "STRING",
+                "mode": "NULLABLE"
+              },
+              {
+                "name": "value",
+                "type": "RECORD",
+                "mode": "NULLABLE",
+                "fields": [
+                  {
+                    "name": "type",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "comment",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "index",
+                    "type": "INT64",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "name",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "stats",
+            "type": "RECORD",
+            "mode": "REPEATED",
+            "description": "",
+            "fields": [
+              {
+                "name": "key",
+                "type": "STRING",
+                "mode": "NULLABLE"
+              },
+              {
+                "name": "value",
+                "type": "RECORD",
+                "mode": "NULLABLE",
+                "fields": [
+                  {
+                    "name": "id",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "label",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "value",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "description",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "include",
+                    "type": "BOOL",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "unique_id",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sources",
+    "type": "RECORD",
+    "mode": "REPEATED",
+    "description": "",
+    "fields": [
+      {
+        "name": "key",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      },
+      {
+        "name": "value",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+          {
+            "name": "metadata",
+            "type": "RECORD",
+            "mode": "NULLABLE",
+            "description": "",
+            "fields": [
+              {
+                "name": "type",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "database",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "schema_",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "name",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "comment",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "owner",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              }
+            ]
+          },
+          {
+            "name": "columns",
+            "type": "RECORD",
+            "mode": "REPEATED",
+            "description": "",
+            "fields": [
+              {
+                "name": "key",
+                "type": "STRING",
+                "mode": "NULLABLE"
+              },
+              {
+                "name": "value",
+                "type": "RECORD",
+                "mode": "NULLABLE",
+                "fields": [
+                  {
+                    "name": "type",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "comment",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "index",
+                    "type": "INT64",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "name",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "stats",
+            "type": "RECORD",
+            "mode": "REPEATED",
+            "description": "",
+            "fields": [
+              {
+                "name": "key",
+                "type": "STRING",
+                "mode": "NULLABLE"
+              },
+              {
+                "name": "value",
+                "type": "RECORD",
+                "mode": "NULLABLE",
+                "fields": [
+                  {
+                    "name": "id",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "label",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "value",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "description",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "include",
+                    "type": "BOOL",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "unique_id",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "errors",
+    "type": "RECORD",
     "mode": "NULLABLE",
-    "name": "metadata",
-    "type": "RECORD"
+    "description": "",
+    "fields": [
+      {
+        "name": "value",
+        "type": "STRING",
+        "mode": "REPEATED",
+        "description": ""
+      }
+    ]
   }
 ]

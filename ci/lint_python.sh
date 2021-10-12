@@ -21,6 +21,6 @@
 set -e
 
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
-MODULE_DIR="$(dirname "$SCRIPT_DIR")"
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
-pylint -v "${MODULE_DIR}"/dbt_artifacts_loader "${MODULE_DIR}"/tests
+pylint -v "${PROJECT_DIR}"/dbt_artifacts_loader "${PROJECT_DIR}"/tests --rcfile="${PROJECT_DIR}/pylintrc"

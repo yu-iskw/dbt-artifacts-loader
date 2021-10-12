@@ -1,77 +1,54 @@
-#
-# V1
-#
-resource "google_bigquery_table" "run_results_v1" {
+locals {
+  v1_tables = {
+    # table_id: JSON file
+    catalog_v1: "catalog.json"
+    run_results_v1: "run_results.json"
+    manifest_v1: "manifest.json"
+    sources_v1: "sources.json"
+  }
+  v2_tables = {
+    # table_id: JSON file
+    run_results_v2: "run_results.json"
+    manifest_v2: "manifest.json"
+  }
+}
+
+resource "google_bigquery_table" "v1_tables" {
+  for_each = local.v1_tables
+
   project = var.project_id
 
   dataset_id = google_bigquery_dataset.dbt_artifacts.dataset_id
   # NOTE The table ID must be the same as the python implementation.
-  table_id      = "run_results_v1"
-  friendly_name = "run_results_v1"
+  table_id      = each.key
+  friendly_name = each.key
   description   = <<EOT
-The table contains `run_results.json`.
+The table derives from `${each.value}`.
 EOT
 
-  schema = file("${path.module}/table_schemas/v1/run_results.json")
+  schema = file("${path.module}/table_schemas/v1/${each.value}")
 
   deletion_protection = (!var.delete_on_destroy)
 
   labels = var.labels
 }
 
-resource "google_bigquery_table" "sources_v1" {
+resource "google_bigquery_table" "v2_tables" {
+  for_each = local.v2_tables
+
   project = var.project_id
 
   dataset_id = google_bigquery_dataset.dbt_artifacts.dataset_id
   # NOTE The table ID must be the same as the python implementation.
-  table_id      = "sources_v1"
-  friendly_name = "sources_v1"
+  table_id      = each.key
+  friendly_name = each.key
   description   = <<EOT
-The table contains `sources.json`.
+The table derives from `${each.value}`.
 EOT
 
-  schema = file("${path.module}/table_schemas/v1/sources.json")
+  schema = file("${path.module}/table_schemas/v2/${each.value}")
 
   deletion_protection = (!var.delete_on_destroy)
-
-  labels = var.labels
-}
-
-// The schema is not valid yet.
-//resource "google_bigquery_table" "manifest_v1" {
-//  project = var.project_id
-//
-//  dataset_id    = google_bigquery_dataset.dbt_artifacts.dataset_id
-//  table_id      = "dbt_manifest_v1"
-//  friendly_name = "dbt_manifest_v1"
-//  description   = <<EOT
-//The table contains `manifest.json`.
-//EOT
-//
-//  schema = file("${path.module}/table_schemas/v1/manifest.json")
-//
-//  deletion_protection = var.delete_on_destroy
-//
-//  labels = var.labels
-//}
-
-#
-# V2
-#
-resource "google_bigquery_table" "run_results_v2" {
-  project = var.project_id
-
-  dataset_id    = google_bigquery_dataset.dbt_artifacts.dataset_id
-  # NOTE The table ID must be the same as the python implementation.
-  table_id      = "run_results_v2"
-  friendly_name = "run_results_v2"
-  description   = <<EOT
-The table contains `run_results.json`.
-EOT
-
-  schema = file("${path.module}/table_schemas/v2/run_results.json")
-
-  deletion_protection = (! var.delete_on_destroy)
 
   labels = var.labels
 }
