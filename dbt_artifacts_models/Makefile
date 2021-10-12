@@ -10,3 +10,9 @@ compile:
 
 test:
 	dbt test --profiles-dir profiles/
+
+docs-generate:
+	dbt docs generate --profiles-dir profiles/
+
+docs-serve:
+	dbt docs serve --profiles-dir profiles/
