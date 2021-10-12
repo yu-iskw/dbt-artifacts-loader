@@ -22,7 +22,7 @@ WITH expanded_artifacts AS (
     metadata AS metadata,
     source.key AS key,
     source.value.*
-  FROM {{ source(var('dbt_artifacts_loader')['dataset'], 'manifest_v2') }}
+  FROM {{ source(var('dbt_artifacts_loader')['dataset'], 'manifest_v1') }}
         , UNNEST(sources) AS source
 )
 , remove_duplicates AS (

@@ -8,7 +8,7 @@
     materialized="view",
     database=project,
     schema=dataset,
-    alias="model_run_results_v1",
+    alias="model_run_results_v2",
     persist_docs={"relation": true, "columns": true},
     labels={
       "modeled_by": "dbt",
@@ -23,10 +23,11 @@ WITH run_results AS (
     run_results.metadata AS run_results_metadata,
     manifest.* EXCEPT(metadata, unique_id   ),
     manifest.metadata AS manifest_metadata,
-  FROM {{ ref("expanded_run_results_v1") }} AS run_results
-  LEFT OUTER JOIN {{ ref("parsed_model_node_v1") }} AS manifest
+  FROM {{ ref("expanded_run_results_v2") }} AS run_results
+  LEFT OUTER JOIN {{ ref("parsed_model_node_v2") }} AS manifest
     ON run_results.unique_id = manifest.unique_id
   WHERE manifest.unique_id IS NOT NULL
+    AND timing_name IN ("execute")
 )
 , nearest_manifests AS (
   SELECT

@@ -17,19 +17,36 @@
   )
 }}
 
-WITH expanded_artifacts AS (
+WITH schema_tests AS (
   SELECT
-    metadata AS metadata,
-    node.key AS key,
-    node.value.CompiledSchemaTestNode.*,
-  FROM {{ source(var('dbt_artifacts_loader')['dataset'], 'manifest_v2') }}
-        , UNNEST(nodes) AS node
+    s.* EXCEPT(depends_on),
+    depends_on_node,
+    depends_on_macro,
+  FROM (
+      SELECT
+        metadata AS metadata,
+        node.key AS key,
+        node.value.CompiledSchemaTestNode.*,
+      FROM {{ source(var('dbt_artifacts_loader')['dataset'], 'manifest_v2') }}
+            , UNNEST(nodes) AS node
+  ) AS s
+  CROSS JOIN UNNEST(depends_on.nodes.value) AS depends_on_node
+  CROSS JOIN UNNEST(depends_on.macros.value) AS depends_on_macro
+)
+, schema_tests_with_models AS (
+  SELECT
+    schema_tests.*,
+    (SELECT AS STRUCT models.*) AS depends_on_model,
+  FROM schema_tests AS schema_tests
+  LEFT OUTER JOIN {{ ref("compiled_model_node_v2") }} AS models
+    ON schema_tests.metadata.invocation_id = models.metadata.invocation_id
+        AND schema_tests.depends_on_node = models.unique_id
 )
 , remove_duplicates AS (
   SELECT
     ROW_NUMBER() OVER (PARTITION BY metadata.invocation_id, unique_id ORDER BY metadata.generated_at DESC) AS rank,
     *
-  FROM expanded_artifacts
+  FROM schema_tests_with_models
   WHERE unique_id IS NOT NULL
 )
 

@@ -27,7 +27,9 @@ WITH run_results AS (
   LEFT OUTER JOIN {{ ref("parsed_data_test_node_v1") }} AS manifest
     ON run_results.unique_id = manifest.unique_id
   WHERE manifest.unique_id IS NOT NULL
+    AND timing_name IN ("execute")
 )
+-- Extract only run results whose metadata is the most close to that of model.
 , nearest_manifests AS (
   SELECT
     ROW_NUMBER() OVER (PARTITION BY unique_id ORDER BY generated_at_diff) AS rank,

@@ -2,9 +2,9 @@
 version: 2
 
 models:
-  - name: model_run_results_v1
+  - name: data_test_run_results_v2
     description: |
-      This is a denormalized model run results v1.
+      This is a denormalized data test run results v2.
 
     tests:
       - dbt_utils.unique_combination_of_columns:
@@ -22,3 +22,8 @@ models:
         description: "unique test ID"
         tests:
           - not_null
+      - name: timing_name
+        description: "timing name"
+        tests:
+          - accepted_values:
+              values: ["execute"]
