@@ -1,0 +1,47 @@
+name: "Push the docker image to Docker Hub (QA)"
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  PROJECT_ID: "ubie-jp-data-engineering-qa"
+  DOCKER_IMAGE_BASE: "asia-northeast1-docker.pkg.dev/ubie-jp-data-engineering-qa/internal-tools/dbt-artifacts-loader"
+  DOCKER_TAG: latest
+  ONDEMAND_SCAN_LOCATION: "asia"
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          service_account_email: ${{ secrets.SERVICE_ACCOUNT_EMAIL }}
+          service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+          export_default_credentials: true
+      - name: Install Google Cloud SDK components
+        run: |
+          # On-Demand Scanning API extraction helper
+          gcloud components install local-extract
+      - name: Authentificate google container registrory
+        run: |
+          gcloud config set project ${{ env.PROJECT_ID }}
+          gcloud auth configure-docker asia-northeast1-docker.pkg.dev
+      - name: Build a docker image
+        run: |
+          docker_image="${{ env.DOCKER_IMAGE_BASE }}:${{ env.DOCKER_TAG }}"
+          bash ci/build_docker.sh "$docker_image"
+      - name: Push the docker image
+        run: |
+          docker_image="${{ env.DOCKER_IMAGE_BASE }}:${{ env.DOCKER_TAG }}"
+          docker push "$docker_image"
+      # TODO resolve the authentication issue
+      # - name: Scan the docker image
+      #   run: |
+      #     docker_image="${{ env.DOCKER_IMAGE_BASE }}:${{ env.DOCKER_TAG }}"
+      #     location="${{ env.ONDEMAND_SCAN_LOCATION }}"
+      #     bash ci/scan_docker_image.sh "$docker_image" "$location"

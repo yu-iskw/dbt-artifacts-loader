@@ -19,5 +19,5 @@ clean-targets:
 
 vars:
     dbt_artifacts_loader:
-        project: "ubie-yu-sandbox"
+        project: "ubie-jp-data-engineering-prd"
         dataset: "dbt_artifacts"
