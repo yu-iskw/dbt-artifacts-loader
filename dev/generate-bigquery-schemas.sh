@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 #
 #
@@ -18,9 +19,10 @@
 # limitations under the License.
 #
 #
-set -e
 
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
-pylint -v "${PROJECT_DIR}"/dbt_artifacts_loader "${PROJECT_DIR}"/tests --rcfile="${PROJECT_DIR}/pylintrc"
+export PYTHONPATH="${PROJECT_DIR}/dbt_artifacts_loader:${PYTHONPATH}"
+
+python "${PROJECT_DIR}/dbt_artifacts_loader/scripts/generate_bigquery_schemas.py"

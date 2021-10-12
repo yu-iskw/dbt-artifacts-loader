@@ -25,10 +25,11 @@ SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
 # v1
-generate-schema < "${PROJECT_DIR}/tests/resources/v1/jaffle_shop/run_results.json" > "${PROJECT_DIR}/terraform/module/table_schemas/v1/run_results.json"
-#generate-schema < "${PROJECT_DIR}/tests/resources/v1/jaffle_shop/manifest.json" > "${PROJECT_DIR}/terraform/module/table_schemas/v1/manifest.json"
-#generate-schema < "${PROJECT_DIR}/tests/resources/v1/jaffle_shop/catalog.json" > "${PROJECT_DIR}/terraform/module/table_schemas/v1/catalog.json"
-#generate-schema < "${PROJECT_DIR}/tests/resources/v1/jaffle_shop/sources.json" > "${PROJECT_DIR}/terraform/module/table_schemas/v1/sources.json"
+generate-schema --keep_nulls < "${PROJECT_DIR}/tests/resources/v1/jaffle_shop/run_results.json" > "${PROJECT_DIR}/terraform/module/table_schemas/v1/run_results.json" || :
+generate-schema --keep_nulls < "${PROJECT_DIR}/tests/resources/v1/jaffle_shop/manifest.json" > "${PROJECT_DIR}/terraform/module/table_schemas/v1/manifest.json" || :
+generate-schema --keep_nulls < "${PROJECT_DIR}/tests/resources/v1/jaffle_shop/catalog.json" > "${PROJECT_DIR}/terraform/module/table_schemas/v1/catalog.json" || :
+generate-schema --keep_nulls < "${PROJECT_DIR}/tests/resources/v1/jaffle_shop/sources.json" > "${PROJECT_DIR}/terraform/module/table_schemas/v1/sources.json" || :
 
 # v2
-generate-schema < "${PROJECT_DIR}/tests/resources/v2/jaffle_shop/run_results.json" > "${PROJECT_DIR}/terraform/module/table_schemas/v2/run_results.json"
+generate-schema --keep_nulls < "${PROJECT_DIR}/tests/resources/v2/jaffle_shop/manifest.json" > "${PROJECT_DIR}/terraform/module/table_schemas/v2/manifest.json" || :
+generate-schema --keep_nulls < "${PROJECT_DIR}/tests/resources/v2/jaffle_shop/run_results.json" > "${PROJECT_DIR}/terraform/module/table_schemas/v2/run_results.json" || :

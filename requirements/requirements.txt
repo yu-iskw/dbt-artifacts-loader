@@ -16,4 +16,5 @@ dbt-bigquery==0.20.1
 # Utils
 datamodel-code-generator==0.11.13
 python_jsonschema_objects==0.3.14
-bigquery-schema-generator==1.4
+bigquery-schema-generator==1.4.1
+deepmerge==0.3.0
