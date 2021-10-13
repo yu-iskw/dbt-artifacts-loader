@@ -2,9 +2,9 @@
 version: 2
 
 models:
-  - name: last_data_test_run_results_v2
+  - name: last_snapshot_run_results_v1
     description: |
-      The table contains only the latest record of data test run results v2.
+      The table contains only the latest record of snapshot run results v1.
 
     tests:
       - dbt_utils.unique_combination_of_columns:
