@@ -21,7 +21,7 @@ WITH run_results AS (
   SELECT
     run_results.* EXCEPT(metadata),
     run_results.metadata AS run_results_metadata,
-    manifest.* EXCEPT(metadata, unique_id),
+    manifest.* EXCEPT(metadata, unique_id, loaded_at),
     manifest.metadata AS manifest_metadata,
   FROM {{ ref("expanded_run_results_v1") }} AS run_results
   LEFT OUTER JOIN {{ ref("parsed_data_test_node_v1") }} AS manifest

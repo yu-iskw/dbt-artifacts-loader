@@ -7,3 +7,8 @@ sources:
     tables:
       - name: sources_v1
         identifier: sources_v1
+
+        columns:
+          - name: loaded_at
+            tests:
+              - not_null

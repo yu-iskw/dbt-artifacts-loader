@@ -7,3 +7,8 @@ sources:
     tables:
       - name: run_results_v2
         identifier: run_results_v2
+
+        columns:
+          - name: loaded_at
+            tests:
+              - not_null

@@ -19,6 +19,7 @@
 
 WITH expanded_sources AS (
   SELECT
+    loaded_at AS loaded_at,
     elapsed_time,
     metadata.*,
     result.values.SourceFreshnessOutput.*,

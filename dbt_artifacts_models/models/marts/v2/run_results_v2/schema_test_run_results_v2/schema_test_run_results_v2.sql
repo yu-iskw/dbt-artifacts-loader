@@ -21,7 +21,7 @@ WITH run_results AS (
   SELECT
     run_results.* EXCEPT(metadata),
     run_results.metadata AS run_results_metadata,
-    schema_tests.* EXCEPT(unique_id, metadata),
+    schema_tests.* EXCEPT(unique_id, metadata, loaded_at),
     schema_tests.metadata AS schema_test_metadata,
   FROM {{ ref("expanded_run_results_v2") }} AS run_results
   LEFT OUTER JOIN {{ ref("parsed_schema_test_node_v2") }} AS schema_tests

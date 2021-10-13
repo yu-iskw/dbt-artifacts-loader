@@ -21,7 +21,7 @@ WITH run_results AS (
   SELECT
     run_results.* EXCEPT(metadata),
     run_results.metadata AS run_results_metadata,
-    snapshots.* EXCEPT(metadata, unique_id),
+    snapshots.* EXCEPT(metadata, unique_id, loaded_at),
     snapshots.metadata AS snapshot_metadata,
   FROM {{ ref("expanded_run_results_v2") }} AS run_results
   LEFT OUTER JOIN {{ ref("parsed_snapshot_node_v2") }} AS snapshots
