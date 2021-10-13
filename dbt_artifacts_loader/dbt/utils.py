@@ -163,5 +163,5 @@ def load_table_from_json(
     # TODO handle the exception in details.
     # pylint: disable=W0703
     except Exception as e:
-        print(e)
+        raise RuntimeError from e
     return None
