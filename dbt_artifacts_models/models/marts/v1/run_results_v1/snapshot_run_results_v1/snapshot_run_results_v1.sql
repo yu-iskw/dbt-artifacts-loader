@@ -22,7 +22,7 @@ WITH run_results AS (
     run_results.*,
     (SELECT AS STRUCT snapshots.*) AS snapshot,
   FROM {{ ref("expanded_run_results_v1") }} AS run_results
-  FULL OUTER JOIN {{ ref("parsed_snapshot_node_v1") }} AS snapshots
+  LEFT OUTER JOIN {{ ref("parsed_snapshot_node_v1") }} AS snapshots
     ON run_results.unique_id = snapshots.unique_id
       AND ABS(DATETIME_DIFF(run_results.metadata.generated_at, snapshots.metadata.generated_at, DAY))  <= 2
   WHERE snapshots.unique_id IS NOT NULL

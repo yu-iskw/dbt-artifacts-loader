@@ -22,7 +22,7 @@ WITH run_results AS (
     run_results.*,
     (SELECT AS STRUCT schema_tests.*) AS schema_test,
   FROM {{ ref("expanded_run_results_v1") }} AS run_results
-  FULL OUTER JOIN {{ ref("parsed_schema_test_node_v1") }} AS schema_tests
+  LEFT OUTER JOIN {{ ref("parsed_schema_test_node_v1") }} AS schema_tests
     ON run_results.unique_id = schema_tests.unique_id
       AND ABS(DATETIME_DIFF(run_results.metadata.generated_at, schema_tests.metadata.generated_at, DAY))  <= 2
   WHERE schema_tests.unique_id IS NOT NULL
