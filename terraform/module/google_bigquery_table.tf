@@ -18,6 +18,8 @@ resource "google_bigquery_table" "v1_tables" {
 
   project = var.project_id
 
+  deletion_protection = (!var.delete_on_destroy)
+
   dataset_id = google_bigquery_dataset.dbt_artifacts.dataset_id
   # NOTE The table ID must be the same as the python implementation.
   table_id      = each.key
@@ -28,7 +30,10 @@ EOT
 
   schema = file("${path.module}/table_schemas/v1/${each.value}")
 
-  deletion_protection = (!var.delete_on_destroy)
+  time_partitioning {
+    type  = "DAY"
+    field = "loaded_at"
+  }
 
   labels = var.labels
 }
@@ -37,6 +42,8 @@ resource "google_bigquery_table" "v2_tables" {
   for_each = local.v2_tables
 
   project = var.project_id
+
+  deletion_protection = (!var.delete_on_destroy)
 
   dataset_id = google_bigquery_dataset.dbt_artifacts.dataset_id
   # NOTE The table ID must be the same as the python implementation.
@@ -48,7 +55,10 @@ EOT
 
   schema = file("${path.module}/table_schemas/v2/${each.value}")
 
-  deletion_protection = (!var.delete_on_destroy)
+  time_partitioning {
+    type  = "DAY"
+    field = "loaded_at"
+  }
 
   labels = var.labels
 }

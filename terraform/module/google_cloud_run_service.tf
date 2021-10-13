@@ -1,7 +1,7 @@
 resource "google_cloud_run_service" "dbt_artifact_loader" {
   project = var.project_id
 
-  name     = "dbt-artifacts-loader"
+  name     = var.cloud_run_service_name
   location = var.region
 
   template {

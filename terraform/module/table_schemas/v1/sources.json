@@ -1,5 +1,11 @@
 [
   {
+    "name": "loaded_at",
+    "type": "DATETIME",
+    "mode": "NULLABLE",
+    "description": "The loaded time by dbt-artifacts-loader"
+  },
+  {
     "name": "metadata",
     "type": "RECORD",
     "mode": "NULLABLE",

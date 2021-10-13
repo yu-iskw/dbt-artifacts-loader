@@ -68,13 +68,13 @@ class TestBaseBigQueryModel(unittest.TestCase):
 
     def test_to_bigquery_schema(self):
         value = ManifestV1.to_bigquery_schema()
-        self.assertEqual(len(value), 10)
+        self.assertEqual(len(value), 11)
 
     def test_get_classs_name(self):
         self.assertEqual(self.manifest_v2_obj.__class__.get_class_name(), "ManifestV2")
 
     def test_get_fields(self):
-        self.assertEqual(len(self.manifest_v2_obj.__class__.get_fields()), 10)
+        self.assertEqual(len(self.manifest_v2_obj.__class__.get_fields()), 11)
 
     def test_get_field(self):
         nodes = self.manifest_v2_obj.__class__.get_field("nodes")
@@ -82,17 +82,17 @@ class TestBaseBigQueryModel(unittest.TestCase):
 
     def test_to_dict_for_artifacts_v1(self):
         artifact_dict = self.catalog_v1_obj.to_dict(depth=0)
-        self.assertEqual(len(artifact_dict.keys()), 4)
+        self.assertEqual(len(artifact_dict.keys()), 5)
         artifact_dict = self.manifest_v1_obj.to_dict(depth=0)
-        self.assertEqual(len(artifact_dict.keys()), 10)
+        self.assertEqual(len(artifact_dict.keys()), 11)
         artifact_dict = self.run_results_v1_obj.to_dict(depth=0)
-        self.assertEqual(len(artifact_dict.keys()), 4)
+        self.assertEqual(len(artifact_dict.keys()), 5)
 
     def test_to_dict_for_artifacts_v2(self):
         artifact_dict = self.manifest_v2_obj.to_dict(depth=0)
-        self.assertEqual(len(artifact_dict.keys()), 10)
+        self.assertEqual(len(artifact_dict.keys()), 11)
         artifact_dict = self.run_results_v2_obj.to_dict(depth=0)
-        self.assertEqual(len(artifact_dict.keys()), 4)
+        self.assertEqual(len(artifact_dict.keys()), 5)
 
     def test_to_dict_on_run_results_v2(self):
         manifest_obj_dict = self.run_results_v2_obj.to_dict(depth=0)
@@ -100,7 +100,7 @@ class TestBaseBigQueryModel(unittest.TestCase):
 
     def test_to_dict_on_manifest_v2(self):
         manifest_obj_dict = self.manifest_v2_obj.to_dict(depth=0)
-        expected = ['metadata', 'nodes', 'sources', 'macros', 'docs', 'exposures',
+        expected = ['loaded_at', 'metadata', 'nodes', 'sources', 'macros', 'docs', 'exposures',
                     'selectors', 'disabled', 'parent_map', 'child_map']
         self.assertListEqual(list(manifest_obj_dict.keys()), expected)
         self.assertDictEqual(self.manifest_v2_obj.metadata.to_dict(depth=0),

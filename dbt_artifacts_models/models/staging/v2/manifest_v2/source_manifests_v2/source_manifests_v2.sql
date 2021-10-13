@@ -19,6 +19,7 @@
 
 WITH expanded_artifacts AS (
   SELECT
+    loaded_at AS loaded_at,
     metadata AS metadata,
     source.key AS key,
     source.value.*
