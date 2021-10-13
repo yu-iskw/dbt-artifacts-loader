@@ -66,7 +66,3 @@ make setup
 # Create and test the dbt models
 make run && make test
 ```
-
-## Known Issue
-The application can deal with only `run_results.json` and `sources.json` at the moment.
-We will support `catalog.json` and `manifest.json` in the next version.
