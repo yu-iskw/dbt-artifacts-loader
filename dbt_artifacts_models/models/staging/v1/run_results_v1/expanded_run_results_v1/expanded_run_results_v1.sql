@@ -19,6 +19,7 @@
 
 WITH expanded_results AS (
   SELECT
+    loaded_at AS loaded_at,
     args,
     metadata,
     result.adapter_response AS adapter_response,

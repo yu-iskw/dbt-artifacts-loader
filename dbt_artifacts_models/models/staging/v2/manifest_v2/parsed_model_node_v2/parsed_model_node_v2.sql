@@ -19,6 +19,7 @@
 
 WITH expanded_artifacts AS (
   SELECT
+    loaded_at AS loaded_at,
     metadata AS metadata,
     node.key AS key,
     node.value.ParsedModelNode.*,

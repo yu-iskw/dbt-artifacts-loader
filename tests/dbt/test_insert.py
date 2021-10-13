@@ -22,6 +22,7 @@ import json
 from google.cloud import bigquery
 
 # v1
+from dbt_artifacts_loader.dbt.utils import get_default_load_job_config, load_table_from_json
 from dbt_artifacts_loader.dbt.v1.catalog import CatalogV1
 from dbt_artifacts_loader.dbt.v1.manifest import ManifestV1
 from dbt_artifacts_loader.dbt.v1.run_results import RunResultsV1
@@ -56,31 +57,46 @@ class TestInsert(unittest.TestCase):
         client = bigquery.Client(project=project_id)
         # catalog_v1
         table = f"{project_id}.dbt_artifacts.catalog_v1"
-        status = client.insert_rows_json(table=table,
-                                         json_rows=[self.catalog_v1_obj.to_dict(depth=0)],
-                                         ignore_unknown_values=True)
-        self.assertListEqual(status, [])
+        schema = self.catalog_v1_obj.__class__.to_bigquery_schema(depth=0)
+        job_config = get_default_load_job_config(schema=schema)
+        job_result = load_table_from_json(client=client,
+                                          table=table,
+                                          json_rows=[self.catalog_v1_obj.to_dict(depth=0)],
+                                          job_config=job_config)
+        self.assertEqual(job_result.errors, None)
         # manifest_v1
         table = f"{project_id}.dbt_artifacts.manifest_v1"
-        status = client.insert_rows_json(table=table,
-                                         json_rows=[self.manifest_v1_obj.to_dict(depth=0)],
-                                         ignore_unknown_values=True)
-        self.assertListEqual(status, [])
+        schema = self.manifest_v1_obj.__class__.to_bigquery_schema(depth=0)
+        job_config = get_default_load_job_config(schema=schema)
+        job_result = load_table_from_json(client=client,
+                                          table=table,
+                                          json_rows=[self.manifest_v1_obj.to_dict(depth=0)],
+                                          job_config=job_config)
+        self.assertEqual(job_result.errors, None)
         # run_results_v1
         table = f"{project_id}.dbt_artifacts.run_results_v1"
-        status = client.insert_rows_json(table=table,
-                                         json_rows=[self.run_results_v1_obj.to_dict(depth=0)],
-                                         ignore_unknown_values=True)
-        self.assertListEqual(status, [])
+        schema = self.run_results_v1_obj.__class__.to_bigquery_schema(depth=0)
+        job_config = get_default_load_job_config(schema=schema)
+        job_result = load_table_from_json(client=client,
+                                          table=table,
+                                          json_rows=[self.run_results_v1_obj.to_dict(depth=0)],
+                                          job_config=job_config)
+        self.assertEqual(job_result.errors, None)
         # manifest_v2
         table = f"{project_id}.dbt_artifacts.manifest_v2"
-        status = client.insert_rows_json(table=table,
-                                         json_rows=[self.manifest_v2_obj.to_dict(depth=0)],
-                                         ignore_unknown_values=True)
-        self.assertListEqual(status, [])
+        schema = self.manifest_v2_obj.__class__.to_bigquery_schema(depth=0)
+        job_config = get_default_load_job_config(schema=schema)
+        job_result = load_table_from_json(client=client,
+                                          table=table,
+                                          json_rows=[self.manifest_v2_obj.to_dict(depth=0)],
+                                          job_config=job_config)
+        self.assertEqual(job_result.errors, None)
         # run_results_v2
         table = f"{project_id}.dbt_artifacts.run_results_v2"
-        status = client.insert_rows_json(table=table,
-                                         json_rows=[self.run_results_v2_obj.to_dict(depth=0)],
-                                         ignore_unknown_values=True)
-        self.assertListEqual(status, [])
+        schema = self.run_results_v2_obj.__class__.to_bigquery_schema(depth=0)
+        job_config = get_default_load_job_config(schema=schema)
+        job_result = load_table_from_json(client=client,
+                                          table=table,
+                                          json_rows=[self.run_results_v2_obj.to_dict(depth=0)],
+                                          job_config=job_config)
+        self.assertEqual(job_result.errors, None)

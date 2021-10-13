@@ -50,8 +50,14 @@ def download_gcs_object_as_text(project: str, bucket: str, name: str):
     Returns:
         (str) the content of the GCS object as text
     """
-    storage_client = storage.Client(project=project)
-    bucket = storage_client.get_bucket(bucket_or_name=bucket)
-    blob = storage.Blob(name=name, bucket=bucket)
-    artifact_json = blob.download_as_text()
-    return artifact_json
+    try:
+        storage_client = storage.Client(project=project)
+        bucket = storage_client.get_bucket(bucket_or_name=bucket)
+        blob = storage.Blob(name=name, bucket=bucket)
+        artifact_json = blob.download_as_text()
+        return artifact_json
+    # TODO handle the exception appropriately
+    # pylint: disable=W0703
+    except Exception as e:
+        raise RuntimeError from e
+    return None
