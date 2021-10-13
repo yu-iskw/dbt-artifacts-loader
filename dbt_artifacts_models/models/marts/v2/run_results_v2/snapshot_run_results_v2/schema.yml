@@ -9,12 +9,12 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - run_results_metadata.invocation_id
+            - invocation_id
             - unique_id
             - timing_name
 
     columns:
-      - name: run_results_metadata.invocation_id
+      - name: invocation_id
         description: "invocation ID"
         tests:
           - not_null
