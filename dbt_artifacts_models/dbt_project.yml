@@ -19,5 +19,5 @@ clean-targets:
 
 vars:
     dbt_artifacts_loader:
-        project: "YOUR-GCP-PROJECT"
+        project: "ubie-jp-data-engineering-qa"
         dataset: "dbt_artifacts"
