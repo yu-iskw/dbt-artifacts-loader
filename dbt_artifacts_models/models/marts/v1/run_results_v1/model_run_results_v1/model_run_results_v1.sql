@@ -22,7 +22,7 @@ WITH run_results AS (
     run_results.*,
     (SELECT AS STRUCT models.*) AS model,
   FROM {{ ref("expanded_run_results_v1") }} AS run_results
-  FULL OUTER JOIN {{ ref("parsed_model_node_v1") }} AS models
+  LEFT OUTER JOIN {{ ref("parsed_model_node_v1") }} AS models
     ON run_results.unique_id = models.unique_id
       AND ABS(DATETIME_DIFF(run_results.metadata.generated_at, models.metadata.generated_at, DAY))  <= 2
   WHERE models.unique_id IS NOT NULL
