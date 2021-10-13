@@ -20,7 +20,14 @@
 WITH expanded_results AS (
   SELECT
     loaded_at AS loaded_at,
-    args,
+    STRUCT(
+        JSON_EXTRACT_SCALAR(args, "$.selector_name") AS selector_name,
+        JSON_EXTRACT_SCALAR(args, "$.profile") AS profile,
+        JSON_EXTRACT_SCALAR(args, "$.target") AS target,
+        JSON_EXTRACT_SCALAR(args, "$.rpc_method") AS rpc_method,
+        JSON_EXTRACT_SCALAR(args, "$.vars") AS vars
+    ) AS args,
+    args AS raw_args,
     metadata,
     result.adapter_response AS adapter_response,
     result.unique_id AS unique_id,
