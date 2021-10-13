@@ -31,7 +31,7 @@ from google.cloud import bigquery
 from dbt_artifacts_loader.dbt.model_factory import get_model_class
 from dbt_artifacts_loader.utils import download_gcs_object_as_text
 from dbt_artifacts_loader.api import config
-from dbt_artifacts_loader.dbt.utils import get_dbt_schema_version
+from dbt_artifacts_loader.dbt.utils import get_dbt_schema_version, get_default_load_job_config, load_table_from_json
 from dbt_artifacts_loader.dbt.utils import ArtifactsTypes, DestinationTables
 
 app = FastAPI()
@@ -153,13 +153,19 @@ def insert_artifact_v2(request_body: RequestBody, settings: config.APISettings =
     print("Insert into {}".format(full_destination_table_id))
     if test_mode is False:
         try:
-            bigquery_client = bigquery.Client(project=client_project)
-            print(artifact_json)
+            client = bigquery.Client(project=client_project)
             model_class = get_model_class(artifact_type=artifact_type)
             model = model_class(**artifact_json)
             formatted_artifact_json = model.to_dict(depth=0)
-            statuses = bigquery_client.insert_rows_json(
-                table=full_destination_table_id, json_rows=[formatted_artifact_json], ignore_unknown_values=True)
+            print(formatted_artifact_json)
+            schema = model_class.to_bigquery_schema(depth=0)
+            job_config = get_default_load_job_config(schema=schema)
+            job_result = load_table_from_json(client=client,
+                                              table=full_destination_table_id,
+                                              json_rows=[formatted_artifact_json],
+                                              job_config=job_config)
+            if job_result is not None and job_result.error_result is not None:
+                print(job_result.error_result)
         except Exception as e:
             # TODO fix the logger
             # logger.error({"message": str(e)})

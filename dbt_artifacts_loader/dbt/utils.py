@@ -19,7 +19,9 @@ import os.path
 from enum import Enum
 import datetime
 from datetime import date, datetime
-from typing import Optional
+from typing import Optional, List
+
+from google.cloud import bigquery
 
 
 def get_project_root():
@@ -137,3 +139,29 @@ class DestinationTables(Enum):
             return DestinationTables.RUN_RESULTS_V2
         else:
             return None
+
+
+def get_default_load_job_config(schema: List[bigquery.SchemaField]) -> bigquery.LoadJobConfig:
+    """Get the default load job config"""
+    job_config = bigquery.LoadJobConfig()
+    job_config.write_disposition = bigquery.WriteDisposition.WRITE_APPEND
+    job_config.schema = schema
+    return job_config
+
+
+def load_table_from_json(
+        client: bigquery.Client,
+        job_config: bigquery.LoadJobConfig,
+        table: str,
+        json_rows: list):
+    """Load JSON rows INTO the destination table"""
+    try:
+        job = client.load_table_from_json(destination=table,
+                                          json_rows=json_rows,
+                                          job_config=job_config)
+        return job.result()
+    # TODO handle the exception in details.
+    # pylint: disable=W0703
+    except Exception as e:
+        print(e)
+    return None

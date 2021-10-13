@@ -9,7 +9,7 @@ from enum import Enum
 from typing import Any, Dict, List, Optional, Union
 
 from dbt_artifacts_loader.dbt.base_bigquery_model import BaseBigQueryModel
-from pydantic import Extra
+from pydantic import Extra, Field
 
 
 class BaseArtifactMetadata(BaseBigQueryModel):
@@ -69,6 +69,8 @@ class RunResultsV1(BaseBigQueryModel):
     class Config:
         extra = Extra.forbid
 
+    # The loaded_at field was manually added.
+    loaded_at: datetime = Field(default=datetime.utcnow(), description="The loaded time by dbt-artifacts-loader")
     metadata: BaseArtifactMetadata
     results: List[RunResultOutput]
     elapsed_time: float
