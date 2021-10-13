@@ -13,3 +13,6 @@ vars:
     project: "YOUR-PROJECT-ID"
     dataset: "dbt_artifacts"
 ```
+
+## DAG
+![dbt-artifacts-loader-dag](./docs/images/dbt-artifacts-loader-dag.png)
