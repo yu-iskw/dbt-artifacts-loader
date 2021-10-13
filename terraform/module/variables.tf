@@ -103,3 +103,9 @@ variable "docker_image" {
   description = "The docker image which runs on Cloud Run"
   type        = string
 }
+
+variable "cloud_run_service_name" {
+  description = "The service name of Cloud Run"
+  type        = string
+  default     = "dbt-artifacts-loader"
+}

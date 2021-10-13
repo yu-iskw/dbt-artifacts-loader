@@ -1,5 +1,11 @@
 [
   {
+    "name": "loaded_at",
+    "type": "DATETIME",
+    "mode": "NULLABLE",
+    "description": "The loaded time by dbt-artifacts-loader"
+  },
+  {
     "name": "metadata",
     "type": "RECORD",
     "mode": "NULLABLE",
@@ -359,7 +365,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -380,7 +386,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -904,7 +910,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -925,7 +931,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -1407,7 +1413,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -1428,7 +1434,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -1910,7 +1916,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -1931,7 +1937,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -2419,7 +2425,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -2440,7 +2446,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -2990,7 +2996,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -3011,7 +3017,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -3505,7 +3511,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -3526,7 +3532,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -4008,7 +4014,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -4029,7 +4035,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -4505,7 +4511,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -4526,7 +4532,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -5006,7 +5012,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -5027,7 +5033,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -5465,7 +5471,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -5486,7 +5492,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -5930,7 +5936,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -5951,7 +5957,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -6389,7 +6395,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -6410,7 +6416,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -6916,7 +6922,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -6937,7 +6943,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -7387,7 +7393,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -7408,7 +7414,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -7890,7 +7896,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -7911,7 +7917,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -8904,7 +8910,7 @@
                 "name": "values",
                 "type": "RECORD",
                 "mode": "NULLABLE",
-                "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                 "fields": [
                   {
                     "name": "value",
@@ -8925,7 +8931,7 @@
                 "name": "values",
                 "type": "RECORD",
                 "mode": "NULLABLE",
-                "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                 "fields": [
                   {
                     "name": "value",
@@ -9232,7 +9238,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -9253,7 +9259,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -9777,7 +9783,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -9798,7 +9804,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -10280,7 +10286,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -10301,7 +10307,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -10783,7 +10789,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -10804,7 +10810,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -11292,7 +11298,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -11313,7 +11319,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -11863,7 +11869,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -11884,7 +11890,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -12378,7 +12384,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -12399,7 +12405,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -12881,7 +12887,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -12902,7 +12908,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -13378,7 +13384,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -13399,7 +13405,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -13879,7 +13885,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -13900,7 +13906,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -14338,7 +14344,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -14359,7 +14365,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -14803,7 +14809,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -14824,7 +14830,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -15262,7 +15268,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -15283,7 +15289,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -15789,7 +15795,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -15810,7 +15816,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -16260,7 +16266,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -16281,7 +16287,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -16763,7 +16769,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
@@ -16784,7 +16790,7 @@
                     "name": "values",
                     "type": "RECORD",
                     "mode": "NULLABLE",
-                    "description": "NOTE: The column must be complicated, because BigQuery doesn't allow us to have a nullable array.",
+                    "description": "NOTE: The column must be complicated,because BigQuery doesn't allow us to have a nullable array.",
                     "fields": [
                       {
                         "name": "value",
