@@ -29,6 +29,9 @@ import os
 import json
 import click
 
+from dbt_artifacts_loader.dbt.v2.sources import SourcesV2
+from dbt_artifacts_loader.dbt.v3.manifest import ManifestV3
+from dbt_artifacts_loader.dbt.v3.run_results import RunResultsV3
 from dbt_artifacts_loader.utils import get_project_root
 
 from dbt_artifacts_loader.dbt.v1.catalog import CatalogV1
@@ -69,6 +72,19 @@ resources = [
     {
         "class": RunResultsV2,
         "output": os.path.join(table_schemas_base_path, "v2", "run_results.json"),
+    },
+    {
+        "class": SourcesV2,
+        "output": os.path.join(table_schemas_base_path, "v2", "sources.json"),
+    },
+    # v3
+    {
+        "class": ManifestV3,
+        "output": os.path.join(table_schemas_base_path, "v3", "manifest.json"),
+    },
+    {
+        "class": RunResultsV3,
+        "output": os.path.join(table_schemas_base_path, "v3", "run_results.json"),
     },
 ]
 
