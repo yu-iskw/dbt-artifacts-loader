@@ -33,6 +33,8 @@ from dbt_artifacts_loader.dbt.v1.run_results import RunResultsV1
 # v2
 from dbt_artifacts_loader.dbt.v2.manifest import ManifestV2
 from dbt_artifacts_loader.dbt.v2.run_results import RunResultsV2
+from dbt_artifacts_loader.dbt.v3.manifest import ManifestV3
+from dbt_artifacts_loader.dbt.v3.run_results import RunResultsV3
 
 from dbt_artifacts_loader.utils import get_project_root
 
@@ -65,6 +67,9 @@ class TestBaseBigQueryModel(unittest.TestCase):
         # v2
         self.manifest_v2_obj = ManifestV2(**(load_artifact_json("v2", "manifest.json")))
         self.run_results_v2_obj = RunResultsV2(**(load_artifact_json("v2", "run_results.json")))
+        # v3
+        self.manifest_v3_obj = ManifestV3(**(load_artifact_json("v3", "manifest.json")))
+        self.run_results_v3_obj = RunResultsV3(**(load_artifact_json("v3", "run_results.json")))
 
     def test_to_bigquery_schema(self):
         value = ManifestV1.to_bigquery_schema()
@@ -111,6 +116,28 @@ class TestBaseBigQueryModel(unittest.TestCase):
                                  'env': [],
                                  'generated_at': '2021-10-12T02:03:51',
                                  'invocation_id': 'b890f1d0-e95f-4cf0-b98e-64305db9f389',
+                                 'project_id': '06e5b98c2db46f8a72cc4f66410e9b3b',
+                                 'send_anonymous_usage_stats': False,
+                                 'user_id': None
+                             })
+
+    def test_to_dict_on_run_results_v3(self):
+        manifest_obj_dict = self.run_results_v3_obj.to_dict(depth=0)
+        self.assertEqual(manifest_obj_dict["results"][0]["status"], "success")
+
+    def test_to_dict_on_manifest_v3(self):
+        manifest_obj_dict = self.manifest_v3_obj.to_dict(depth=0)
+        expected = ['loaded_at', 'metadata', 'nodes', 'sources', 'macros', 'docs', 'exposures',
+                    'selectors', 'disabled', 'parent_map', 'child_map']
+        self.assertListEqual(list(manifest_obj_dict.keys()), expected)
+        self.assertDictEqual(self.manifest_v3_obj.metadata.to_dict(depth=0),
+                             {
+                                 'adapter_type': 'bigquery',
+                                 'dbt_schema_version': 'https://schemas.getdbt.com/dbt/manifest/v3.json',
+                                 'dbt_version': '0.21.0',
+                                 'env': [],
+                                 'generated_at': '2021-11-08T09:31:10',
+                                 'invocation_id': '82d7358c-727f-4eef-88d2-26be34c225b1',
                                  'project_id': '06e5b98c2db46f8a72cc4f66410e9b3b',
                                  'send_anonymous_usage_stats': False,
                                  'user_id': None
