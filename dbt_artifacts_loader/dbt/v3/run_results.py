@@ -125,6 +125,10 @@ class RunResultsV3(BaseBigQueryModel):
     class Config:
         extra = Extra.forbid
 
+    # The loaded_at field was manually added.
+    loaded_at: datetime = Field(default=datetime.utcnow(),
+                                description="The loaded time by dbt-artifacts-loader")
+
     metadata: BaseArtifactMetadata
     results: List[RunResultOutput]
     elapsed_time: float
@@ -135,9 +139,6 @@ class SourceFreshnessOutput(BaseBigQueryModel):
     class Config:
         extra = Extra.forbid
 
-    # The loaded_at field was manually added.
-    loaded_at: datetime = Field(default=datetime.utcnow(),
-                                description="The loaded time by dbt-artifacts-loader")
     unique_id: str
     max_loaded_at: datetime
     snapshotted_at: datetime
