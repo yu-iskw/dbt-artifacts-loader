@@ -2,16 +2,16 @@
 version: 2
 
 models:
-  - name: data_test_run_results_v2
+  - name: source_manifests_v3
     description: |
-      This is a denormalized data test run results v2.
+      This is a table to expand `manifest_v3.sources.value`.
+      The table exclude duplicates.
 
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
             - metadata.invocation_id
             - unique_id
-            - timing_name
 
     columns:
       - name: metadata.invocation_id
@@ -19,11 +19,6 @@ models:
         tests:
           - not_null
       - name: unique_id
-        description: "unique test ID"
+        description: "unique ID"
         tests:
           - not_null
-      - name: timing_name
-        description: "timing name"
-        tests:
-          - accepted_values:
-              values: ["execute"]

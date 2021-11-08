@@ -2,9 +2,10 @@
 version: 2
 
 models:
-  - name: data_test_run_results_v2
+  - name: expanded_run_results_v3
     description: |
-      This is a denormalized data test run results v2.
+      This is an expanded `run_results_v3`.
+      If there are duplicated results, the latest results are taken.
 
     tests:
       - dbt_utils.unique_combination_of_columns:
@@ -22,8 +23,3 @@ models:
         description: "unique test ID"
         tests:
           - not_null
-      - name: timing_name
-        description: "timing name"
-        tests:
-          - accepted_values:
-              values: ["execute"]
