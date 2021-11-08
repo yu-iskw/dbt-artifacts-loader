@@ -1,0 +1,14 @@
+---
+version: 2
+
+sources:
+  - name: "{{ var('dbt_artifacts_loader')['dataset'] }}"
+    database: "{{ var('dbt_artifacts_loader')['project'] }}"
+    tables:
+      - name: sources_v2
+        identifier: sources_v2
+
+        columns:
+          - name: loaded_at
+            tests:
+              - not_null

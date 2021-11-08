@@ -1,0 +1,146 @@
+[
+  {
+    "name": "loaded_at",
+    "type": "DATETIME",
+    "mode": "NULLABLE",
+    "description": "The loaded time by dbt-artifacts-loader"
+  },
+  {
+    "name": "metadata",
+    "type": "RECORD",
+    "mode": "NULLABLE",
+    "description": "",
+    "fields": [
+      {
+        "name": "dbt_schema_version",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": ""
+      },
+      {
+        "name": "dbt_version",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": ""
+      },
+      {
+        "name": "generated_at",
+        "type": "DATETIME",
+        "mode": "NULLABLE",
+        "description": ""
+      },
+      {
+        "name": "invocation_id",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": ""
+      },
+      {
+        "name": "env",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "description": "",
+        "fields": [
+          {
+            "name": "key",
+            "type": "STRING",
+            "mode": "NULLABLE"
+          },
+          {
+            "name": "value",
+            "type": "STRING",
+            "mode": "NULLABLE"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "results",
+    "type": "RECORD",
+    "mode": "REPEATED",
+    "description": "",
+    "fields": [
+      {
+        "name": "status",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": ""
+      },
+      {
+        "name": "timing",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "description": "",
+        "fields": [
+          {
+            "name": "name",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": ""
+          },
+          {
+            "name": "started_at",
+            "type": "DATETIME",
+            "mode": "NULLABLE",
+            "description": ""
+          },
+          {
+            "name": "completed_at",
+            "type": "DATETIME",
+            "mode": "NULLABLE",
+            "description": ""
+          }
+        ]
+      },
+      {
+        "name": "thread_id",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": ""
+      },
+      {
+        "name": "execution_time",
+        "type": "FLOAT64",
+        "mode": "NULLABLE",
+        "description": ""
+      },
+      {
+        "name": "adapter_response",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": "[raw JSON string]"
+      },
+      {
+        "name": "message",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": ""
+      },
+      {
+        "name": "failures",
+        "type": "INT64",
+        "mode": "NULLABLE",
+        "description": ""
+      },
+      {
+        "name": "unique_id",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "name": "elapsed_time",
+    "type": "FLOAT64",
+    "mode": "NULLABLE",
+    "description": ""
+  },
+  {
+    "name": "args",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "[raw JSON string]"
+  }
+]

@@ -13,7 +13,7 @@ resource "google_pubsub_subscription" "dbt_artifacts_notification_to_bigquery" {
   }
 
   dead_letter_policy {
-    dead_letter_topic = google_pubsub_topic.dbt_artifacts_notification_deadletter.id
+    dead_letter_topic     = google_pubsub_topic.dbt_artifacts_notification_deadletter.id
     max_delivery_attempts = 5
   }
 
