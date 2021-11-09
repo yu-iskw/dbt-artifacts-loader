@@ -70,9 +70,9 @@ def is_available(artifact_type: ArtifactsTypes):
         ArtifactsTypes.RUN_RESULTS_V1, ArtifactsTypes.SOURCES_V1,
         # v2
         ArtifactsTypes.RUN_RESULTS_V2, ArtifactsTypes.MANIFEST_V2,
-        ArtifactsTypes.SOURCES_V1,
+        ArtifactsTypes.SOURCES_V2,
         # v3
-        ArtifactsTypes.RUN_RESULTS_V2, ArtifactsTypes.MANIFEST_V2,
+        ArtifactsTypes.RUN_RESULTS_V3, ArtifactsTypes.MANIFEST_V3,
     ]
     if artifact_type in available_artifact_types:
         return True
@@ -126,13 +126,22 @@ def insert_artifact_v2(request_body: RequestBody, settings: config.APISettings =
     if data["contentType"] != "application/json":
         return {"message": "gs://{}/{} is not application/json".format(bucket, name)}
 
+    # Download the file from GCS
     try:
         print("Download gs://{}/{}".format(bucket, name))
         artifact_json_text = download_gcs_object_as_text(project=client_project, bucket=bucket, name=name)
         print("artifact_json_text: {}".format(artifact_json_text))
+    except Exception as e:
+        detail = f"Can not download the GCS object gs://{bucket}/{name}: {str(e)}"
+        print(detail)
+        raise HTTPException(status_code=500, detail=detail) from e
+
+    # Instantiate the JSON object
+    try:
         artifact_json = json.loads(artifact_json_text)
     except Exception as e:
-        detail = "Can not download the GCS object gs://{}/{}: {}".format(bucket, name, str(e))
+        detail = "Can not load the JSON text gs://{}/{}: {}".format(bucket, name, str(e))
+        print(detail)
         raise HTTPException(status_code=500, detail=detail) from e
 
     # Check if the JSON file is one of dbt artifacts types.
@@ -140,11 +149,13 @@ def insert_artifact_v2(request_body: RequestBody, settings: config.APISettings =
         dbt_schema_version = get_dbt_schema_version(artifact_json=artifact_json)
     except ValueError as e:
         detail = f"{name} is a non-supported JSON file."
+        print(detail)
         raise HTTPException(status_code=500, detail=detail) from e
     print(dbt_schema_version)
     artifact_type = ArtifactsTypes.get_artifact_type_by_id(dbt_schema_version=dbt_schema_version)
     if is_available(artifact_type=artifact_type) is False:
         detail = "gs://{}/{} is not a supported artifact".format(bucket, name)
+        print(detail)
         raise HTTPException(status_code=500, detail=detail)
 
     # Insert a dbt artifact JSON
@@ -173,6 +184,7 @@ def insert_artifact_v2(request_body: RequestBody, settings: config.APISettings =
             # TODO fix the logger
             # logger.error({"message": str(e)})
             detail = "Can not insert artifact to {}: {}".format(full_destination_table_id, str(e))
+            print(detail)
             raise HTTPException(status_code=500, detail=detail) from e
 
     # Construct a response
