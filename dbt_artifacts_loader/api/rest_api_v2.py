@@ -70,6 +70,9 @@ def is_available(artifact_type: ArtifactsTypes):
         ArtifactsTypes.RUN_RESULTS_V1, ArtifactsTypes.SOURCES_V1,
         # v2
         ArtifactsTypes.RUN_RESULTS_V2, ArtifactsTypes.MANIFEST_V2,
+        ArtifactsTypes.SOURCES_V1,
+        # v3
+        ArtifactsTypes.RUN_RESULTS_V2, ArtifactsTypes.MANIFEST_V2,
     ]
     if artifact_type in available_artifact_types:
         return True
@@ -141,7 +144,7 @@ def insert_artifact_v2(request_body: RequestBody, settings: config.APISettings =
     print(dbt_schema_version)
     artifact_type = ArtifactsTypes.get_artifact_type_by_id(dbt_schema_version=dbt_schema_version)
     if is_available(artifact_type=artifact_type) is False:
-        detail = "gs://{}/{} is not a dbt artifact or is not supported".format(bucket, name)
+        detail = "gs://{}/{} is not a supported artifact".format(bucket, name)
         raise HTTPException(status_code=500, detail=detail)
 
     # Insert a dbt artifact JSON

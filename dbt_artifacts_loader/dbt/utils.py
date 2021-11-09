@@ -74,6 +74,10 @@ class ArtifactsTypes(Enum):
     # V2
     MANIFEST_V2 = "ManifestV2"
     RUN_RESULTS_V2 = "RunResultsV2"
+    SOURCES_V2 = "SourcesV2"
+    # V3
+    MANIFEST_V3 = "ManifestV3"
+    RUN_RESULTS_V3 = "RunResultsV3"
 
     @classmethod
     def get_artifact_type_by_id(cls, dbt_schema_version: str) -> Optional["ArtifactsTypes"]:
@@ -99,6 +103,13 @@ class ArtifactsTypes(Enum):
             return ArtifactsTypes.MANIFEST_V2
         elif dbt_schema_version == "https://schemas.getdbt.com/dbt/run-results/v2.json":
             return ArtifactsTypes.RUN_RESULTS_V2
+        elif dbt_schema_version == "https://schemas.getdbt.com/dbt/sources/v2.json":
+            return ArtifactsTypes.SOURCES_V2
+        # V3
+        elif dbt_schema_version == "https://schemas.getdbt.com/dbt/manifest/v3.json":
+            return ArtifactsTypes.MANIFEST_V3
+        elif dbt_schema_version == "https://schemas.getdbt.com/dbt/run-results/v3.json":
+            return ArtifactsTypes.RUN_RESULTS_V3
         else:
             return None
 
@@ -112,6 +123,10 @@ class DestinationTables(Enum):
     # V2
     MANIFEST_V2 = "manifest_v2"
     RUN_RESULTS_V2 = "run_results_v2"
+    SOURCES_V2 = "sources_v2"
+    # V3
+    MANIFEST_V3 = "manifest_v3"
+    RUN_RESULTS_V3 = "run_results_v3"
 
     @classmethod
     def get_destination_table(cls, artifact_type: ArtifactsTypes):
@@ -137,6 +152,13 @@ class DestinationTables(Enum):
             return DestinationTables.MANIFEST_V2
         elif artifact_type == ArtifactsTypes.RUN_RESULTS_V2:
             return DestinationTables.RUN_RESULTS_V2
+        elif artifact_type == ArtifactsTypes.SOURCES_V2:
+            return DestinationTables.SOURCES_V2
+        # V3
+        elif artifact_type == ArtifactsTypes.MANIFEST_V3:
+            return DestinationTables.MANIFEST_V3
+        elif artifact_type == ArtifactsTypes.RUN_RESULTS_V3:
+            return DestinationTables.RUN_RESULTS_V3
         else:
             return None
 
