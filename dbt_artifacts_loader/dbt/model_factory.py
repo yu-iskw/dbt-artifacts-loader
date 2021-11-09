@@ -21,6 +21,9 @@ from dbt_artifacts_loader.dbt.v1.run_results import RunResultsV1
 from dbt_artifacts_loader.dbt.v1.sources import SourcesV1
 from dbt_artifacts_loader.dbt.v2.manifest import ManifestV2
 from dbt_artifacts_loader.dbt.v2.run_results import RunResultsV2
+from dbt_artifacts_loader.dbt.v2.sources import SourcesV2
+from dbt_artifacts_loader.dbt.v3.manifest import ManifestV3
+from dbt_artifacts_loader.dbt.v3.run_results import RunResultsV3
 
 
 def get_model_class(artifact_type: ArtifactsTypes):
@@ -46,4 +49,11 @@ def get_model_class(artifact_type: ArtifactsTypes):
         return ManifestV2
     elif artifact_type == ArtifactsTypes.RUN_RESULTS_V2:
         return RunResultsV2
+    elif artifact_type == ArtifactsTypes.SOURCES_V2:
+        return SourcesV2
+    # v3
+    elif artifact_type == ArtifactsTypes.MANIFEST_V3:
+        return ManifestV3
+    elif artifact_type == ArtifactsTypes.RUN_RESULTS_V3:
+        return RunResultsV3
     raise ValueError(f"No such an artifact {artifact_type}")
