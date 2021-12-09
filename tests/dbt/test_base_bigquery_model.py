@@ -161,8 +161,8 @@ class TestBaseBigQueryModel(unittest.TestCase):
                              {
                                  'dbt_schema_version': 'https://schemas.getdbt.com/dbt/manifest/v4.json',
                                  'dbt_version': '1.0.0',
-                                 'generated_at': '2021-12-07T10:49:17',
-                                 'invocation_id': '5b7ab67d-5559-49b8-9373-35eab8b9f2f7',
+                                 'generated_at': '2021-12-09T13:45:59',
+                                 'invocation_id': 'a9750daa-d2e7-42aa-8a86-f57a27373b08',
                                  'env': [],
                                  'project_id': '06e5b98c2db46f8a72cc4f66410e9b3b',
                                  'user_id': None,

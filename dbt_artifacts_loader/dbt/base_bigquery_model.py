@@ -364,6 +364,40 @@ def from_dict_type(model_field: ModelField, depth: int):
             description=ModelFieldUtils.get_description(model_field=model_field),
         )
         return schema_field
+    # Expect Dict[str, List[...]]
+    elif TypingUtils.is_list(dict_value_type):
+        # Expect Dict[str, List[Union[...]]]
+        _nested_type_in_list = TypingUtils.get_nested_types_in_list(dict_value_type)
+        if TypingUtils.is_union(_nested_type_in_list):
+            __nested_type_in_union = TypingUtils.get_nested_types_in_union(_nested_type_in_list)
+            # Expect Dict[str, List[Union[BaseBigQueryModel, ...]]]
+            if all([BaseBigQueryModel.is_subclass(t) for t in __nested_type_in_union]):
+                __fields = convert_union_type_to_schema_field(union_type=_nested_type_in_list,
+                                                              name="values", description="", depth=depth + 1).fields
+                schema_field = bigquery.SchemaField(
+                    name=model_field.name,
+                    field_type="RECORD",
+                    mode="REPEATED",
+                    fields=[
+                        bigquery.SchemaField(name="key", field_type="STRING", mode="NULLABLE"),
+                        bigquery.SchemaField(name="values",
+                                             field_type="RECORD",
+                                             mode="NULLABLE",
+                                             fields=__fields),
+                    ],
+                    description=ModelFieldUtils.get_description(model_field=model_field),
+                )
+                return schema_field
+                # return [{
+                #     "key": k,
+                #     "values": adjust_union_value(property_value=v,
+                #                                  union_type=_nested_type_in_list,
+                #                                  depth=depth + 1)
+                # } for k, v in property_value.items()]
+            else:
+                raise ValueError(model_field)
+        else:
+            raise ValueError(model_field)
     # Convert to ARRAY<STRUCT<key STRING, value STRUCT<T>>>
     elif BaseBigQueryModel.is_subclass(dict_value_type):
         fields = dict_value_type.to_bigquery_schema(depth=depth + 1)
@@ -538,9 +572,7 @@ def adjust_dict_property(property_value: Any, model_field: ModelField, depth: in
             if all([BaseBigQueryModel.is_subclass(t) for t in __nested_type_in_union]):
                 return [{
                     "key": k,
-                    "values": adjust_union_value(property_value=v,
-                                                 union_type=_nested_type_in_list,
-                                                 depth=depth + 1)
+                    "values": [nested_model.to_dict(depth=depth + 1) for nested_model in v],
                 } for k, v in property_value.items()]
             else:
                 raise ValueError(property_value, model_field)
