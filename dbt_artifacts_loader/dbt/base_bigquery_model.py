@@ -367,11 +367,14 @@ def from_dict_type(model_field: ModelField, depth: int):
     # Expect Dict[str, List[...]]
     elif TypingUtils.is_list(dict_value_type):
         # Expect Dict[str, List[Union[...]]]
+        # pylint: disable=C0103
         _nested_type_in_list = TypingUtils.get_nested_types_in_list(dict_value_type)
         if TypingUtils.is_union(_nested_type_in_list):
+            # pylint: disable=C0103
             __nested_type_in_union = TypingUtils.get_nested_types_in_union(_nested_type_in_list)
             # Expect Dict[str, List[Union[BaseBigQueryModel, ...]]]
-            if all([BaseBigQueryModel.is_subclass(t) for t in __nested_type_in_union]):
+            if all((BaseBigQueryModel.is_subclass(t) for t in __nested_type_in_union)):
+                # pylint: disable=C0103
                 __fields = convert_union_type_to_schema_field(union_type=_nested_type_in_list,
                                                               name="values", description="", depth=depth + 1).fields
                 schema_field = bigquery.SchemaField(
@@ -559,11 +562,13 @@ def adjust_dict_property(property_value: Any, model_field: ModelField, depth: in
     # Expect Dict[str, List[...]]
     elif TypingUtils.is_list(dict_value_type):
         # Expect Dict[str, List[Union[...]]]
+        # pylint: disable=C0103
         _nested_type_in_list = TypingUtils.get_nested_types_in_list(dict_value_type)
         if TypingUtils.is_union(_nested_type_in_list):
+            # pylint: disable=C0103
             __nested_type_in_union = TypingUtils.get_nested_types_in_union(_nested_type_in_list)
             # Expect Dict[str, List[Union[BaseBigQueryModel, ...]]]
-            if all([BaseBigQueryModel.is_subclass(t) for t in __nested_type_in_union]):
+            if all((BaseBigQueryModel.is_subclass(t) for t in __nested_type_in_union)):
                 return [{
                     "key": k,
                     "values": [
