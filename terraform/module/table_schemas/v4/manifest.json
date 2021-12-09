@@ -10104,7 +10104,7 @@
       {
         "name": "values",
         "type": "RECORD",
-        "mode": "NULLABLE",
+        "mode": "REPEATED",
         "fields": [
           {
             "name": "CompiledAnalysisNode",

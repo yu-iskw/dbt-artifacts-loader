@@ -382,18 +382,12 @@ def from_dict_type(model_field: ModelField, depth: int):
                         bigquery.SchemaField(name="key", field_type="STRING", mode="NULLABLE"),
                         bigquery.SchemaField(name="values",
                                              field_type="RECORD",
-                                             mode="NULLABLE",
+                                             mode="REPEATED",
                                              fields=__fields),
                     ],
                     description=ModelFieldUtils.get_description(model_field=model_field),
                 )
                 return schema_field
-                # return [{
-                #     "key": k,
-                #     "values": adjust_union_value(property_value=v,
-                #                                  union_type=_nested_type_in_list,
-                #                                  depth=depth + 1)
-                # } for k, v in property_value.items()]
             else:
                 raise ValueError(model_field)
         else:
@@ -572,7 +566,11 @@ def adjust_dict_property(property_value: Any, model_field: ModelField, depth: in
             if all([BaseBigQueryModel.is_subclass(t) for t in __nested_type_in_union]):
                 return [{
                     "key": k,
-                    "values": [nested_model.to_dict(depth=depth + 1) for nested_model in v],
+                    "values": [
+                        {
+                            nested_model.get_class_name(): nested_model.to_dict(depth=depth + 1)
+                        }
+                        for nested_model in v],
                 } for k, v in property_value.items()]
             else:
                 raise ValueError(property_value, model_field)
