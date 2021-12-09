@@ -15,24 +15,9 @@
 #  limitations under the License.
 #
 
-#
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-#  Unless required by applicable law or agreed to in writing, software
-#  distributed under the License is distributed on an "AS IS" BASIS,
-#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-#  See the License for the specific language governing permissions and
-#  limitations under the License.
-#
 import os
 import json
 import click
-
-from dbt_artifacts_loader.dbt.v2.sources import SourcesV2
-from dbt_artifacts_loader.dbt.v3.manifest import ManifestV3
-from dbt_artifacts_loader.dbt.v3.run_results import RunResultsV3
-from dbt_artifacts_loader.utils import get_project_root
 
 from dbt_artifacts_loader.dbt.v1.catalog import CatalogV1
 from dbt_artifacts_loader.dbt.v1.manifest import ManifestV1
@@ -41,6 +26,17 @@ from dbt_artifacts_loader.dbt.v1.sources import SourcesV1
 
 from dbt_artifacts_loader.dbt.v2.manifest import ManifestV2
 from dbt_artifacts_loader.dbt.v2.run_results import RunResultsV2
+from dbt_artifacts_loader.dbt.v2.sources import SourcesV2
+
+from dbt_artifacts_loader.dbt.v3.manifest import ManifestV3
+from dbt_artifacts_loader.dbt.v3.run_results import RunResultsV3
+from dbt_artifacts_loader.dbt.v3.sources import SourcesV3
+
+from dbt_artifacts_loader.dbt.v4.manifest import ManifestV4
+from dbt_artifacts_loader.dbt.v4.run_results import RunResultsV4
+
+
+from dbt_artifacts_loader.utils import get_project_root
 
 
 resources_base_path = os.path.join(get_project_root(), "dbt_artifacts_loader", "resources")
@@ -85,6 +81,19 @@ resources = [
     {
         "class": RunResultsV3,
         "output": os.path.join(table_schemas_base_path, "v3", "run_results.json"),
+    },
+    {
+        "class": SourcesV3,
+        "output": os.path.join(table_schemas_base_path, "v3", "sources.json"),
+    },
+    # v4
+    {
+        "class": ManifestV4,
+        "output": os.path.join(table_schemas_base_path, "v4", "manifest.json"),
+    },
+    {
+        "class": RunResultsV4,
+        "output": os.path.join(table_schemas_base_path, "v4", "run_results.json"),
     },
 ]
 
