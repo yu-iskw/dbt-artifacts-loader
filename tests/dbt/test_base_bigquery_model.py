@@ -35,6 +35,8 @@ from dbt_artifacts_loader.dbt.v2.manifest import ManifestV2
 from dbt_artifacts_loader.dbt.v2.run_results import RunResultsV2
 from dbt_artifacts_loader.dbt.v3.manifest import ManifestV3
 from dbt_artifacts_loader.dbt.v3.run_results import RunResultsV3
+from dbt_artifacts_loader.dbt.v4.manifest import ManifestV4
+from dbt_artifacts_loader.dbt.v4.run_results import RunResultsV4
 
 from dbt_artifacts_loader.utils import get_project_root
 
@@ -70,6 +72,9 @@ class TestBaseBigQueryModel(unittest.TestCase):
         # v3
         self.manifest_v3_obj = ManifestV3(**(load_artifact_json("v3", "manifest.json")))
         self.run_results_v3_obj = RunResultsV3(**(load_artifact_json("v3", "run_results.json")))
+        # v4
+        self.manifest_v4_obj = ManifestV4(**(load_artifact_json("v4", "manifest.json")))
+        self.run_results_v4_obj = RunResultsV4(**(load_artifact_json("v4", "run_results.json")))
 
     def test_to_bigquery_schema(self):
         value = ManifestV1.to_bigquery_schema()
@@ -141,4 +146,26 @@ class TestBaseBigQueryModel(unittest.TestCase):
                                  'project_id': '06e5b98c2db46f8a72cc4f66410e9b3b',
                                  'send_anonymous_usage_stats': False,
                                  'user_id': None
+                             })
+
+    def test_to_dict_on_run_results_v4(self):
+        manifest_obj_dict = self.run_results_v4_obj.to_dict(depth=0)
+        self.assertEqual(manifest_obj_dict["results"][0]["status"], "success")
+
+    def test_to_dict_on_manifest_v4(self):
+        manifest_obj_dict = self.manifest_v4_obj.to_dict(depth=0)
+        expected = ['loaded_at', 'metadata', 'nodes', 'sources', 'macros', 'docs', 'exposures',
+                    'metrics', 'selectors', 'disabled', 'parent_map', 'child_map']
+        self.assertListEqual(list(manifest_obj_dict.keys()), expected)
+        self.assertDictEqual(self.manifest_v4_obj.metadata.to_dict(depth=0),
+                             {
+                                 'dbt_schema_version': 'https://schemas.getdbt.com/dbt/manifest/v4.json',
+                                 'dbt_version': '1.0.0',
+                                 'generated_at': '2021-12-09T13:45:59',
+                                 'invocation_id': 'a9750daa-d2e7-42aa-8a86-f57a27373b08',
+                                 'env': [],
+                                 'project_id': '06e5b98c2db46f8a72cc4f66410e9b3b',
+                                 'user_id': None,
+                                 'send_anonymous_usage_stats': False,
+                                 'adapter_type': 'bigquery'
                              })

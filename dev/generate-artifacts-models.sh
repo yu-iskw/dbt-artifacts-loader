@@ -73,3 +73,20 @@ datamodel-codegen  --input-file-type jsonschema \
   --class-name "RunResultsV3" \
   --input "dbt_artifacts_loader/resources/v3/run-results.json" \
   --output "dbt_artifacts_loader/dbt/v3/run_results.py"
+datamodel-codegen  --input-file-type jsonschema \
+  --base-class "$base_class" \
+  --class-name "SourcesV3" \
+  --input "dbt_artifacts_loader/resources/v3/sources.json" \
+  --output "dbt_artifacts_loader/dbt/v3/sources.py"
+
+# v4
+datamodel-codegen  --input-file-type jsonschema \
+  --base-class "$base_class" \
+  --class-name "ManifestV4" \
+  --input "dbt_artifacts_loader/resources/v4/manifest.json" \
+  --output "dbt_artifacts_loader/dbt/v4/manifest.py"
+datamodel-codegen  --input-file-type jsonschema \
+  --base-class "$base_class" \
+  --class-name "RunResultsV4" \
+  --input "dbt_artifacts_loader/resources/v4/run-results.json" \
+  --output "dbt_artifacts_loader/dbt/v4/run_results.py"
