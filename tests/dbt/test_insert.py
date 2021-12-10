@@ -26,11 +26,12 @@ from dbt_artifacts_loader.dbt.utils import get_default_load_job_config, load_tab
 from dbt_artifacts_loader.dbt.v1.catalog import CatalogV1
 from dbt_artifacts_loader.dbt.v1.manifest import ManifestV1
 from dbt_artifacts_loader.dbt.v1.run_results import RunResultsV1
-# v2
 from dbt_artifacts_loader.dbt.v2.manifest import ManifestV2
 from dbt_artifacts_loader.dbt.v2.run_results import RunResultsV2
 from dbt_artifacts_loader.dbt.v3.manifest import ManifestV3
 from dbt_artifacts_loader.dbt.v3.run_results import RunResultsV3
+from dbt_artifacts_loader.dbt.v4.manifest import ManifestV4
+from dbt_artifacts_loader.dbt.v4.run_results import RunResultsV4
 
 from dbt_artifacts_loader.utils import get_project_root
 
@@ -55,6 +56,9 @@ class TestInsert(unittest.TestCase):
         # v3
         self.manifest_v3_obj = ManifestV3(**(load_artifact_json("v3", "manifest.json")))
         self.run_results_v3_obj = RunResultsV3(**(load_artifact_json("v3", "run_results.json")))
+        # v4
+        self.manifest_v4_obj = ManifestV4(**(load_artifact_json("v4", "manifest.json")))
+        self.run_results_v4_obj = RunResultsV4(**(load_artifact_json("v4", "run_results.json")))
 
     @unittest.SkipTest
     def test_insert(self):
@@ -121,5 +125,23 @@ class TestInsert(unittest.TestCase):
         job_result = load_table_from_json(client=client,
                                           table=table,
                                           json_rows=[self.run_results_v3_obj.to_dict(depth=0)],
+                                          job_config=job_config)
+        self.assertEqual(job_result.errors, None)
+        # manifest_v4
+        table = f"{project_id}.dbt_artifacts.manifest_v4"
+        schema = self.manifest_v4_obj.__class__.to_bigquery_schema(depth=0)
+        job_config = get_default_load_job_config(schema=schema)
+        job_result = load_table_from_json(client=client,
+                                          table=table,
+                                          json_rows=[self.manifest_v4_obj.to_dict(depth=0)],
+                                          job_config=job_config)
+        self.assertEqual(job_result.errors, None)
+        # run_results_v4
+        table = f"{project_id}.dbt_artifacts.run_results_v4"
+        schema = self.run_results_v4_obj.__class__.to_bigquery_schema(depth=0)
+        job_config = get_default_load_job_config(schema=schema)
+        job_result = load_table_from_json(client=client,
+                                          table=table,
+                                          json_rows=[self.run_results_v4_obj.to_dict(depth=0)],
                                           job_config=job_config)
         self.assertEqual(job_result.errors, None)
