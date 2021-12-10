@@ -31,8 +31,9 @@ from google.cloud import bigquery
 from dbt_artifacts_loader.dbt.model_factory import get_model_class
 from dbt_artifacts_loader.utils import download_gcs_object_as_text
 from dbt_artifacts_loader.api import config
-from dbt_artifacts_loader.dbt.utils import get_dbt_schema_version, get_default_load_job_config, load_table_from_json
-from dbt_artifacts_loader.dbt.utils import ArtifactsTypes, DestinationTables
+from dbt_artifacts_loader.dbt.utils import get_dbt_schema_version, get_default_load_job_config, load_table_from_json, \
+    get_artifact_type_by_id, get_destination_table
+from dbt_artifacts_loader.dbt.utils import ArtifactsTypes
 
 app = FastAPI()
 
@@ -73,6 +74,9 @@ def is_available(artifact_type: ArtifactsTypes):
         ArtifactsTypes.SOURCES_V2,
         # v3
         ArtifactsTypes.RUN_RESULTS_V3, ArtifactsTypes.MANIFEST_V3,
+        ArtifactsTypes.SOURCES_V3,
+        # v4
+        ArtifactsTypes.RUN_RESULTS_V4, ArtifactsTypes.MANIFEST_V4,
     ]
     if artifact_type in available_artifact_types:
         return True
@@ -152,14 +156,14 @@ def insert_artifact_v2(request_body: RequestBody, settings: config.APISettings =
         print(detail)
         raise HTTPException(status_code=500, detail=detail) from e
     print(dbt_schema_version)
-    artifact_type = ArtifactsTypes.get_artifact_type_by_id(dbt_schema_version=dbt_schema_version)
+    artifact_type = get_artifact_type_by_id(dbt_schema_version=dbt_schema_version)
     if is_available(artifact_type=artifact_type) is False:
         detail = "gs://{}/{} is not a supported artifact".format(bucket, name)
         print(detail)
         raise HTTPException(status_code=500, detail=detail)
 
     # Insert a dbt artifact JSON
-    destination_table_id = DestinationTables.get_destination_table(artifact_type=artifact_type)
+    destination_table_id = get_destination_table(artifact_type=artifact_type)
 
     full_destination_table_id = "{}.{}.{}".format(
         destination_project, destination_dataset, destination_table_id.value)
