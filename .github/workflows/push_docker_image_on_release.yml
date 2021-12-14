@@ -1,0 +1,60 @@
+name: "Push the docker image to the QA, staging and production"
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  set-release-tag-name:
+    runs-on: ubuntu-latest
+    outputs:
+      release_tag_name: ${{ steps.set-release-tag-name.outputs.release_tag_name }}
+    steps:
+      - name: Set release tag name
+        id: set-release-tag-name
+        run: |
+          release_tag_name="${{ github.event.release.tag_name }}"
+          echo "::set-output name=release_tag_name::${release_tag_name}"
+
+  push:
+    needs: ["set-release-tag-name"]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - DOCKER_IMAGE_BASE: "asia-northeast1-docker.pkg.dev/ubie-jp-data-engineering-qa/internal-tools/dbt-artifacts-loader"
+            PROJECT_ID: "ubie-jp-data-engineering-qa"
+          - DOCKER_IMAGE_BASE: "asia-northeast1-docker.pkg.dev/ubie-jp-data-engineering-stg/internal-tools/dbt-artifacts-loader"
+            PROJECT_ID: "ubie-jp-data-engineering-stg"
+          - DOCKER_IMAGE_BASE: "asia-northeast1-docker.pkg.dev/ubie-jp-data-engineering-prd/internal-tools/dbt-artifacts-loader"
+            PROJECT_ID: "ubie-jp-data-engineering-prd"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          service_account_email: ${{ secrets.SERVICE_ACCOUNT_EMAIL }}
+          service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+          export_default_credentials: true
+      - name: Authentificate google container registrory
+        run: |
+          gcloud config set project ${{ matrix.PROJECT_ID }}
+          gcloud auth configure-docker asia-northeast1-docker.pkg.dev
+      - name: Build a docker image
+        run: |
+          release_tag_name="${{needs.set-release-tag-name.outputs.release_tag_name}}"
+          docker_image="${{ matrix.DOCKER_IMAGE_BASE }}:${release_tag_name}"
+          bash ci/build_docker.sh "$docker_image"
+      - name: Push the docker image
+        run: |
+          release_tag_name="${{needs.set-release-tag-name.outputs.release_tag_name}}"
+          docker_image="${{ matrix.DOCKER_IMAGE_BASE }}:${release_tag_name}"
+          docker push "$docker_image"
+      # TODO resolve the authentication issue
+      # - name: Scan the docker image
+      #   run: |
+      #     release_tag_name="${{needs.set-release-tag-name.outputs.release_tag_name}}"
+      #     docker_image="${{ matrix.DOCKER_IMAGE_BASE }}:${release_tag_name}"
+      #     bash ci/scan_docker_image.sh "$docker_image"
