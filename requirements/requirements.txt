@@ -11,7 +11,7 @@ python-dotenv==0.17.0
 python-json-logger==2.0.1
 
 # dbt
-dbt-bigquery==0.20.1
+dbt-bigquery==1.0.0
 
 # Utils
 datamodel-code-generator==0.11.13

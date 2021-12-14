@@ -32,4 +32,4 @@ else
 fi
 
 # Install required modules.
-$PIP install --no-cache-dir --force-reinstall -r "${MODULE_DIR}/requirements/requirements-dev.txt"
+$PIP install --no-cache-dir --force-reinstall --use-deprecated=legacy-resolver -r "${MODULE_DIR}/requirements/requirements-dev.txt"
