@@ -1,5 +1,6 @@
-DOCKER_IMAGE_BASE = gcr.io/ubie-yu-sandbox/dbt-artifacts-loader
-TAG = "v1.2.0-dev2"
+PROJECT_ID = YOUR-GCP-PROJECT
+TAG = v1.2.0-dev2
+DOCKER_IMAGE_BASE = gcr.io/$(PROJECT_ID)/dbt-artifacts-loader
 
 
 .PHONEY: setup
