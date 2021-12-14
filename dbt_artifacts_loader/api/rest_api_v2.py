@@ -28,12 +28,16 @@ from pydantic import Field
 
 from google.cloud import bigquery
 
-from dbt_artifacts_loader.dbt.model_factory import get_model_class
+from dbt_artifacts_loader.dbt.version_map import ArtifactsTypes
 from dbt_artifacts_loader.utils import download_gcs_object_as_text
+from dbt_artifacts_loader.dbt.utils import (
+    get_dbt_schema_version,
+    get_default_load_job_config,
+    load_table_from_json,
+    get_artifact_type_by_id,
+    get_destination_table,
+    get_model_class)
 from dbt_artifacts_loader.api import config
-from dbt_artifacts_loader.dbt.utils import get_dbt_schema_version, get_default_load_job_config, load_table_from_json, \
-    get_artifact_type_by_id, get_destination_table
-from dbt_artifacts_loader.dbt.utils import ArtifactsTypes
 
 app = FastAPI()
 

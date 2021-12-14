@@ -19,9 +19,21 @@ import os
 import unittest
 import json
 
-
+from dbt_artifacts_loader.dbt.v1.catalog import CatalogV1
+from dbt_artifacts_loader.dbt.v1.manifest import ManifestV1
+from dbt_artifacts_loader.dbt.v1.run_results import RunResultsV1
+from dbt_artifacts_loader.dbt.v1.sources import SourcesV1
+from dbt_artifacts_loader.dbt.v2.manifest import ManifestV2
+from dbt_artifacts_loader.dbt.v2.run_results import RunResultsV2
+from dbt_artifacts_loader.dbt.v2.sources import SourcesV2
+from dbt_artifacts_loader.dbt.v3.manifest import ManifestV3
+from dbt_artifacts_loader.dbt.v3.run_results import RunResultsV3
+from dbt_artifacts_loader.dbt.v3.sources import SourcesV3
+from dbt_artifacts_loader.dbt.v4.manifest import ManifestV4
+from dbt_artifacts_loader.dbt.v4.run_results import RunResultsV4
+from dbt_artifacts_loader.dbt.version_map import ArtifactsTypes
 from dbt_artifacts_loader.utils import get_project_root
-from dbt_artifacts_loader.dbt.utils import get_dbt_schema_version
+from dbt_artifacts_loader.dbt.utils import get_dbt_schema_version, get_model_class
 
 
 class TestDbtUtils(unittest.TestCase):
@@ -61,3 +73,26 @@ class TestDbtUtils(unittest.TestCase):
                 artifact_json = json.load(fp)
                 dbt_schema_version = get_dbt_schema_version(artifact_json=artifact_json)
                 self.assertEqual(dbt_schema_version, expected_dbt_schema_version)
+
+    def test_get_model_class(self):
+        test_sets = [
+            # v1
+            (ArtifactsTypes.CATALOG_V1, CatalogV1),
+            (ArtifactsTypes.MANIFEST_V1, ManifestV1),
+            (ArtifactsTypes.RUN_RESULTS_V1, RunResultsV1),
+            (ArtifactsTypes.SOURCES_V1, SourcesV1),
+            # v2
+            (ArtifactsTypes.MANIFEST_V2, ManifestV2),
+            (ArtifactsTypes.RUN_RESULTS_V2, RunResultsV2),
+            (ArtifactsTypes.SOURCES_V2, SourcesV2),
+            # v3
+            (ArtifactsTypes.MANIFEST_V3, ManifestV3),
+            (ArtifactsTypes.RUN_RESULTS_V3, RunResultsV3),
+            (ArtifactsTypes.SOURCES_V3, SourcesV3),
+            # v4
+            (ArtifactsTypes.MANIFEST_V4, ManifestV4),
+            (ArtifactsTypes.RUN_RESULTS_V4, RunResultsV4),
+        ]
+        for (artifact_type, expected_class) in test_sets:
+            klass = get_model_class(artifact_type=artifact_type)
+            self.assertEqual(klass, expected_class)
