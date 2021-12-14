@@ -10,7 +10,6 @@ jobs:
       matrix:
         include:
           - python_version: 3.8
-          - python_version: 3.9
 
     runs-on: ubuntu-20.04
     env:
