@@ -18,7 +18,8 @@ import typing
 import json
 from enum import Enum
 from typing import Dict, Any, Optional, Union, List
-from datetime import datetime, date
+import datetime
+from datetime import date, datetime
 import inspect
 
 # pylint: disable=E0611
@@ -28,7 +29,12 @@ from pydantic.fields import ModelField
 
 from google.cloud import bigquery
 
-from dbt_artifacts_loader.dbt.utils import datetime_handler
+
+def datetime_handler(x):
+    """The handler is used to deal with date and datetime"""
+    if isinstance(x, (datetime.datetime, datetime.date, datetime, date)):
+        return x.isoformat()
+    raise TypeError(f'Type {type(x)} not serializable')
 
 
 class TypingUtils:

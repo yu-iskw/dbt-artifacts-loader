@@ -15,97 +15,12 @@
 #  limitations under the License.
 #
 #
-from enum import Enum
-import datetime
-from datetime import date, datetime
-from typing import Optional, List
-from dataclasses import dataclass
+from typing import Optional, List, Type
 
 from google.cloud import bigquery
 
-
-class DestinationTables(Enum):
-    # V1
-    CATALOG_V1 = "catalog_v1"
-    MANIFEST_V1 = "manifest_v1"
-    RUN_RESULTS_V1 = "run_results_v1"
-    SOURCES_V1 = "sources_v1"
-    # V2
-    MANIFEST_V2 = "manifest_v2"
-    RUN_RESULTS_V2 = "run_results_v2"
-    SOURCES_V2 = "sources_v2"
-    # V3
-    MANIFEST_V3 = "manifest_v3"
-    RUN_RESULTS_V3 = "run_results_v3"
-    SOURCES_V3 = "sources_v3"
-    # V4
-    MANIFEST_V4 = "manifest_v4"
-    RUN_RESULTS_V4 = "run_results_v4"
-
-
-class ArtifactsTypes(Enum):
-    # V1
-    CATALOG_V1 = "CatalogV1"
-    MANIFEST_V1 = "ManifestV1"
-    RUN_RESULTS_V1 = "RunResultsV1"
-    SOURCES_V1 = "SourcesV1"
-    # V2
-    MANIFEST_V2 = "ManifestV2"
-    RUN_RESULTS_V2 = "RunResultsV2"
-    SOURCES_V2 = "SourcesV2"
-    # V3
-    MANIFEST_V3 = "ManifestV3"
-    RUN_RESULTS_V3 = "RunResultsV3"
-    SOURCES_V3 = "SourcesV3"
-    # V4
-    MANIFEST_V4 = "ManifestV4"
-    RUN_RESULTS_V4 = "RunResultsV4"
-
-
-@dataclass
-class ArtifactInfo:
-    dbt_schema_version: str
-    artifact_type: ArtifactsTypes
-    destination_table: DestinationTables
-
-
-ARTIFACT_INFO = {
-    # V1
-    "CATALOG_V1": ArtifactInfo("https://schemas.getdbt.com/dbt/catalog/v1.json",
-                               ArtifactsTypes.CATALOG_V1, DestinationTables.CATALOG_V1),
-    "MANIFEST_V1": ArtifactInfo("https://schemas.getdbt.com/dbt/manifest/v1.json",
-                                ArtifactsTypes.MANIFEST_V1, DestinationTables.MANIFEST_V1),
-    "RUN_RESULTS_V1": ArtifactInfo("https://schemas.getdbt.com/dbt/run-results/v1.json",
-                                   ArtifactsTypes.RUN_RESULTS_V1, DestinationTables.RUN_RESULTS_V1),
-    "SOURCES_V1": ArtifactInfo("https://schemas.getdbt.com/dbt/sources/v1.json",
-                               ArtifactsTypes.SOURCES_V1, DestinationTables.SOURCES_V1),
-    # V2
-    "MANIFEST_V2": ArtifactInfo("https://schemas.getdbt.com/dbt/manifest/v2.json",
-                                ArtifactsTypes.MANIFEST_V2, DestinationTables.MANIFEST_V2),
-    "RUN_RESULTS_V2": ArtifactInfo("https://schemas.getdbt.com/dbt/run-results/v2.json",
-                                   ArtifactsTypes.RUN_RESULTS_V2, DestinationTables.RUN_RESULTS_V2),
-    "SOURCES_V2": ArtifactInfo("https://schemas.getdbt.com/dbt/sources/v2.json",
-                               ArtifactsTypes.SOURCES_V2, DestinationTables.SOURCES_V2),
-    # V3
-    "MANIFEST_V3": ArtifactInfo("https://schemas.getdbt.com/dbt/manifest/v3.json",
-                                ArtifactsTypes.MANIFEST_V3, DestinationTables.MANIFEST_V3),
-    "RUN_RESULTS_V3": ArtifactInfo("https://schemas.getdbt.com/dbt/run-results/v3.json",
-                                   ArtifactsTypes.RUN_RESULTS_V3, DestinationTables.RUN_RESULTS_V3),
-    "SOURCES_V3": ArtifactInfo("https://schemas.getdbt.com/dbt/sources/v3.json",
-                               ArtifactsTypes.SOURCES_V3, DestinationTables.SOURCES_V3),
-    # V4
-    "MANIFEST_V4": ArtifactInfo("https://schemas.getdbt.com/dbt/manifest/v4.json",
-                                ArtifactsTypes.MANIFEST_V4, DestinationTables.MANIFEST_V4),
-    "RUN_RESULTS_V4": ArtifactInfo("https://schemas.getdbt.com/dbt/run-results/v4.json",
-                                   ArtifactsTypes.RUN_RESULTS_V4, DestinationTables.RUN_RESULTS_V4),
-}
-
-
-def datetime_handler(x):
-    """The handler is used to deal with date and datetime"""
-    if isinstance(x, (datetime.datetime, datetime.date, datetime, date)):
-        return x.isoformat()
-    raise TypeError(f'Type {type(x)} not serializable')
+from dbt_artifacts_loader.dbt.base_bigquery_model import BaseBigQueryModel
+from dbt_artifacts_loader.dbt.version_map import ArtifactsTypes, ARTIFACT_INFO, DestinationTables
 
 
 def get_dbt_schema_version(artifact_json: dict) -> str:
@@ -178,3 +93,19 @@ def load_table_from_json(
     # pylint: disable=W0703
     except Exception as e:
         raise RuntimeError(job.errors) from e
+
+
+def get_model_class(artifact_type: ArtifactsTypes) -> Type[BaseBigQueryModel]:
+    """Get the model class
+
+    Args:
+        artifact_type (ArtifactsTypes): artifact type
+
+    Returns:
+        the model class
+    """
+    # v1
+    for _, artifact_info in ARTIFACT_INFO.items():
+        if artifact_type == artifact_info.artifact_type:
+            return artifact_info.model_class
+    raise ValueError(f"No such an artifact {artifact_type}")
