@@ -10,7 +10,7 @@ dbt-artifacts-loader:
     dev:
       type: bigquery
       method: oauth
-      project: "ubie-jp-data-engineering-qa"
+      project: "YOUR-GCP-PROJECT"
       location: "asia-northeast1"
       dataset: "dbt_artifacts"
       priority: "{{ env_var('DBT_BIGQUERY_PRIORITY', 'interactive') }}"
