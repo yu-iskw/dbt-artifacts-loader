@@ -1,0 +1,30 @@
+---
+version: 2
+
+models:
+  - name: last_model_run_results_v4
+    description: |
+      The table contains only the latest record of model run results v4.
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - metadata.invocation_id
+            - unique_id
+            - timing_name
+
+    columns:
+      - name: metadata.invocation_id
+        description: "invocation ID"
+        tests:
+          - not_null
+      - name: unique_id
+        description: "unique test ID"
+        tests:
+          - not_null
+          - unique
+      - name: timing_name
+        description: "timing name"
+        tests:
+          - accepted_values:
+              values: ["execute"]
