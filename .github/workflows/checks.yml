@@ -6,6 +6,12 @@ on:
 jobs:
 
   python:
+    strategy:
+      matrix:
+        include:
+          - python_version: 3.8
+          - python_version: 3.9
+
     runs-on: ubuntu-20.04
     env:
       ENV_FILE: ".env/.env.test"
@@ -14,14 +20,14 @@ jobs:
         uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: ${{ matrix.python_version }}
       - name: install dependencies
         run: |
           bash ci/setup.sh
       - name: lint
         run: |
           bash ci/lint_python.sh
-      - name:
+      - name: test
         run: |
           export ENV_FILE="${{ env.ENV_FILE }}"
           bash ci/run_python_tests.sh
