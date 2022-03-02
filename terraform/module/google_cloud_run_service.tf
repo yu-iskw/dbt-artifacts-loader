@@ -1,6 +1,6 @@
 resource "google_cloud_run_service" "dbt_artifact_loader" {
   # If var.docker_image is null, then the Run application is not launched.
-  count = var.docker_image == null ? 1 : 0
+  count = var.docker_image == null ? 0 : 1
 
   project = var.project_id
 
@@ -40,7 +40,7 @@ resource "google_cloud_run_service" "dbt_artifact_loader" {
 
 resource "google_cloud_run_service_iam_member" "cloud_run_invoker" {
   # If var.docker_image is null, then the Run application is not launched.
-  count = var.docker_image == null ? 1 : 0
+  count = var.docker_image == null ? 0 : 1
 
   project = var.project_id
 
