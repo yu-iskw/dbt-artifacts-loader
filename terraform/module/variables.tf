@@ -102,6 +102,7 @@ variable "bigquery_dataset_id" {
 variable "docker_image" {
   description = "The docker image which runs on Cloud Run"
   type        = string
+  default     = null
 }
 
 variable "cloud_run_service_name" {

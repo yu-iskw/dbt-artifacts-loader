@@ -1,4 +1,7 @@
 resource "google_cloud_run_service" "dbt_artifact_loader" {
+  # If var.docker_image is null, then the Run application is not launched.
+  count = var.docker_image == null ? 1 : 0
+
   project = var.project_id
 
   name     = var.cloud_run_service_name
@@ -36,10 +39,13 @@ resource "google_cloud_run_service" "dbt_artifact_loader" {
 }
 
 resource "google_cloud_run_service_iam_member" "cloud_run_invoker" {
+  # If var.docker_image is null, then the Run application is not launched.
+  count = var.docker_image == null ? 1 : 0
+
   project = var.project_id
 
-  location = google_cloud_run_service.dbt_artifact_loader.location
-  service  = google_cloud_run_service.dbt_artifact_loader.name
+  location = google_cloud_run_service.dbt_artifact_loader[0].location
+  service  = google_cloud_run_service.dbt_artifact_loader[0].name
   role     = "roles/run.invoker"
   member   = "serviceAccount:${google_service_account.cloud_run_invoker.email}"
 }
