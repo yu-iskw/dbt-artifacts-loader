@@ -1,6 +1,6 @@
 resource "google_pubsub_subscription" "dbt_artifacts_notification_to_bigquery" {
   # If var.docker_image is null, then the subscription is not created.
-  count = var.docker_image == null ? 1 : 0
+  count = var.docker_image == null ? 0 : 1
 
   project = var.project_id
 
