@@ -71,16 +71,23 @@ def is_available(artifact_type: ArtifactsTypes):
     """Check if the artifact type is available or not"""
     available_artifact_types = [
         # v1
-        ArtifactsTypes.CATALOG_V1, ArtifactsTypes.MANIFEST_V1,
-        ArtifactsTypes.RUN_RESULTS_V1, ArtifactsTypes.SOURCES_V1,
+        ArtifactsTypes.CATALOG_V1,
+        ArtifactsTypes.MANIFEST_V1,
+        ArtifactsTypes.RUN_RESULTS_V1,
+        ArtifactsTypes.SOURCES_V1,
         # v2
-        ArtifactsTypes.RUN_RESULTS_V2, ArtifactsTypes.MANIFEST_V2,
+        ArtifactsTypes.RUN_RESULTS_V2,
+        ArtifactsTypes.MANIFEST_V2,
         ArtifactsTypes.SOURCES_V2,
         # v3
-        ArtifactsTypes.RUN_RESULTS_V3, ArtifactsTypes.MANIFEST_V3,
+        ArtifactsTypes.RUN_RESULTS_V3,
+        ArtifactsTypes.MANIFEST_V3,
         ArtifactsTypes.SOURCES_V3,
         # v4
-        ArtifactsTypes.RUN_RESULTS_V4, ArtifactsTypes.MANIFEST_V4,
+        ArtifactsTypes.RUN_RESULTS_V4,
+        ArtifactsTypes.MANIFEST_V4,
+        # v5
+        ArtifactsTypes.MANIFEST_V5,
     ]
     if artifact_type in available_artifact_types:
         return True

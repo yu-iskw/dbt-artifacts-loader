@@ -90,3 +90,10 @@ datamodel-codegen  --input-file-type jsonschema \
   --class-name "RunResultsV4" \
   --input "dbt_artifacts_loader/resources/v4/run-results.json" \
   --output "dbt_artifacts_loader/dbt/v4/run_results.py"
+
+# v5
+datamodel-codegen  --input-file-type jsonschema \
+  --base-class "$base_class" \
+  --class-name "ManifestV5" \
+  --input "dbt_artifacts_loader/resources/v5/manifest.json" \
+  --output "dbt_artifacts_loader/dbt/v5/manifest.py"
