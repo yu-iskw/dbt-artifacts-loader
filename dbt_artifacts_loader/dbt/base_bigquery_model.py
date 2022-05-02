@@ -610,11 +610,8 @@ def adjust_union_value(property_value: Any, union_type, depth: int):
         if TypingUtils.is_enum(outer_type_=type(property_value)):
             property_value = property_value.value
         return str(property_value)
-    # List[Union[List[str], str]]
-    elif all([x is List[str] or x is str] for x in nested_types):
-        # pylint: disable=C0123
-        if type(property_value) is str:
-            return [property_value]
+    # List[Union[List[str], str, None]]
+    elif all([x is None or x is List[str] or x is str] for x in nested_types):
         return {"value": list(property_value)}
     else:
         raise ValueError(union_type)

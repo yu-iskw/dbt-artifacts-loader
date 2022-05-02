@@ -35,6 +35,7 @@ from dbt_artifacts_loader.dbt.v3.sources import SourcesV3
 from dbt_artifacts_loader.dbt.v4.manifest import ManifestV4
 from dbt_artifacts_loader.dbt.v4.run_results import RunResultsV4
 
+from dbt_artifacts_loader.dbt.v5.manifest import ManifestV5
 
 from dbt_artifacts_loader.utils import get_project_root
 
@@ -94,6 +95,11 @@ resources = [
     {
         "class": RunResultsV4,
         "output": os.path.join(table_schemas_base_path, "v4", "run_results.json"),
+    },
+    # v5
+    {
+        "class": ManifestV5,
+        "output": os.path.join(table_schemas_base_path, "v5", "manifest.json"),
     },
 ]
 

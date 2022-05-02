@@ -32,6 +32,7 @@ from dbt_artifacts_loader.dbt.v3.run_results import RunResultsV3
 from dbt_artifacts_loader.dbt.v3.sources import SourcesV3
 from dbt_artifacts_loader.dbt.v4.manifest import ManifestV4
 from dbt_artifacts_loader.dbt.v4.run_results import RunResultsV4
+from dbt_artifacts_loader.dbt.v5.manifest import ManifestV5
 
 
 class DestinationTables(Enum):
@@ -52,6 +53,8 @@ class DestinationTables(Enum):
     # V4
     MANIFEST_V4 = "manifest_v4"
     RUN_RESULTS_V4 = "run_results_v4"
+    # V5
+    MANIFEST_V5 = "manifest_v5"
 
 
 class ArtifactsTypes(Enum):
@@ -72,6 +75,8 @@ class ArtifactsTypes(Enum):
     # V4
     MANIFEST_V4 = "ManifestV4"
     RUN_RESULTS_V4 = "RunResultsV4"
+    # V5
+    MANIFEST_V5 = "ManifestV5"
 
 
 @dataclass
@@ -111,4 +116,7 @@ ARTIFACT_INFO = {
                                 ArtifactsTypes.MANIFEST_V4, DestinationTables.MANIFEST_V4, ManifestV4),
     "RUN_RESULTS_V4": ArtifactInfo("https://schemas.getdbt.com/dbt/run-results/v4.json",
                                    ArtifactsTypes.RUN_RESULTS_V4, DestinationTables.RUN_RESULTS_V4, RunResultsV4),
+    # V5
+    "MANIFEST_V5": ArtifactInfo("https://schemas.getdbt.com/dbt/manifest/v5.json",
+                                ArtifactsTypes.MANIFEST_V5, DestinationTables.MANIFEST_V5, ManifestV5),
 }
