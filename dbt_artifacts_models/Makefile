@@ -3,16 +3,16 @@ setup:
 	dbt deps
 
 build:
-	dbt build --profiles-dir ./profiles --selector dbt-1.0
+	dbt build --profiles-dir ./profiles --selector dbt-1.1
 
 run:
-	dbt run --profiles-dir ./profiles --selector dbt-1.0
+	dbt run --profiles-dir ./profiles --selector dbt-1.1
 
 compile:
 	dbt compile --profiles-dir ./profiles
 
 test:
-	dbt test --profiles-dir profiles/ --selector dbt-1.0
+	dbt test --profiles-dir profiles/ --selector dbt-1.1
 
 docs-generate:
 	dbt docs generate --profiles-dir profiles/
