@@ -1,0 +1,24 @@
+---
+version: 2
+
+models:
+  - name: parsed_snapshot_node_v5
+    description: |
+      This is a table to expand `manifest_v5.node.value.ParsedSnapshotNode`.
+      The table exclude duplicates.
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - metadata.invocation_id
+            - unique_id
+
+    columns:
+      - name: metadata.invocation_id
+        description: "invocation ID"
+        tests:
+          - not_null
+      - name: unique_id
+        description: "unique ID"
+        tests:
+          - not_null
