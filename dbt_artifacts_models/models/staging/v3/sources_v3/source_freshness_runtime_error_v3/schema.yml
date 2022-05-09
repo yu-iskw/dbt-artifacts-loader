@@ -16,9 +16,5 @@ models:
     columns:
       - name: invocation_id
         description: "invocation ID"
-        tests:
-          - not_null
       - name: unique_id
         description: "unique test ID"
-        tests:
-          - not_null
