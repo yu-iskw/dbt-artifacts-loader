@@ -1,7 +1,7 @@
 # Google Cloud SDK
 # SEE https://github.com/dbt-labs/dbt/blob/develop/plugins/bigquery/setup.py#L48-L56
 google-cloud-bigquery>=1.25.0,<3
-google-cloud-storage==1.38.0
+google-cloud-storage>=1.38.0
 
 # REST API
 pytz==2021.3
