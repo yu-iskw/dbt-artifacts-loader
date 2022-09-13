@@ -1590,6 +1590,9 @@ class ManifestV6(BaseBigQueryModel):
     class Config:
         extra = Extra.forbid
 
+    # The loaded_at field was manually added.
+    loaded_at: datetime = Field(default=datetime.utcnow(),
+                                description="The loaded time by dbt-artifacts-loader")
     metadata: ManifestMetadata = Field(..., description='Metadata about the manifest')
     nodes: Dict[
         str,
