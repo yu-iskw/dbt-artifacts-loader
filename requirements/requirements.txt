@@ -6,7 +6,7 @@ google-cloud-storage>=1.38.0
 # REST API
 pytz==2021.3
 fastapi==0.70.1
-uvicorn[standard]==0.16.0
+uvicorn[standard]==0.18.3
 python-dotenv==0.19.2
 python-json-logger==2.0.2
 

@@ -1,6 +1,6 @@
 terraform {
   # Specify a version to avoid accidentally upgrading terraform state
-  required_version = "1.0.0"
+  required_version = "1.1.0"
 
   backend "local" {
     path = "./terraform.tfstate"

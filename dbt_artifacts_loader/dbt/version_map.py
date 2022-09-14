@@ -20,19 +20,26 @@ from dataclasses import dataclass
 
 from dbt_artifacts_loader.dbt.base_bigquery_model import BaseBigQueryModel
 
+# v1
 from dbt_artifacts_loader.dbt.v1.catalog import CatalogV1
 from dbt_artifacts_loader.dbt.v1.manifest import ManifestV1
 from dbt_artifacts_loader.dbt.v1.run_results import RunResultsV1
 from dbt_artifacts_loader.dbt.v1.sources import SourcesV1
+# v2
 from dbt_artifacts_loader.dbt.v2.manifest import ManifestV2
 from dbt_artifacts_loader.dbt.v2.run_results import RunResultsV2
 from dbt_artifacts_loader.dbt.v2.sources import SourcesV2
+# v3
 from dbt_artifacts_loader.dbt.v3.manifest import ManifestV3
 from dbt_artifacts_loader.dbt.v3.run_results import RunResultsV3
 from dbt_artifacts_loader.dbt.v3.sources import SourcesV3
+# v4
 from dbt_artifacts_loader.dbt.v4.manifest import ManifestV4
 from dbt_artifacts_loader.dbt.v4.run_results import RunResultsV4
+# v5
 from dbt_artifacts_loader.dbt.v5.manifest import ManifestV5
+# v6
+from dbt_artifacts_loader.dbt.v6.manifest import ManifestV6
 
 
 class DestinationTables(Enum):
@@ -55,6 +62,8 @@ class DestinationTables(Enum):
     RUN_RESULTS_V4 = "run_results_v4"
     # V5
     MANIFEST_V5 = "manifest_v5"
+    # V6
+    MANIFEST_V6 = "manifest_v6"
 
 
 class ArtifactsTypes(Enum):
@@ -77,6 +86,8 @@ class ArtifactsTypes(Enum):
     RUN_RESULTS_V4 = "RunResultsV4"
     # V5
     MANIFEST_V5 = "ManifestV5"
+    # V6
+    MANIFEST_V6 = "ManifestV6"
 
 
 @dataclass
@@ -119,4 +130,7 @@ ARTIFACT_INFO = {
     # V5
     "MANIFEST_V5": ArtifactInfo("https://schemas.getdbt.com/dbt/manifest/v5.json",
                                 ArtifactsTypes.MANIFEST_V5, DestinationTables.MANIFEST_V5, ManifestV5),
+    # V6
+    "MANIFEST_V6": ArtifactInfo("https://schemas.getdbt.com/dbt/manifest/v6.json",
+                                ArtifactsTypes.MANIFEST_V6, DestinationTables.MANIFEST_V6, ManifestV6),
 }

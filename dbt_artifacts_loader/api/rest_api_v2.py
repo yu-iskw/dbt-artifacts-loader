@@ -88,6 +88,8 @@ def is_available(artifact_type: ArtifactsTypes):
         ArtifactsTypes.MANIFEST_V4,
         # v5
         ArtifactsTypes.MANIFEST_V5,
+        # v6
+        ArtifactsTypes.MANIFEST_V6,
     ]
     if artifact_type in available_artifact_types:
         return True

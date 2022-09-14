@@ -19,18 +19,27 @@ import os
 import unittest
 import json
 
+# v1
 from dbt_artifacts_loader.dbt.v1.catalog import CatalogV1
 from dbt_artifacts_loader.dbt.v1.manifest import ManifestV1
 from dbt_artifacts_loader.dbt.v1.run_results import RunResultsV1
 from dbt_artifacts_loader.dbt.v1.sources import SourcesV1
+# v2
 from dbt_artifacts_loader.dbt.v2.manifest import ManifestV2
 from dbt_artifacts_loader.dbt.v2.run_results import RunResultsV2
 from dbt_artifacts_loader.dbt.v2.sources import SourcesV2
+# v3
 from dbt_artifacts_loader.dbt.v3.manifest import ManifestV3
 from dbt_artifacts_loader.dbt.v3.run_results import RunResultsV3
 from dbt_artifacts_loader.dbt.v3.sources import SourcesV3
+# v4
 from dbt_artifacts_loader.dbt.v4.manifest import ManifestV4
 from dbt_artifacts_loader.dbt.v4.run_results import RunResultsV4
+# v5
+from dbt_artifacts_loader.dbt.v5.manifest import ManifestV5
+# v6
+from dbt_artifacts_loader.dbt.v6.manifest import ManifestV6
+
 from dbt_artifacts_loader.dbt.version_map import ArtifactsTypes
 from dbt_artifacts_loader.utils import get_project_root
 from dbt_artifacts_loader.dbt.utils import get_dbt_schema_version, get_model_class
@@ -52,23 +61,54 @@ class TestDbtUtils(unittest.TestCase):
                 dbt_schema_version = get_dbt_schema_version(artifact_json=artifact_json)
                 self.assertEqual(dbt_schema_version, expected_dbt_schema_version)
         # v2
-        v1_artifacts = {
+        v2_artifacts = {
             "manifest.json": "https://schemas.getdbt.com/dbt/manifest/v2.json",
             "run_results.json": "https://schemas.getdbt.com/dbt/run-results/v2.json",
         }
-        for file, expected_dbt_schema_version in v1_artifacts.items():
+        for file, expected_dbt_schema_version in v2_artifacts.items():
             path = os.path.join(get_project_root(), "tests", "resources", "v2", "jaffle_shop", file)
             with open(path, "r", encoding="utf-8") as fp:
                 artifact_json = json.load(fp)
                 dbt_schema_version = get_dbt_schema_version(artifact_json=artifact_json)
                 self.assertEqual(dbt_schema_version, expected_dbt_schema_version)
         # v3
-        v1_artifacts = {
+        v3_artifacts = {
             "manifest.json": "https://schemas.getdbt.com/dbt/manifest/v3.json",
             "run_results.json": "https://schemas.getdbt.com/dbt/run-results/v3.json",
         }
-        for file, expected_dbt_schema_version in v1_artifacts.items():
+        for file, expected_dbt_schema_version in v3_artifacts.items():
             path = os.path.join(get_project_root(), "tests", "resources", "v3", "jaffle_shop", file)
+            with open(path, "r", encoding="utf-8") as fp:
+                artifact_json = json.load(fp)
+                dbt_schema_version = get_dbt_schema_version(artifact_json=artifact_json)
+                self.assertEqual(dbt_schema_version, expected_dbt_schema_version)
+        # v4
+        v4_artifacts = {
+            "manifest.json": "https://schemas.getdbt.com/dbt/manifest/v4.json",
+            "run_results.json": "https://schemas.getdbt.com/dbt/run-results/v4.json",
+        }
+        for file, expected_dbt_schema_version in v4_artifacts.items():
+            path = os.path.join(get_project_root(), "tests", "resources", "v4", "jaffle_shop", file)
+            with open(path, "r", encoding="utf-8") as fp:
+                artifact_json = json.load(fp)
+                dbt_schema_version = get_dbt_schema_version(artifact_json=artifact_json)
+                self.assertEqual(dbt_schema_version, expected_dbt_schema_version)
+        # v5
+        v5_artifacts = {
+            "manifest.json": "https://schemas.getdbt.com/dbt/manifest/v5.json",
+        }
+        for file, expected_dbt_schema_version in v5_artifacts.items():
+            path = os.path.join(get_project_root(), "tests", "resources", "v5", "jaffle_shop", file)
+            with open(path, "r", encoding="utf-8") as fp:
+                artifact_json = json.load(fp)
+                dbt_schema_version = get_dbt_schema_version(artifact_json=artifact_json)
+                self.assertEqual(dbt_schema_version, expected_dbt_schema_version)
+        # v6
+        v6_artifacts = {
+            "manifest.json": "https://schemas.getdbt.com/dbt/manifest/v6.json",
+        }
+        for file, expected_dbt_schema_version in v6_artifacts.items():
+            path = os.path.join(get_project_root(), "tests", "resources", "v6", "jaffle_shop", file)
             with open(path, "r", encoding="utf-8") as fp:
                 artifact_json = json.load(fp)
                 dbt_schema_version = get_dbt_schema_version(artifact_json=artifact_json)
@@ -92,6 +132,10 @@ class TestDbtUtils(unittest.TestCase):
             # v4
             (ArtifactsTypes.MANIFEST_V4, ManifestV4),
             (ArtifactsTypes.RUN_RESULTS_V4, RunResultsV4),
+            # v5
+            (ArtifactsTypes.MANIFEST_V5, ManifestV5),
+            # v6
+            (ArtifactsTypes.MANIFEST_V6, ManifestV6),
         ]
         for (artifact_type, expected_class) in test_sets:
             klass = get_model_class(artifact_type=artifact_type)
