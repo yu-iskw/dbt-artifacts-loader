@@ -39,7 +39,7 @@ WITH run_results AS (
   {% else %}
     {{ exceptions.raise_compiler_error("Unexpected dbt version: " ~ dbt_minor_version) }}
   {% endif %}
-  WHERE snapshots.unique_id IS NOT NULL
+  WHERE run_results.unique_id IS NOT NULL
     AND timing_name IN ("execute")
 )
 -- Extract only run results whose metadata is the most close to that of model.
