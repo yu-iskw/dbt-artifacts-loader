@@ -1,3 +1,5 @@
+{% set dbt_minor_version = get_dbt_minor_version(version=dbt_version) %}
+
 {% set project = var('dbt_artifacts_loader')['project'] %}
 {% set dataset = var('dbt_artifacts_loader')['dataset'] %}
 
@@ -22,10 +24,22 @@ WITH run_results AS (
     run_results.*,
     (SELECT AS STRUCT snapshots.*) AS snapshot,
   FROM {{ ref("expanded_run_results_v4") }} AS run_results
+  {% if dbt_minor_version == "1.0" %}
   LEFT OUTER JOIN {{ ref("parsed_snapshot_node_v4") }} AS snapshots
     ON run_results.unique_id = snapshots.unique_id
       AND ABS(DATETIME_DIFF(run_results.metadata.generated_at, snapshots.metadata.generated_at, DAY))  <= 2
-  WHERE snapshots.unique_id IS NOT NULL
+  {% elif dbt_minor_version == "1.1" %}
+  LEFT OUTER JOIN {{ ref("parsed_snapshot_node_v5") }} AS snapshots
+    ON run_results.unique_id = snapshots.unique_id
+      AND ABS(DATETIME_DIFF(run_results.metadata.generated_at, snapshots.metadata.generated_at, DAY))  <= 2
+  {% elif dbt_minor_version == "1.2" %}
+  LEFT OUTER JOIN {{ ref("parsed_snapshot_node_v6") }} AS snapshots
+    ON run_results.unique_id = snapshots.unique_id
+      AND ABS(DATETIME_DIFF(run_results.metadata.generated_at, snapshots.metadata.generated_at, DAY))  <= 2
+  {% else %}
+    {{ exceptions.raise_compiler_error("Unexpected dbt version: " ~ dbt_minor_version) }}
+  {% endif %}
+  WHERE run_results.unique_id IS NOT NULL
     AND timing_name IN ("execute")
 )
 -- Extract only run results whose metadata is the most close to that of model.

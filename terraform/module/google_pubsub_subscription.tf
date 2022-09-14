@@ -7,7 +7,7 @@ resource "google_pubsub_subscription" "dbt_artifacts_notification_to_bigquery" {
   name  = "${var.pubsub_topic}-to-bigquery"
   topic = google_pubsub_topic.dbt_artifacts_notification.id
 
-  enable_exactly_once_delivery = true
+  enable_exactly_once_delivery = false
 
   push_config {
     push_endpoint = "${google_cloud_run_service.dbt_artifact_loader[0].status[0].url}/api/v2/"
