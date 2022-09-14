@@ -1,3 +1,5 @@
+{% set dbt_minor_version = get_dbt_minor_version(version=dbt_version) %}
+
 {% set project = var('dbt_artifacts_loader')['project'] %}
 {% set dataset = var('dbt_artifacts_loader')['dataset'] %}
 
@@ -22,9 +24,21 @@ WITH run_results AS (
     run_results.*,
     (SELECT AS STRUCT generic_tests.*) AS generic_test,
   FROM {{ ref("expanded_run_results_v4") }} AS run_results
+  {% if dbt_minor_version == "1.0" %}
   LEFT OUTER JOIN {{ ref("parsed_generic_test_node_v4") }} AS generic_tests
     ON run_results.unique_id = generic_tests.unique_id
       AND ABS(DATETIME_DIFF(run_results.metadata.generated_at, generic_tests.metadata.generated_at, DAY))  <= 2
+  {% elif dbt_minor_version == "1.1" %}
+  LEFT OUTER JOIN {{ ref("parsed_generic_test_node_v5") }} AS generic_tests
+    ON run_results.unique_id = generic_tests.unique_id
+      AND ABS(DATETIME_DIFF(run_results.metadata.generated_at, generic_tests.metadata.generated_at, DAY))  <= 2
+  {% elif dbt_minor_version == "1.2" %}
+  LEFT OUTER JOIN {{ ref("parsed_generic_test_node_v6") }} AS generic_tests
+    ON run_results.unique_id = generic_tests.unique_id
+      AND ABS(DATETIME_DIFF(run_results.metadata.generated_at, generic_tests.metadata.generated_at, DAY))  <= 2
+  {% else %}
+    {{ exceptions.raise_compiler_error("Unexpected dbt version: " ~ dbt_minor_version) }}
+  {% endif %}
   WHERE generic_tests.unique_id IS NOT NULL
     AND timing_name IN ("execute")
 )

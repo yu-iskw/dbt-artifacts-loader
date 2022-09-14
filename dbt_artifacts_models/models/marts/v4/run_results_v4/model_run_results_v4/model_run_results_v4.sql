@@ -33,6 +33,10 @@ WITH run_results AS (
   LEFT OUTER JOIN {{ ref("parsed_model_node_v5") }} AS models
     ON run_results.unique_id = models.unique_id
       AND ABS(DATETIME_DIFF(run_results.metadata.generated_at, models.metadata.generated_at, DAY))  <= 2
+  {% elif dbt_minor_version == "1.2" %}
+  LEFT OUTER JOIN {{ ref("parsed_model_node_v6") }} AS models
+    ON run_results.unique_id = models.unique_id
+      AND ABS(DATETIME_DIFF(run_results.metadata.generated_at, models.metadata.generated_at, DAY))  <= 2
   {% else %}
     {{ exceptions.raise_compiler_error("Unexpected dbt version: " ~ dbt_minor_version) }}
   {% endif %}
