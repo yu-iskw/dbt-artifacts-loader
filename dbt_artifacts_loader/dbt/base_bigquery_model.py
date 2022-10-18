@@ -58,7 +58,8 @@ class TypingUtils:
         """Check if it is a subclass of `Enum` or not"""
         if inspect.isclass(outer_type_) and issubclass(outer_type_, Enum):
             return True
-        elif type(outer_type_) == Enum:
+        # pylint: disable=unidiomatic-typecheck
+        if type(outer_type_) == Enum:
             return True
         return False
 
