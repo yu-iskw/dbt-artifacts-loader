@@ -1,5 +1,5 @@
 PROJECT_ID = YOUR-GCP-PROJECT
-TAG = v1.2.0-dev2
+TAG = v1.6.0-dev3
 DOCKER_IMAGE_BASE = gcr.io/$(PROJECT_ID)/dbt-artifacts-loader
 
 

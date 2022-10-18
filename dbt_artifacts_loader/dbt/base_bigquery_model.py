@@ -58,6 +58,8 @@ class TypingUtils:
         """Check if it is a subclass of `Enum` or not"""
         if inspect.isclass(outer_type_) and issubclass(outer_type_, Enum):
             return True
+        elif type(outer_type_) == Enum:
+            return True
         return False
 
     @staticmethod
@@ -530,12 +532,8 @@ def adjust_list_property(property_value: Any, model_field: ModelField, depth: in
         raise ValueError(args)
 
     type_in_list = args[0]
-    # primitive type
-    if TypingUtils.get_primitive_field_type(outer_type_=type_in_list) is not None:
-        # return {"value": [x for x in property_value]}
-        return {"value": list(property_value)}
     # a list of lists
-    elif type_in_list is ModelField and ModelFieldUtils.is_list_type(model_field=type_in_list):
+    if type_in_list is ModelField and ModelFieldUtils.is_list_type(model_field=type_in_list):
         return [adjust_property(property_value=x, model_field=type_in_list, depth=depth + 1)
                 for x in property_value]
     elif BaseBigQueryModel.is_subclass(type_in_list):
@@ -550,6 +548,12 @@ def adjust_list_property(property_value: Any, model_field: ModelField, depth: in
             {"values": adjust_union_value(property_value=x, union_type=type_in_list, depth=depth + 1)}
             for x in property_value]
         return value
+    # primitive type
+    elif TypingUtils.get_primitive_field_type(outer_type_=type_in_list) is not None:
+        if TypingUtils.is_enum(type_in_list):
+            return {"value": get_all_enum_values(property_value)}
+        else:
+            return {"value": list(property_value)}
     else:
         raise ValueError(model_field)
 
