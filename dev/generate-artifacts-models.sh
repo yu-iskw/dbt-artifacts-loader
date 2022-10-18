@@ -104,3 +104,10 @@ datamodel-codegen  --input-file-type jsonschema \
   --class-name "ManifestV6" \
   --input "dbt_artifacts_loader/resources/v6/manifest.json" \
   --output "dbt_artifacts_loader/dbt/v6/manifest.py"
+
+# v7
+datamodel-codegen  --input-file-type jsonschema \
+  --base-class "$base_class" \
+  --class-name "ManifestV7" \
+  --input "dbt_artifacts_loader/resources/v7/manifest.json" \
+  --output "dbt_artifacts_loader/dbt/v7/manifest.py"

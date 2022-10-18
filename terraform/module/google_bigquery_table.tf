@@ -31,6 +31,10 @@ locals {
     # table_id: JSON file
     manifest_v6 : "manifest.json"
   }
+  v7_tables = {
+    # table_id: JSON file
+    manifest_v7 : "manifest.json"
+  }
 }
 
 resource "google_bigquery_table" "v1_tables" {
@@ -174,6 +178,31 @@ The table derives from `${each.value}`.
 EOT
 
   schema = file("${path.module}/table_schemas/v6/${each.value}")
+
+  time_partitioning {
+    type  = "DAY"
+    field = "loaded_at"
+  }
+
+  labels = var.labels
+}
+
+resource "google_bigquery_table" "v7_tables" {
+  for_each = local.v7_tables
+
+  project = var.project_id
+
+  deletion_protection = (!var.delete_on_destroy)
+
+  dataset_id = google_bigquery_dataset.dbt_artifacts.dataset_id
+  # NOTE The table ID must be the same as the python implementation.
+  table_id      = each.key
+  friendly_name = each.key
+  description   = <<EOT
+The table derives from `${each.value}`.
+EOT
+
+  schema = file("${path.module}/table_schemas/v7/${each.value}")
 
   time_partitioning {
     type  = "DAY"

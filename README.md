@@ -66,3 +66,6 @@ make setup
 # Create and test the dbt models
 make run && make test
 ```
+
+## Links
+- [dbt JSON Schema](https://schemas.getdbt.com/)

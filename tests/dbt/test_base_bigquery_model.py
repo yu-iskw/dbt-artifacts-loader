@@ -39,6 +39,7 @@ from dbt_artifacts_loader.dbt.v4.manifest import ManifestV4
 from dbt_artifacts_loader.dbt.v4.run_results import RunResultsV4
 from dbt_artifacts_loader.dbt.v5.manifest import ManifestV5
 from dbt_artifacts_loader.dbt.v6.manifest import ManifestV6
+from dbt_artifacts_loader.dbt.v7.manifest import ManifestV7
 
 from dbt_artifacts_loader.utils import get_project_root
 
@@ -81,6 +82,8 @@ class TestBaseBigQueryModel(unittest.TestCase):
         self.manifest_v5_obj = ManifestV5(**(load_artifact_json("v5", "manifest.json")))
         # v6
         self.manifest_v6_obj = ManifestV6(**(load_artifact_json("v6", "manifest.json")))
+        # v7
+        self.manifest_v7_obj = ManifestV7(**(load_artifact_json("v7", "manifest.json")))
 
     def test_to_bigquery_schema(self):
         value = ManifestV1.to_bigquery_schema()
@@ -205,6 +208,24 @@ class TestBaseBigQueryModel(unittest.TestCase):
                                  'dbt_version': '1.2.0',
                                  'generated_at': '2022-09-13T12:42:00',
                                  'invocation_id': '550ce981-33c0-4b00-9dea-d1483920d33d',
+                                 'env': [],
+                                 'project_id': '9c7e77d37c2efd3d2ba268d277e3b33d',
+                                 'user_id': None,
+                                 'send_anonymous_usage_stats': False,
+                                 'adapter_type': 'bigquery'
+                             })
+
+    def test_to_dict_on_manifest_v7(self):
+        manifest_obj_dict = self.manifest_v7_obj.to_dict(depth=0)
+        expected = ['loaded_at', 'metadata', 'nodes', 'sources', 'macros', 'docs', 'exposures',
+                    'metrics', 'selectors', 'disabled', 'parent_map', 'child_map']
+        self.assertListEqual(list(manifest_obj_dict.keys()), expected)
+        self.assertDictEqual(self.manifest_v7_obj.metadata.to_dict(depth=0),
+                             {
+                                 'dbt_schema_version': 'https://schemas.getdbt.com/dbt/manifest/v7.json',
+                                 'dbt_version': '1.3.0',
+                                 'generated_at': '2022-10-18T00:14:27',
+                                 'invocation_id': '4d9e040b-c629-461e-abe7-466813dcad20',
                                  'env': [],
                                  'project_id': '9c7e77d37c2efd3d2ba268d277e3b33d',
                                  'user_id': None,
