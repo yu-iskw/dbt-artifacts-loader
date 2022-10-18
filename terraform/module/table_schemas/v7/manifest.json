@@ -102,12 +102,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "compiled",
                 "type": "BOOL",
                 "mode": "NULLABLE",
@@ -141,6 +135,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -264,6 +270,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -364,6 +376,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -567,6 +613,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -613,7 +665,7 @@
                 "description": "[raw JSON string]"
               },
               {
-                "name": "compiled_sql",
+                "name": "compiled_code",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -658,12 +710,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "compiled",
                 "type": "BOOL",
                 "mode": "NULLABLE",
@@ -697,6 +743,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -1063,6 +1121,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -1109,7 +1173,7 @@
                 "description": "[raw JSON string]"
               },
               {
-                "name": "compiled_sql",
+                "name": "compiled_code",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -1154,12 +1218,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "compiled",
                 "type": "BOOL",
                 "mode": "NULLABLE",
@@ -1193,6 +1251,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -1316,6 +1386,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -1416,6 +1492,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -1619,6 +1729,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -1665,7 +1781,7 @@
                 "description": "[raw JSON string]"
               },
               {
-                "name": "compiled_sql",
+                "name": "compiled_code",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -1710,12 +1826,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "compiled",
                 "type": "BOOL",
                 "mode": "NULLABLE",
@@ -1749,6 +1859,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -1872,6 +1994,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -1972,6 +2100,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -2175,6 +2337,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -2221,7 +2389,7 @@
                 "description": "[raw JSON string]"
               },
               {
-                "name": "compiled_sql",
+                "name": "compiled_code",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -2272,12 +2440,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "compiled",
                 "type": "BOOL",
                 "mode": "NULLABLE",
@@ -2311,6 +2473,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -2434,6 +2608,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -2534,6 +2714,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -2737,6 +2951,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -2783,7 +3003,7 @@
                 "description": "[raw JSON string]"
               },
               {
-                "name": "compiled_sql",
+                "name": "compiled_code",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -2828,12 +3048,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "compiled",
                 "type": "BOOL",
                 "mode": "NULLABLE",
@@ -2867,6 +3081,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -2990,6 +3216,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -3090,6 +3322,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -3293,6 +3559,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -3339,7 +3611,7 @@
                 "description": "[raw JSON string]"
               },
               {
-                "name": "compiled_sql",
+                "name": "compiled_code",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -3383,12 +3655,6 @@
             "type": "RECORD",
             "mode": "NULLABLE",
             "fields": [
-              {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
               {
                 "name": "test_metadata",
                 "type": "RECORD",
@@ -3449,6 +3715,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -3815,6 +4093,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -3861,7 +4145,7 @@
                 "description": "[raw JSON string]"
               },
               {
-                "name": "compiled_sql",
+                "name": "compiled_code",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -3918,12 +4202,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "compiled",
                 "type": "BOOL",
                 "mode": "NULLABLE",
@@ -3957,6 +4235,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -4080,6 +4370,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -4180,6 +4476,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   },
                   {
                     "name": "quote_columns",
@@ -4389,6 +4719,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -4435,7 +4771,7 @@
                 "description": "[raw JSON string]"
               },
               {
-                "name": "compiled_sql",
+                "name": "compiled_code",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -4480,12 +4816,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "compiled",
                 "type": "BOOL",
                 "mode": "NULLABLE",
@@ -4519,6 +4849,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -4642,6 +4984,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -4742,6 +5090,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -4945,6 +5327,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -4991,7 +5379,7 @@
                 "description": "[raw JSON string]"
               },
               {
-                "name": "compiled_sql",
+                "name": "compiled_code",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -5036,12 +5424,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "database",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -5069,6 +5451,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -5192,6 +5586,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -5292,6 +5692,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -5495,6 +5929,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -5548,12 +5988,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "database",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -5581,6 +6015,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -5947,6 +6393,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -6000,12 +6452,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "database",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -6033,6 +6479,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -6156,6 +6614,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -6256,6 +6720,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -6459,6 +6957,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -6518,12 +7022,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "database",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -6551,6 +7049,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -6674,6 +7184,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -6774,6 +7290,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -6977,6 +7527,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -7030,12 +7586,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "database",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -7063,6 +7613,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -7186,6 +7748,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -7286,6 +7854,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -7489,6 +8091,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -7542,12 +8150,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "database",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -7575,6 +8177,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -7698,6 +8312,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -7798,6 +8418,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -8001,6 +8655,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -8053,12 +8713,6 @@
             "type": "RECORD",
             "mode": "NULLABLE",
             "fields": [
-              {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
               {
                 "name": "test_metadata",
                 "type": "RECORD",
@@ -8113,6 +8767,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -8477,6 +9143,12 @@
                   {
                     "name": "show",
                     "type": "BOOL",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
                     "mode": "NULLABLE",
                     "description": ""
                   }
@@ -8544,12 +9216,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "database",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -8577,6 +9243,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -8700,6 +9378,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -8800,6 +9484,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   },
                   {
                     "name": "quote_columns",
@@ -9009,6 +9727,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -9062,12 +9786,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "database",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -9095,6 +9813,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -9218,6 +9948,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -9310,6 +10046,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   },
                   {
                     "name": "strategy",
@@ -9549,6 +10319,12 @@
                   {
                     "name": "show",
                     "type": "BOOL",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
                     "mode": "NULLABLE",
                     "description": ""
                   }
@@ -10127,6 +10903,12 @@
                 "type": "BOOL",
                 "mode": "NULLABLE",
                 "description": ""
+              },
+              {
+                "name": "node_color",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
               }
             ]
           },
@@ -10167,6 +10949,20 @@
             "type": "FLOAT64",
             "mode": "NULLABLE",
             "description": ""
+          },
+          {
+            "name": "supported_languages",
+            "type": "RECORD",
+            "mode": "NULLABLE",
+            "description": "",
+            "fields": [
+              {
+                "name": "value",
+                "type": "STRING",
+                "mode": "REPEATED",
+                "description": ""
+              }
+            ]
           }
         ]
       }
@@ -10339,6 +11135,12 @@
             "description": ""
           },
           {
+            "name": "label",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": ""
+          },
+          {
             "name": "maturity",
             "type": "STRING",
             "mode": "NULLABLE",
@@ -10363,6 +11165,26 @@
                 "description": ""
               }
             ]
+          },
+          {
+            "name": "config",
+            "type": "RECORD",
+            "mode": "NULLABLE",
+            "description": "",
+            "fields": [
+              {
+                "name": "enabled",
+                "type": "BOOL",
+                "mode": "NULLABLE",
+                "description": ""
+              }
+            ]
+          },
+          {
+            "name": "unrendered_config",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "[raw JSON string]"
           },
           {
             "name": "url",
@@ -10537,13 +11359,13 @@
             "description": ""
           },
           {
-            "name": "type",
+            "name": "calculation_method",
             "type": "STRING",
             "mode": "NULLABLE",
             "description": ""
           },
           {
-            "name": "sql",
+            "name": "expression",
             "type": "STRING",
             "mode": "NULLABLE",
             "description": ""
@@ -10609,6 +11431,26 @@
             ]
           },
           {
+            "name": "window",
+            "type": "RECORD",
+            "mode": "NULLABLE",
+            "description": "",
+            "fields": [
+              {
+                "name": "count",
+                "type": "INT64",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "period",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": "(one of day, week, month, year)"
+              }
+            ]
+          },
+          {
             "name": "model",
             "type": "STRING",
             "mode": "NULLABLE",
@@ -10645,6 +11487,26 @@
                 "description": ""
               }
             ]
+          },
+          {
+            "name": "config",
+            "type": "RECORD",
+            "mode": "NULLABLE",
+            "description": "",
+            "fields": [
+              {
+                "name": "enabled",
+                "type": "BOOL",
+                "mode": "NULLABLE",
+                "description": ""
+              }
+            ]
+          },
+          {
+            "name": "unrendered_config",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "[raw JSON string]"
           },
           {
             "name": "sources",
@@ -10783,12 +11645,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "compiled",
                 "type": "BOOL",
                 "mode": "NULLABLE",
@@ -10822,6 +11678,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -10945,6 +11813,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -11045,6 +11919,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -11248,6 +12156,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -11294,7 +12208,7 @@
                 "description": "[raw JSON string]"
               },
               {
-                "name": "compiled_sql",
+                "name": "compiled_code",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -11339,12 +12253,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "compiled",
                 "type": "BOOL",
                 "mode": "NULLABLE",
@@ -11378,6 +12286,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -11744,6 +12664,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -11790,7 +12716,7 @@
                 "description": "[raw JSON string]"
               },
               {
-                "name": "compiled_sql",
+                "name": "compiled_code",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -11835,12 +12761,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "compiled",
                 "type": "BOOL",
                 "mode": "NULLABLE",
@@ -11874,6 +12794,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -11997,6 +12929,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -12097,6 +13035,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -12300,6 +13272,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -12346,7 +13324,7 @@
                 "description": "[raw JSON string]"
               },
               {
-                "name": "compiled_sql",
+                "name": "compiled_code",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -12391,12 +13369,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "compiled",
                 "type": "BOOL",
                 "mode": "NULLABLE",
@@ -12430,6 +13402,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -12553,6 +13537,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -12653,6 +13643,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -12856,6 +13880,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -12902,7 +13932,7 @@
                 "description": "[raw JSON string]"
               },
               {
-                "name": "compiled_sql",
+                "name": "compiled_code",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -12953,12 +13983,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "compiled",
                 "type": "BOOL",
                 "mode": "NULLABLE",
@@ -12992,6 +14016,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -13115,6 +14151,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -13215,6 +14257,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -13418,6 +14494,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -13464,7 +14546,7 @@
                 "description": "[raw JSON string]"
               },
               {
-                "name": "compiled_sql",
+                "name": "compiled_code",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -13509,12 +14591,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "compiled",
                 "type": "BOOL",
                 "mode": "NULLABLE",
@@ -13548,6 +14624,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -13671,6 +14759,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -13771,6 +14865,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -13974,6 +15102,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -14020,7 +15154,7 @@
                 "description": "[raw JSON string]"
               },
               {
-                "name": "compiled_sql",
+                "name": "compiled_code",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -14064,12 +15198,6 @@
             "type": "RECORD",
             "mode": "NULLABLE",
             "fields": [
-              {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
               {
                 "name": "test_metadata",
                 "type": "RECORD",
@@ -14130,6 +15258,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -14496,6 +15636,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -14542,7 +15688,7 @@
                 "description": "[raw JSON string]"
               },
               {
-                "name": "compiled_sql",
+                "name": "compiled_code",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -14599,12 +15745,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "compiled",
                 "type": "BOOL",
                 "mode": "NULLABLE",
@@ -14638,6 +15778,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -14761,6 +15913,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -14861,6 +16019,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   },
                   {
                     "name": "quote_columns",
@@ -15070,6 +16262,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -15116,7 +16314,7 @@
                 "description": "[raw JSON string]"
               },
               {
-                "name": "compiled_sql",
+                "name": "compiled_code",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -15161,12 +16359,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "compiled",
                 "type": "BOOL",
                 "mode": "NULLABLE",
@@ -15200,6 +16392,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -15323,6 +16527,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -15423,6 +16633,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -15626,6 +16870,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -15672,7 +16922,7 @@
                 "description": "[raw JSON string]"
               },
               {
-                "name": "compiled_sql",
+                "name": "compiled_code",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -15717,12 +16967,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "database",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -15750,6 +16994,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -15873,6 +17129,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -15973,6 +17235,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -16176,6 +17472,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -16229,12 +17531,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "database",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -16262,6 +17558,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -16628,6 +17936,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -16681,12 +17995,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "database",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -16714,6 +18022,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -16837,6 +18157,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -16937,6 +18263,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -17140,6 +18500,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -17199,12 +18565,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "database",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -17232,6 +18592,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -17355,6 +18727,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -17455,6 +18833,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -17658,6 +19070,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -17711,12 +19129,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "database",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -17744,6 +19156,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -17867,6 +19291,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -17967,6 +19397,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -18170,6 +19634,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -18223,12 +19693,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "database",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -18256,6 +19720,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -18379,6 +19855,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -18479,6 +19961,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   }
                 ]
               },
@@ -18682,6 +20198,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -18734,12 +20256,6 @@
             "type": "RECORD",
             "mode": "NULLABLE",
             "fields": [
-              {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
               {
                 "name": "test_metadata",
                 "type": "RECORD",
@@ -18794,6 +20310,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -19158,6 +20686,12 @@
                   {
                     "name": "show",
                     "type": "BOOL",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
                     "mode": "NULLABLE",
                     "description": ""
                   }
@@ -19225,12 +20759,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "database",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -19258,6 +20786,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -19381,6 +20921,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -19481,6 +21027,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   },
                   {
                     "name": "quote_columns",
@@ -19690,6 +21270,12 @@
                     "type": "BOOL",
                     "mode": "NULLABLE",
                     "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
                   }
                 ]
               },
@@ -19743,12 +21329,6 @@
             "mode": "NULLABLE",
             "fields": [
               {
-                "name": "raw_sql",
-                "type": "STRING",
-                "mode": "NULLABLE",
-                "description": ""
-              },
-              {
                 "name": "database",
                 "type": "STRING",
                 "mode": "NULLABLE",
@@ -19776,6 +21356,18 @@
               },
               {
                 "name": "unique_id",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "raw_code",
+                "type": "STRING",
+                "mode": "NULLABLE",
+                "description": ""
+              },
+              {
+                "name": "language",
                 "type": "STRING",
                 "mode": "NULLABLE",
                 "description": ""
@@ -19899,6 +21491,12 @@
                     "description": ""
                   },
                   {
+                    "name": "incremental_strategy",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
                     "name": "persist_docs",
                     "type": "STRING",
                     "mode": "NULLABLE",
@@ -19991,6 +21589,40 @@
                     "type": "STRING",
                     "mode": "NULLABLE",
                     "description": "[raw JSON string]"
+                  },
+                  {
+                    "name": "packages",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "REPEATED",
+                        "description": ""
+                      }
+                    ]
+                  },
+                  {
+                    "name": "docs",
+                    "type": "RECORD",
+                    "mode": "NULLABLE",
+                    "description": "",
+                    "fields": [
+                      {
+                        "name": "show",
+                        "type": "BOOL",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      },
+                      {
+                        "name": "node_color",
+                        "type": "STRING",
+                        "mode": "NULLABLE",
+                        "description": ""
+                      }
+                    ]
                   },
                   {
                     "name": "strategy",
@@ -20230,6 +21862,12 @@
                   {
                     "name": "show",
                     "type": "BOOL",
+                    "mode": "NULLABLE",
+                    "description": ""
+                  },
+                  {
+                    "name": "node_color",
+                    "type": "STRING",
                     "mode": "NULLABLE",
                     "description": ""
                   }
