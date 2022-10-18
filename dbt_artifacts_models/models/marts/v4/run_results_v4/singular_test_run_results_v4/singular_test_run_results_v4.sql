@@ -37,6 +37,10 @@ WITH run_results AS (
   LEFT OUTER JOIN {{ ref("parsed_singular_test_node_v6") }} AS singular_tests
     ON run_results.unique_id = singular_tests.unique_id
       AND ABS(DATETIME_DIFF(run_results.metadata.generated_at, singular_tests.metadata.generated_at, DAY))  <= 2
+  {% elif dbt_minor_version == "1.3" %}
+  LEFT OUTER JOIN {{ ref("parsed_singular_test_node_v7") }} AS singular_tests
+    ON run_results.unique_id = singular_tests.unique_id
+      AND ABS(DATETIME_DIFF(run_results.metadata.generated_at, singular_tests.metadata.generated_at, DAY))  <= 2
   {% else %}
     {{ exceptions.raise_compiler_error("Unexpected dbt version: " ~ dbt_minor_version) }}
   {% endif %}
