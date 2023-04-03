@@ -1,0 +1,14 @@
+---
+version: 2
+
+sources:
+  - name: "{{ var('dbt_artifacts_loader')['dataset'] }}"
+    database: "{{ var('dbt_artifacts_loader')['project'] }}"
+    tables:
+      - name: manifest_v8
+        identifier: manifest_v8
+
+        columns:
+          - name: loaded_at
+            tests:
+              - not_null
