@@ -96,6 +96,16 @@ variable "bigquery_dataset_id" {
   default     = "dbt_artifacts"
 }
 
+variable "bigquery_dataset_owners" {
+  type        = list(string)
+  description = "The list of members who can manage the dataset for dbt artifacts"
+}
+
+variable "bigquery_dataset_readers" {
+  type        = list(string)
+  description = "The list of members who can access the dataset for dbt artifacts"
+}
+
 #
 # Cloud Run
 #

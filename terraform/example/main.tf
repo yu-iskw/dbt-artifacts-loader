@@ -8,6 +8,9 @@ module "dbt_artifacts_loader" {
 
   docker_image = "gcr.io/${var.project_id}/dbt-artifacts-loader:v1.7.0-dev1"
 
+  bigquery_dataset_owners  = []
+  bigquery_dataset_readers = []
+
   labels = {
     app = "dbt-artifacts-loader"
   }
