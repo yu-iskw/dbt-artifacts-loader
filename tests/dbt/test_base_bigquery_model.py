@@ -244,8 +244,8 @@ class TestBaseBigQueryModel(unittest.TestCase):
                              {
                                  'dbt_schema_version': 'https://schemas.getdbt.com/dbt/manifest/v8.json',
                                  'dbt_version': '1.4.3',
-                                 'generated_at': '2023-03-09T12:48:05',
-                                 'invocation_id': 'e5f8e73a-068c-4ab7-8e4a-9f1d0bc7ef46',
+                                 'generated_at': '2023-03-27T00:42:33',
+                                 'invocation_id': '7cc6e636-eb73-479c-8f05-7e496093185e',
                                  'env': [],
                                  'project_id': '06e5b98c2db46f8a72cc4f66410e9b3b',
                                  'user_id': None,
