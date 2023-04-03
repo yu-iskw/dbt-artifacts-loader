@@ -39,6 +39,7 @@ from dbt_artifacts_loader.dbt.v5.manifest import ManifestV5
 
 from dbt_artifacts_loader.dbt.v6.manifest import ManifestV6
 from dbt_artifacts_loader.dbt.v7.manifest import ManifestV7
+from dbt_artifacts_loader.dbt.v8.manifest import ManifestV8
 
 from dbt_artifacts_loader.utils import get_project_root
 

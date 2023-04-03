@@ -4,10 +4,10 @@ setup:
 	dbt deps
 
 build:
-	dbt build --profiles-dir ./profiles --selector dbt-1.3
+	dbt build --profiles-dir ./profiles --selector dbt-1.4
 
 run:
-	dbt run --profiles-dir ./profiles --selector dbt-1.3
+	dbt run --profiles-dir ./profiles --selector dbt-1.4
 
 compile:
 	dbt compile --profiles-dir ./profiles

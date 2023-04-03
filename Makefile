@@ -1,5 +1,5 @@
 PROJECT_ID = YOUR-GCP-PROJECT
-TAG = v1.6.0-dev3
+TAG = v1.7.0-dev1
 DOCKER_IMAGE_BASE = gcr.io/$(PROJECT_ID)/dbt-artifacts-loader
 
 
@@ -34,3 +34,9 @@ run-docker:
 
 push-docker:
 	docker push "$(DOCKER_IMAGE_BASE):$(TAG)"
+
+generate-models:
+	bash dev/generate-artifacts-models.sh
+
+generate-bq-schemas:
+	bash dev/generate-bigquery-schemas.sh
