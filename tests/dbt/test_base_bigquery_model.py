@@ -40,6 +40,7 @@ from dbt_artifacts_loader.dbt.v4.run_results import RunResultsV4
 from dbt_artifacts_loader.dbt.v5.manifest import ManifestV5
 from dbt_artifacts_loader.dbt.v6.manifest import ManifestV6
 from dbt_artifacts_loader.dbt.v7.manifest import ManifestV7
+from dbt_artifacts_loader.dbt.v8.manifest import ManifestV8
 
 from dbt_artifacts_loader.utils import get_project_root
 
@@ -84,6 +85,8 @@ class TestBaseBigQueryModel(unittest.TestCase):
         self.manifest_v6_obj = ManifestV6(**(load_artifact_json("v6", "manifest.json")))
         # v7
         self.manifest_v7_obj = ManifestV7(**(load_artifact_json("v7", "manifest.json")))
+        # v8
+        self.manifest_v8_obj = ManifestV8(**(load_artifact_json("v8", "manifest.json")))
 
     def test_to_bigquery_schema(self):
         value = ManifestV1.to_bigquery_schema()
@@ -228,6 +231,23 @@ class TestBaseBigQueryModel(unittest.TestCase):
                                  'invocation_id': '4d9e040b-c629-461e-abe7-466813dcad20',
                                  'env': [],
                                  'project_id': '9c7e77d37c2efd3d2ba268d277e3b33d',
+                                 'user_id': None,
+                                 'send_anonymous_usage_stats': False,
+                                 'adapter_type': 'bigquery'
+                             })
+    def test_to_dict_on_manifest_v8(self):
+        manifest_obj_dict = self.manifest_v8_obj.to_dict(depth=0)
+        expected = ['loaded_at', 'metadata', 'nodes', 'sources', 'macros', 'docs', 'exposures',
+                    'metrics', 'selectors', 'disabled', 'parent_map', 'child_map']
+        self.assertListEqual(list(manifest_obj_dict.keys()), expected)
+        self.assertDictEqual(self.manifest_v8_obj.metadata.to_dict(depth=0),
+                             {
+                                 'dbt_schema_version': 'https://schemas.getdbt.com/dbt/manifest/v8.json',
+                                 'dbt_version': '1.4.3',
+                                 'generated_at': '2023-03-09T12:48:05',
+                                 'invocation_id': 'e5f8e73a-068c-4ab7-8e4a-9f1d0bc7ef46',
+                                 'env': [],
+                                 'project_id': '06e5b98c2db46f8a72cc4f66410e9b3b',
                                  'user_id': None,
                                  'send_anonymous_usage_stats': False,
                                  'adapter_type': 'bigquery'

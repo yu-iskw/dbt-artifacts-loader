@@ -114,6 +114,11 @@ resources = [
         "class": ManifestV7,
         "output": os.path.join(table_schemas_base_path, "v7", "manifest.json"),
     },
+    # v8
+    {
+        "class": ManifestV8,
+        "output": os.path.join(table_schemas_base_path, "v8", "manifest.json"),
+    },
 ]
 
 
