@@ -15,6 +15,7 @@ setup-pre-commit:
 	pre-commit install
 
 lint: lint-python
+	pre-commit run --all-files
 
 lint-python:
 	bash ci/lint_python.sh

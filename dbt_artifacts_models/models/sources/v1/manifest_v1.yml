@@ -11,4 +11,4 @@ sources:
         columns:
           - name: loaded_at
             tests:
-            - not_null
+              - not_null
