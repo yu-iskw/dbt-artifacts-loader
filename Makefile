@@ -1,11 +1,18 @@
 PROJECT_ID = YOUR-GCP-PROJECT
-TAG = v1.7.0-dev1
+TAG = v1.8.0-dev2
 DOCKER_IMAGE_BASE = gcr.io/$(PROJECT_ID)/dbt-artifacts-loader
 
 
 .PHONEY: setup
-setup:
+setup: setup-python setup-pre-commit
+
+.PHONE: setup-python
+setup-python:
 	bash ./ci/setup.sh
+
+.PHONY: setup-pre-commit
+setup-pre-commit:
+	pre-commit install
 
 lint: lint-python
 

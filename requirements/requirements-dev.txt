@@ -3,6 +3,8 @@
 # Include python modules for dbt-helper.
 -r requirements.txt
 
+pre-commit>=3.0,<4.0
+
 # Add extra modules to develop dbt-helper.
 pytest>=4.6.11
 pylint>=1.9.5

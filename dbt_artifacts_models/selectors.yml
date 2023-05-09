@@ -79,7 +79,7 @@ selectors:
         - "models/marts/v6/manifest_v6/*"
         - "models/marts/v4/run_results_v4/*"
         - "models/marts/v1/catalog_v1/*"
-  
+
   # For dbt==1.3
   - name: dbt-1.3
     definition:
@@ -116,5 +116,25 @@ selectors:
         # mart
         - "models/marts/v3/sources_v3/*"
         - "models/marts/v8/manifest_v8/*"
+        - "models/marts/v4/run_results_v4/*"
+        - "models/marts/v1/catalog_v1/*"
+
+  # For dbt==1.5
+  - name: dbt-1.5
+    definition:
+      union:
+        # Sources
+        - "models/sources/v3/sources_v3.yml"
+        - "models/sources/v9/manifest_v9.yml"
+        - "models/sources/v4/run_results_v4.yml"
+        - "models/sources/v1/catalog_v1.yml"
+        # staging
+        - "models/staging/v3/sources_v3/*"
+        - "models/staging/v9/manifest_v9/*"
+        - "models/staging/v4/run_results_v4/*"
+        - "models/staging/v1/catalog_v1/*"
+        # mart
+        - "models/marts/v3/sources_v3/*"
+        - "models/marts/v9/manifest_v9/*"
         - "models/marts/v4/run_results_v4/*"
         - "models/marts/v1/catalog_v1/*"
