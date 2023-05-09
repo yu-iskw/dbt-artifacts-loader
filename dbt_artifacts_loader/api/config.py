@@ -16,9 +16,9 @@
 #
 #
 import os
+from distutils.util import strtobool
 
 from pydantic import BaseSettings
-from setuptools._distutils.util import strtobool
 
 
 def get_env_file() -> str:
