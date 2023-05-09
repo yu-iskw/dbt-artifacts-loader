@@ -13,7 +13,7 @@ repos:
       - id: isort
         name: isort (python)
   - repo: https://github.com/pycqa/pylint
-    rev: v2.17.2
+    rev: v3.0.0a6
     hooks:
       - id: pylint
   - repo: https://github.com/rhysd/actionlint
@@ -21,12 +21,12 @@ repos:
     hooks:
       - id: actionlint-docker
   - repo: https://github.com/hadolint/hadolint
-    rev: v2.12.0
+    rev: v2.12.1-beta
     hooks:
       - id: hadolint
     additional_dependencies: [hadolint]
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.29.0
+    rev: v1.31.0
     hooks:
       - id: yamllint
         args: [--strict, -c=.yamllint]
@@ -35,6 +35,6 @@ repos:
     hooks:
       - id: shellcheck
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.75.0
+    rev: v1.79.0
     hooks:
       - id: terraform_fmt
