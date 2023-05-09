@@ -15,12 +15,11 @@
 #  limitations under the License.
 #
 #
+import json
 import os
 import unittest
-import json
-
 from datetime import datetime
-from typing import Optional, Dict
+from typing import Dict, Optional
 
 # pylint: disable=E0611
 from pydantic import Extra
@@ -42,7 +41,6 @@ from dbt_artifacts_loader.dbt.v6.manifest import ManifestV6
 from dbt_artifacts_loader.dbt.v7.manifest import ManifestV7
 from dbt_artifacts_loader.dbt.v8.manifest import ManifestV8
 from dbt_artifacts_loader.dbt.v9.manifest import ManifestV9
-
 from dbt_artifacts_loader.utils import get_project_root
 
 

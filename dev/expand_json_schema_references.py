@@ -15,28 +15,28 @@
 #  limitations under the License.
 #
 import json
-import jsonref
 
 import click
 
 
 @click.command()
-@click.option("--input", type=str, required=True, help="The path to the JSON schema file")
+@click.option("--input", type=str, required=True, help="The path to the JSON schema file", alias="input_")
 @click.option("--output", type=str, required=True, help="The path to the expanded output JSON schema file")
-def cmd(input: str, output: str):
+def cmd(input_: str, output: str):
     """Expand references in the input JSON schema file
 
     Args:
-        input (str): the path to the input JSON schema file
+        input_ (str): the path to the input JSON schema file
         output (str): the path to the output JSON schema file
     """
-    with open(input, "r") as fp:
-        data = jsonref.load(fp)
-    with open(output, "w") as fp:
+    with open(input_, "r", encoding="utf-8") as fp:
+        data = json.load(fp)
+    with open(output, "w", encoding="utf-8") as fp:
         json.dump(data, fp)
 
 
 def main():
+    # pylint: disable=no-value-for-parameter
     cmd()
 
 
