@@ -14,7 +14,7 @@ setup-python:
 setup-pre-commit:
 	pre-commit install
 
-lint: lint-python
+lint:
 	pre-commit run --all-files
 
 lint-python:
