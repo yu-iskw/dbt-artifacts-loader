@@ -16,28 +16,25 @@
 #
 #
 import base64
+import datetime
 import json
 from functools import lru_cache
-from typing import Optional, Union, List
-import datetime
+from typing import List, Optional, Union
 
-from fastapi import FastAPI, Depends, HTTPException
-# pylint: disable=E0611
-from pydantic import BaseModel
-from pydantic import Field
-
+from fastapi import Depends, FastAPI, HTTPException
 from google.cloud import bigquery
+# pylint: disable=E0611
+from pydantic import BaseModel, Field
 
+from dbt_artifacts_loader.api import config
+from dbt_artifacts_loader.dbt.utils import (get_artifact_type_by_id,
+                                            get_dbt_schema_version,
+                                            get_default_load_job_config,
+                                            get_destination_table,
+                                            get_model_class,
+                                            load_table_from_json)
 from dbt_artifacts_loader.dbt.version_map import ArtifactsTypes
 from dbt_artifacts_loader.utils import download_gcs_object_as_text
-from dbt_artifacts_loader.dbt.utils import (
-    get_dbt_schema_version,
-    get_default_load_job_config,
-    load_table_from_json,
-    get_artifact_type_by_id,
-    get_destination_table,
-    get_model_class)
-from dbt_artifacts_loader.api import config
 
 app = FastAPI()
 

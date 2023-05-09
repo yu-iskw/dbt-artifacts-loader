@@ -14,20 +14,19 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 #
-import typing
-import json
-from enum import Enum
-from typing import Dict, Any, Optional, Union, List
 import datetime
-from datetime import date, datetime
 import inspect
+import json
+import typing
+from datetime import date, datetime
+from enum import Enum
+from typing import Any, Dict, List, Optional, Union
 
 # pylint: disable=E0611
 import typing_extensions
+from google.cloud import bigquery
 from pydantic import BaseModel
 from pydantic.fields import ModelField
-
-from google.cloud import bigquery
 
 
 def datetime_handler(x):

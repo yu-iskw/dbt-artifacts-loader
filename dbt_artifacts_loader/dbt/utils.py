@@ -15,12 +15,14 @@
 #  limitations under the License.
 #
 #
-from typing import Optional, List, Type
+from typing import List, Optional, Type
 
 from google.cloud import bigquery
 
 from dbt_artifacts_loader.dbt.base_bigquery_model import BaseBigQueryModel
-from dbt_artifacts_loader.dbt.version_map import ArtifactsTypes, ARTIFACT_INFO, DestinationTables
+from dbt_artifacts_loader.dbt.version_map import (ARTIFACT_INFO,
+                                                  ArtifactsTypes,
+                                                  DestinationTables)
 
 
 def get_dbt_schema_version(artifact_json: dict) -> str:

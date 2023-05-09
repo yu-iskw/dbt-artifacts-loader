@@ -14,12 +14,11 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 #
-from typing import Type
-from enum import Enum
 from dataclasses import dataclass
+from enum import Enum
+from typing import Type
 
 from dbt_artifacts_loader.dbt.base_bigquery_model import BaseBigQueryModel
-
 # v1
 from dbt_artifacts_loader.dbt.v1.catalog import CatalogV1
 from dbt_artifacts_loader.dbt.v1.manifest import ManifestV1
