@@ -8,8 +8,9 @@ from datetime import datetime
 from enum import Enum
 from typing import Any, Dict, List, Optional, Union
 
-from dbt_artifacts_loader.dbt.base_bigquery_model import BaseBigQueryModel
 from pydantic import Extra, Field
+
+from dbt_artifacts_loader.dbt.base_bigquery_model import BaseBigQueryModel
 
 
 class BaseArtifactMetadata(BaseBigQueryModel):

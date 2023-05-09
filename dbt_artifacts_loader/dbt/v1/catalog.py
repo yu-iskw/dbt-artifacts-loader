@@ -7,8 +7,9 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Dict, List, Optional, Union
 
-from dbt_artifacts_loader.dbt.base_bigquery_model import BaseBigQueryModel
 from pydantic import Extra, Field
+
+from dbt_artifacts_loader.dbt.base_bigquery_model import BaseBigQueryModel
 
 
 class CatalogMetadata(BaseBigQueryModel):

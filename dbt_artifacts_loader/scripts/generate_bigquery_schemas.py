@@ -15,35 +15,29 @@
 #  limitations under the License.
 #
 
-import os
 import json
+import os
+
 import click
 
 from dbt_artifacts_loader.dbt.v1.catalog import CatalogV1
 from dbt_artifacts_loader.dbt.v1.manifest import ManifestV1
 from dbt_artifacts_loader.dbt.v1.run_results import RunResultsV1
 from dbt_artifacts_loader.dbt.v1.sources import SourcesV1
-
 from dbt_artifacts_loader.dbt.v2.manifest import ManifestV2
 from dbt_artifacts_loader.dbt.v2.run_results import RunResultsV2
 from dbt_artifacts_loader.dbt.v2.sources import SourcesV2
-
 from dbt_artifacts_loader.dbt.v3.manifest import ManifestV3
 from dbt_artifacts_loader.dbt.v3.run_results import RunResultsV3
 from dbt_artifacts_loader.dbt.v3.sources import SourcesV3
-
 from dbt_artifacts_loader.dbt.v4.manifest import ManifestV4
 from dbt_artifacts_loader.dbt.v4.run_results import RunResultsV4
-
 from dbt_artifacts_loader.dbt.v5.manifest import ManifestV5
-
 from dbt_artifacts_loader.dbt.v6.manifest import ManifestV6
 from dbt_artifacts_loader.dbt.v7.manifest import ManifestV7
 from dbt_artifacts_loader.dbt.v8.manifest import ManifestV8
 from dbt_artifacts_loader.dbt.v9.manifest import ManifestV9
-
 from dbt_artifacts_loader.utils import get_project_root
-
 
 resources_base_path = os.path.join(get_project_root(), "dbt_artifacts_loader", "resources")
 table_schemas_base_path = os.path.join(get_project_root(), "terraform", "module", "table_schemas")
