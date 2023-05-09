@@ -120,3 +120,15 @@ variable "cloud_run_service_name" {
   type        = string
   default     = "dbt-artifacts-loader"
 }
+
+variable "cloud_run_resources_requests" {
+  description = "The resources of Cloud Run"
+  type = object({
+    cpu    = string
+    memory = string
+  })
+  default = {
+    cpu    = "1"
+    memory = "512Mi"
+  }
+}

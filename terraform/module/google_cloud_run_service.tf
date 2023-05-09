@@ -12,6 +12,10 @@ resource "google_cloud_run_service" "dbt_artifact_loader" {
       containers {
         image = var.docker_image
 
+        resources {
+          requests = var.cloud_run_resources_requests
+        }
+
         env {
           name  = "ENV_FILE"
           value = ".env/.env.prod"
