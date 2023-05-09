@@ -15,10 +15,12 @@
 #  limitations under the License.
 #
 #
+import json
 import os
 import unittest
-import json
 
+from dbt_artifacts_loader.dbt.utils import (get_dbt_schema_version,
+                                            get_model_class)
 # v1
 from dbt_artifacts_loader.dbt.v1.catalog import CatalogV1
 from dbt_artifacts_loader.dbt.v1.manifest import ManifestV1
@@ -39,10 +41,8 @@ from dbt_artifacts_loader.dbt.v4.run_results import RunResultsV4
 from dbt_artifacts_loader.dbt.v5.manifest import ManifestV5
 # v6
 from dbt_artifacts_loader.dbt.v6.manifest import ManifestV6
-
 from dbt_artifacts_loader.dbt.version_map import ArtifactsTypes
 from dbt_artifacts_loader.utils import get_project_root
-from dbt_artifacts_loader.dbt.utils import get_dbt_schema_version, get_model_class
 
 
 class TestDbtUtils(unittest.TestCase):

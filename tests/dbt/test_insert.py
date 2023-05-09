@@ -15,14 +15,15 @@
 #  limitations under the License.
 #
 #
+import json
 import os
 import unittest
-import json
 
 from google.cloud import bigquery
 
 # v1
-from dbt_artifacts_loader.dbt.utils import get_default_load_job_config, load_table_from_json
+from dbt_artifacts_loader.dbt.utils import (get_default_load_job_config,
+                                            load_table_from_json)
 from dbt_artifacts_loader.dbt.v1.catalog import CatalogV1
 from dbt_artifacts_loader.dbt.v1.manifest import ManifestV1
 from dbt_artifacts_loader.dbt.v1.run_results import RunResultsV1
@@ -32,7 +33,6 @@ from dbt_artifacts_loader.dbt.v3.manifest import ManifestV3
 from dbt_artifacts_loader.dbt.v3.run_results import RunResultsV3
 from dbt_artifacts_loader.dbt.v4.manifest import ManifestV4
 from dbt_artifacts_loader.dbt.v4.run_results import RunResultsV4
-
 from dbt_artifacts_loader.utils import get_project_root
 
 

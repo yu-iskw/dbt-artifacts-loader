@@ -22,8 +22,8 @@ from unittest.mock import patch
 
 from fastapi.testclient import TestClient
 
-from dbt_artifacts_loader.utils import get_project_root
 from dbt_artifacts_loader.api import rest_api_v2
+from dbt_artifacts_loader.utils import get_project_root
 
 
 def get_mock_value_of_download_gcs_object_as_text():

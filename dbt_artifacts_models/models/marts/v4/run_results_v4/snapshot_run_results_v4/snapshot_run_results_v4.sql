@@ -44,6 +44,10 @@ WITH run_results AS (
   LEFT OUTER JOIN {{ ref("parsed_snapshot_node_v8") }} AS snapshots
     ON run_results.unique_id = snapshots.unique_id
       AND ABS(DATETIME_DIFF(run_results.metadata.generated_at, snapshots.metadata.generated_at, DAY))  <= 2
+  {% elif dbt_minor_version == "1.5" %}
+  LEFT OUTER JOIN {{ ref("parsed_snapshot_node_v9") }} AS snapshots
+    ON run_results.unique_id = snapshots.unique_id
+      AND ABS(DATETIME_DIFF(run_results.metadata.generated_at, snapshots.metadata.generated_at, DAY))  <= 2
   {% else %}
     {{ exceptions.raise_compiler_error("Unexpected dbt version: " ~ dbt_minor_version) }}
   {% endif %}

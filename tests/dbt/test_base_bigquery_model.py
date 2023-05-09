@@ -15,12 +15,11 @@
 #  limitations under the License.
 #
 #
+import json
 import os
 import unittest
-import json
-
 from datetime import datetime
-from typing import Optional, Dict
+from typing import Dict, Optional
 
 # pylint: disable=E0611
 from pydantic import Extra
@@ -41,7 +40,7 @@ from dbt_artifacts_loader.dbt.v5.manifest import ManifestV5
 from dbt_artifacts_loader.dbt.v6.manifest import ManifestV6
 from dbt_artifacts_loader.dbt.v7.manifest import ManifestV7
 from dbt_artifacts_loader.dbt.v8.manifest import ManifestV8
-
+from dbt_artifacts_loader.dbt.v9.manifest import ManifestV9
 from dbt_artifacts_loader.utils import get_project_root
 
 
@@ -87,6 +86,8 @@ class TestBaseBigQueryModel(unittest.TestCase):
         self.manifest_v7_obj = ManifestV7(**(load_artifact_json("v7", "manifest.json")))
         # v8
         self.manifest_v8_obj = ManifestV8(**(load_artifact_json("v8", "manifest.json")))
+        # v9
+        self.manifest_v9_obj = ManifestV9(**(load_artifact_json("v9", "manifest.json")))
 
     def test_to_bigquery_schema(self):
         value = ManifestV1.to_bigquery_schema()
@@ -246,6 +247,24 @@ class TestBaseBigQueryModel(unittest.TestCase):
                                  'dbt_version': '1.4.3',
                                  'generated_at': '2023-03-27T00:42:33',
                                  'invocation_id': '7cc6e636-eb73-479c-8f05-7e496093185e',
+                                 'env': [],
+                                 'project_id': '06e5b98c2db46f8a72cc4f66410e9b3b',
+                                 'user_id': None,
+                                 'send_anonymous_usage_stats': False,
+                                 'adapter_type': 'bigquery'
+                             })
+
+    def test_to_dict_on_manifest_v9(self):
+        manifest_obj_dict = self.manifest_v9_obj.to_dict(depth=0)
+        expected = ['loaded_at', 'metadata', 'nodes', 'sources', 'macros', 'docs', 'exposures',
+                    'metrics', 'groups', 'selectors', 'disabled', 'parent_map', 'child_map', 'group_map']
+        self.assertListEqual(list(manifest_obj_dict.keys()), expected)
+        self.assertDictEqual(self.manifest_v9_obj.metadata.to_dict(depth=0),
+                             {
+                                 'dbt_schema_version': 'https://schemas.getdbt.com/dbt/manifest/v9.json',
+                                 'dbt_version': '1.5.0',
+                                 'generated_at': '2023-05-09T00:18:43',
+                                 'invocation_id': '749aa974-1970-4885-8df6-d614a02a5502',
                                  'env': [],
                                  'project_id': '06e5b98c2db46f8a72cc4f66410e9b3b',
                                  'user_id': None,
